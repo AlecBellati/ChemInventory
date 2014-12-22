@@ -2,21 +2,18 @@
 	include 'functions.php';
 	
 	// Create the starting code
-	pageStart('Home');
+	$conn = pageStart('Home');
 	
 	// Process the search
-	if(count($_GET) > 0)
-	{
+	if(count($_GET) > 0){
 		$chemical = $_GET['chemical'];
 		$room = $_GET['room'];
 		
 		// Check if there is any input
-		if ($chemical == '' && $room == '')
-		{
+		if ($chemical == '' && $room == ''){
 			print 'Please enter a room or chemical';
 		}
-		else if ($chemical == 'Yung')
-		{
+		else if ($chemical == 'Yung'){
 			print 'Chemical: Yung Ngothai';
 			print '<br />';
 			print 'Type: Associate Professor';
@@ -26,8 +23,7 @@
 			print 'Room: 212a';
 			print '<br />';
 		}
-		else
-		{
+		else{
 			print 'Sorry that chemical does not exist in our database';
 		}
 	}
@@ -48,7 +44,10 @@
 	print 'chemicals';
 	print '<br />';
 	print 'rooms';
+	print '<br />';
 	
+	
+	parseData('ChemicalDatabase.xlsx',$conn);
 	
 	// Create the ending code
 	pageEnd();
