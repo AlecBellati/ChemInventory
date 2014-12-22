@@ -8,7 +8,7 @@ drop table Building;
  */
 create table Building(
 	BuildingName	char(40) not null,
-	Campus			char(40), not null
+	Campus			char(40) not null,
 	primary key(BuildingName)
 );
 
@@ -35,6 +35,10 @@ create table Supplier(
  */
 create table Chemical(
 	ChemicalName		char(20) not null,
+	PrimaryDGC			char(5),
+	PackingGroup		char(5),
+	Hazardous			char(5),
+	PoisonousSchedule	char(5),
 	TotalAmount			number(10),
 	Unit				char(5),
 	Carcinogen			number(1) check(Carcinogen = '0' OR Carcinogen = '1'),

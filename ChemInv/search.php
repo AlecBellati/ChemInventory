@@ -36,13 +36,19 @@
 	// Create a form to search for a chemical
 	print '<form action="search.php" method \'get\'>';
 	
-	print inputText('Chemical: ','chemical','20','');
+	print inputText('Chemical: ','chemical','40','');
 	print '<br />';
 	print inputText('Room: ','room','20','');
 	print '<br />';
 	print inputButton('search','Search');
 	
 	print '</form>';
+	
+	print '<br />';
+	print 'chemicals';
+	print '<br />';
+	print 'rooms';
+	
 	
 	// Create the ending code
 	pageEnd();

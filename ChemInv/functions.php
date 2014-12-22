@@ -2,25 +2,16 @@
 	// Connect to the database
 	function databaseConnect()
 	{
-		//TODO
-		/*
 		// since we're testing, turn error reporting on 
 		ini_set ('display_errors', TRUE);
 		error_reporting (E_ALL);
 		
-		//get the username and password from a .txt file
-		$filename = 'password.txt';
-		
-		$stream = fopen($filename,'r');
-		
-		define ('DB_USER',trim(fgets($stream)));
-		define ('DB_PASSWORD',trim(fgets($stream)));
-		define ('DB_HOST','zapp.services.adelaide.edu.au:1521/orcl');
-		
-		fclose($stream);
+		define ('DB_USER','root');
+		define ('DB_PASSWORD','');
+		define ('DB_HOST','localhost');
 		
 		//connect to the database
-		$conn = oci_connect (DB_USER,DB_PASSWORD,DB_HOST);
+		$conn = mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
 		if (!$conn)
 		{
 			$err = oci_error ();
@@ -29,14 +20,13 @@
 		}
 		
 		return $conn;
-		*/
 	}
 	
 	// Create the markup for the start of the web page
 	function pageStart($title)
 	{
 		//connect to the database
-		//$conn = databaseConnect();
+		$conn = databaseConnect();
 		
 		//print start html code
 		print '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -57,12 +47,14 @@
 	</head>
 	<body>';
 		
-		//return $conn;
+		return $conn;
 	}
 	
 	// Create the markup for the end of the web page
 	function pageEnd()
 	{
+		mysql_close();
+		
 		print '	</body>
 </html>';
 	}
