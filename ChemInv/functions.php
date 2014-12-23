@@ -40,11 +40,24 @@
 		return $conn;
 	}
 	
+	// Setup the connection to the database
+	function setupConnection(){
+		databaseConnect();
+		
+		createTables($conn);
+		
+		parseData('ChemicalDatabase.xlsx',$conn);
+		
+		mysql_close();
+	}
+	
+	// Create the tables in the database
+	function createTables($conn){
+	
+	}
+	
 	// Create the markup for the start of the web page
 	function pageStart($title){
-		//connect to the database
-		$conn = databaseConnect();
-		
 		//print start html code
 		print '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -61,14 +74,10 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>';
-		
-		return $conn;
 	}
 	
 	// Create the markup for the end of the web page
 	function pageEnd(){
-		mysql_close();
-		
 		print '	</body>
 </html>';
 	}

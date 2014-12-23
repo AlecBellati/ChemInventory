@@ -2,7 +2,7 @@
 	include 'functions.php';
 	
 	// Create the starting code
-	$conn = pageStart('Home');
+	pageStart('Home');
 	
 	// Process the search
 	if(count($_GET) > 0){
@@ -39,15 +39,6 @@
 	print inputButton('search','Search');
 	
 	print '</form>';
-	
-	print '<br />';
-	print 'chemicals';
-	print '<br />';
-	print 'rooms';
-	print '<br />';
-	
-	
-	parseData('ChemicalDatabase.xlsx',$conn);
 	
 	// Create the ending code
 	pageEnd();
