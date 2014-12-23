@@ -4,6 +4,8 @@
 	// Create the starting code
 	pageStart('Home');
 	
+	//setupConnection();
+	
 	// Process the search
 	if(count($_GET) > 0){
 		$chemical = $_GET['chemical'];

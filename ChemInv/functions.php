@@ -42,7 +42,7 @@
 	
 	// Setup the connection to the database
 	function setupConnection(){
-		databaseConnect();
+		$conn = databaseConnect();
 		
 		createTables($conn);
 		
@@ -53,7 +53,18 @@
 	
 	// Create the tables in the database
 	function createTables($conn){
-	
+		$file = fopen("schema.sql",'r');
+		
+		$combined = "";
+		$line;
+		while(!feof($file)){
+			$line = fgets($file);
+			$combined = $combined . $line;
+			print $combined;
+			print '<br />';
+		}
+		
+		fclose($file);
 	}
 	
 	// Create the markup for the start of the web page
@@ -122,16 +133,16 @@
 			$ototoxic = $spreadsheet->getCell($rowNum,OTOTOXIC_COL);
 			$restrictedHazardous = $spreadsheet->getCell($rowNum,RESTRICTEDHAZARDOUS_COL);
 			
-			$sql = "insert into Building values('" + $building + "','" + $campus + "')";
+			$sql = "insert into Building values('" . $building . "','" . $campus . "')";
 			$conn.query($sql);
 			
-			$sql = "insert into Room values('" + $room + "','" + $floor + "','" + $building + "')";
+			$sql = "insert into Room values('" . $room . "','" . $floor . "','" . $building . "')";
 			$conn.query($sql);
 			
-			$sql = "insert into Supplier values('" + $supplier + "')";
+			$sql = "insert into Supplier values('" . $supplier . "')";
 			$conn.query($sql);
 			
-			$sql = "insert into Chemical values('" + $chemical + "','" + $primaryDGC + "','" + $packingGroup + "','" + $hazardous + "','" + $poisonsSchedule + "','" + $quantity + "','" + $unit + "','" + $carcinogen + "', '" + $chemicalWeapon + "', '" + $CSC + "', '" + $ototoxic + "', '" + $restrictedHazardous + "', '" + $supplier + "','" + $room + "')";
+			$sql = "insert into Chemical values('" . $chemical . "','" . $primaryDGC . "','" . $packingGroup . "','" . $hazardous . "','" . $poisonsSchedule . "','" . $quantity . "','" . $unit . "','" . $carcinogen . "', '" . $chemicalWeapon . "', '" . $CSC . "', '" . $ototoxic . "', '" . $restrictedHazardous . "', '" . $supplier . "','" . $room . "')";
 			$conn.query($sql);
 		}
 	}
