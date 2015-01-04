@@ -4,7 +4,7 @@
 	// Create the starting code
 	pageStart('Home');
 	
-	//setupConnection();
+	setupConnection();
 	
 	// Process the search
 	if(count($_GET) > 0){

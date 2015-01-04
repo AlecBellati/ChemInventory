@@ -1,4 +1,5 @@
 <?php
+	include 'schema.php';
 	include 'lib/PHPExcel.php';
 	
 	define('CHEMICAL_COL',0);
@@ -21,7 +22,7 @@
 	
 	// Connect to the database
 	function databaseConnect(){
-		// since we're testing, turn error reporting on 
+		// Since we're testing, turn error reporting on 
 		ini_set ('display_errors', TRUE);
 		error_reporting (E_ALL);
 		
@@ -29,13 +30,16 @@
 		define ('DB_PASSWORD','');
 		define ('DB_HOST','localhost');
 		
-		//connect to the database
+		// Connect to the server
 		$conn = mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
 		if (!$conn){
 			$err = oci_error ();
 			print (htmlentities ($err['message']));
 			exit ();
 		}
+		
+		// Connect to the database
+		mysql_select_db('inventory',$conn);
 		
 		return $conn;
 	}
@@ -44,27 +48,13 @@
 	function setupConnection(){
 		$conn = databaseConnect();
 		
+		// Create the tables in the database
+		dropTables($conn);
 		createTables($conn);
 		
-		parseData('ChemicalDatabase.xlsx',$conn);
+		//parseData('ChemicalDatabase.xlsx',$conn);
 		
 		mysql_close();
-	}
-	
-	// Create the tables in the database
-	function createTables($conn){
-		$file = fopen("schema.sql",'r');
-		
-		$combined = "";
-		$line;
-		while(!feof($file)){
-			$line = fgets($file);
-			$combined = $combined . $line;
-			print $combined;
-			print '<br />';
-		}
-		
-		fclose($file);
 	}
 	
 	// Create the markup for the start of the web page
