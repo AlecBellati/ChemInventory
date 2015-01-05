@@ -12,21 +12,35 @@
 		$room = $_GET['room'];
 		
 		// Check if there is any input
-		if ($chemical == '' && $room == ''){
-			print 'Please enter a room or chemical';
+		if ($chemical != '' && $room != ''){
+			$query = "SELECT * FROM chemical WHERE ChemicalName='" . $chemical . "' AND Room='" . $room . "'";
+			if ($result = mysql_query($query)){
+				while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
+					print $row["ChemicalName"];
+					print '<br />';
+				}
+			}
 		}
-		else if ($chemical == 'Yung'){
-			print 'Chemical: Yung Ngothai';
-			print '<br />';
-			print 'Type: Associate Professor';
-			print '<br />';
-			print 'Building: Engineering North';
-			print '<br />';
-			print 'Room: 212a';
-			print '<br />';
+		else if ($chemical != ''){
+			$query = "SELECT * FROM chemical WHERE ChemicalName='" . $chemical . "'";
+			if ($result = mysql_query($query)){
+				while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
+					print $row["ChemicalName"];
+					print '<br />';
+				}
+			}
+		}
+		else if ($room != ''){
+			$query = "SELECT * FROM chemical WHERE Room='" . $room . "'";
+			if ($result = mysql_query($query)){
+				while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
+					print $row["ChemicalName"];
+					print '<br />';
+				}
+			}
 		}
 		else{
-			print 'Sorry that chemical does not exist in our database';
+			print 'Please enter a room or chemical';
 		}
 	}
 	

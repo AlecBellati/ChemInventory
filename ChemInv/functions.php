@@ -31,7 +31,7 @@
 		define ('DB_HOST','localhost');
 		
 		// Connect to the server
-		$conn = @mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
+		$conn = @mysql_pconnect(DB_HOST,DB_USER,DB_PASSWORD);
 		if (!$conn){
 			$err = oci_error ();
 			print (htmlentities ($err['message']));
@@ -49,12 +49,12 @@
 		$conn = databaseConnect();
 		
 		// Create the tables in the database
-		dropTables($conn);
-		createTables($conn);
+		//dropTables($conn);
+		//createTables($conn);
 		
-		parseData('ChemicalDatabase.xlsx',$conn);
+		//parseData('ChemicalDatabase.xlsx',$conn);
 		
-		mysql_close();
+		//mysql_close();
 	}
 	
 	// Create the markup for the start of the web page
