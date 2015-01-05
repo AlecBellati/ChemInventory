@@ -79,6 +79,11 @@
 	
 	// Create the markup for the end of the web page
 	function pageEnd(){
+		print '<br />';
+		print '<br />';
+		print textLink('Search','search.php');
+		print ' | ';
+		print textLink('Browse','browse.php');
 		print '	</body>
 </html>';
 	}
@@ -97,6 +102,11 @@
 	// Create a button
 	function inputButton($name,$value){
 		return '<input type="submit" name="'.$name.'" value="'.$value.'" />';
+	}
+	
+	// Create a text link
+	function textLink($title,$url){
+		return '<a href="'.$url.'">'.$title.'</a>';
 	}
 	
 	// Parse the excel data

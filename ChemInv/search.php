@@ -1,10 +1,12 @@
 <?php
 	include 'functions.php';
 	
-	// Create the starting code
+	// The starting page code
 	pageStart('Home');
-	
 	setupConnection();
+	session_start();
+	
+	$_SESSION['lastPage'] = 'search';
 	
 	// Process the search
 	if(count($_GET) > 0){
@@ -13,7 +15,7 @@
 		
 		// Check if there is any input
 		if ($chemical != '' && $room != ''){
-			$query = "SELECT * FROM chemical WHERE ChemicalName='" . $chemical . "' AND Room='" . $room . "'";
+			$query = "SELECT ChemicalName FROM chemical WHERE ChemicalName='" . $chemical . "' AND Room='" . $room . "'";
 			if ($result = mysql_query($query)){
 				while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
 					print $row["ChemicalName"];
@@ -22,7 +24,7 @@
 			}
 		}
 		else if ($chemical != ''){
-			$query = "SELECT * FROM chemical WHERE ChemicalName='" . $chemical . "'";
+			$query = "SELECT ChemicalName FROM chemical WHERE ChemicalName='" . $chemical . "'";
 			if ($result = mysql_query($query)){
 				while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
 					print $row["ChemicalName"];
@@ -31,7 +33,7 @@
 			}
 		}
 		else if ($room != ''){
-			$query = "SELECT * FROM chemical WHERE Room='" . $room . "'";
+			$query = "SELECT ChemicalName FROM chemical WHERE Room='" . $room . "'";
 			if ($result = mysql_query($query)){
 				while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
 					print $row["ChemicalName"];
@@ -45,7 +47,7 @@
 	}
 	
 	
-	// Create a form to search for a chemical
+	// Form to search for a chemical
 	print '<form action="search.php" method \'get\'>';
 	
 	print inputText('Chemical: ','chemical','40','');
@@ -56,7 +58,7 @@
 	
 	print '</form>';
 	
-	// Create the ending code
+	// The ending page code
 	pageEnd();
 	
 ?>

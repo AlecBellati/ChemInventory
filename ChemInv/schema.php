@@ -65,7 +65,7 @@
 	function createTableChemical($conn){
 		$create = "create table Chemical(";
 		$create = $create . "ID int not null,";
-		$create = $create . "ChemicalName char(20) not null,";
+		$create = $create . "ChemicalName char(40) not null,";
 		$create = $create . "Supplier	char(20),";
 		$create = $create . "PrimaryDGC char(5),";
 		$create = $create . "PackingGroup char(5),";
