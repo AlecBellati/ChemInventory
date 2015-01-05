@@ -151,7 +151,7 @@
 			$sql = "insert into Supplier values('" . $supplier . "')";
 			mysql_query($sql);
 			
-			$sql = "insert into Chemical values('" . $chemical . "','" . $primaryDGC . "','" . $packingGroup . "','" . $hazardous . "','" . $poisonsSchedule . "','" . $quantity . "','" . $unit . "','" . $carcinogen . "', '" . $chemicalWeapon . "', '" . $CSC . "', '" . $ototoxic . "', '" . $restrictedHazardous . "', '" . $supplier . "','" . $room . "')";
+			$sql = "insert into Chemical values('" . $rowNum . "','" . $chemical . "', '" . $supplier . "','" . $primaryDGC . "','" . $packingGroup . "','" . $hazardous . "','" . $poisonsSchedule . "','" . $quantity . "','" . $unit . "','" . $room . "','" . $carcinogen . "', '" . $chemicalWeapon . "', '" . $CSC . "', '" . $ototoxic . "', '" . $restrictedHazardous . "')";
 			mysql_query($sql);
 		}
 	}
