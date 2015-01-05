@@ -14,7 +14,7 @@
 	define('FLOOR_COL',9);
 	define('ROOM_COL',10);
 	define('CAMPUS_COL',11);
-	define('CARGINOGEN_COL',12);
+	define('CARCINOGEN_COL',12);
 	define('CHEMICALWEAPON_COL',13);
 	define('CSC_COL',14);
 	define('OTOTOXIC_COL',15);
@@ -31,7 +31,7 @@
 		define ('DB_HOST','localhost');
 		
 		// Connect to the server
-		$conn = mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
+		$conn = @mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
 		if (!$conn){
 			$err = oci_error ();
 			print (htmlentities ($err['message']));
@@ -52,7 +52,7 @@
 		dropTables($conn);
 		createTables($conn);
 		
-		//parseData('ChemicalDatabase.xlsx',$conn);
+		parseData('ChemicalDatabase.xlsx',$conn);
 		
 		mysql_close();
 	}
@@ -102,38 +102,57 @@
 	// Parse the excel data
 	function parseData($filename,$conn){
 		// Open the file
-		$spreadsheet = PHPExcel_IOFactory::load($filename);
+		$file = PHPExcel_IOFactory::load($filename);
+		$worksheet = $file->getActiveSheet();
 		
-		for($rowNum = $spreadsheet->getHighestRow(); $rowNum > 1; $rowNum--){
-			$chemical = $spreadsheet->getCell($rowNum,CHEMICAL_COL);
-			$supplier = $spreadsheet->getCell($rowNum,SUPPLIER_COL);
-			$primaryDGC = $spreadsheet->getCell($rowNum,PRIMARYDGC_COL);
-			$packingGroup = $spreadsheet->getCell($rowNum,PACKINGGROUP_COL);
-			$hazardous = $spreadsheet->getCell($rowNum,HAZARDOUS_COL);
-			$poisonsSchedule = $spreadsheet->getCell($rowNum,POISONSSCHEDULE_COL);
-			$quantity = $spreadsheet->getCell($rowNum,QUANTITY_COL);
-			$unit = $spreadsheet->getCell($rowNum,UNIT_COL);
-			$building = $spreadsheet->getCell($rowNum,BUILDING_COL);
-			$floor = $spreadsheet->getCell($rowNum,FLOOR_COL);
-			$room = $spreadsheet->getCell($rowNum,ROOM_COL);
-			$campus = $spreadsheet->getCell($rowNum,CAMPUS_COL);
-			$carginogen = $spreadsheet->getCell($rowNum,CARCINOGEN_COL);
-			$chemicalWeapon = $spreadsheet->getCell($rowNum,CHEMICALWEAPON_COL);
-			$CSC = $spreadsheet->getCell($rowNum,CSC_COL);
-			$ototoxic = $spreadsheet->getCell($rowNum,OTOTOXIC_COL);
-			$restrictedHazardous = $spreadsheet->getCell($rowNum,RESTRICTEDHAZARDOUS_COL);
+		// Read each row
+		for($rowNum = 2; $rowNum <= $worksheet->getHighestRow(); $rowNum++){
+			$cell = $worksheet->getCellByColumnAndRow(CHEMICAL_COL,$rowNum);
+			$chemical = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(SUPPLIER_COL,$rowNum);
+			$supplier = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(PRIMARYDGC_COL,$rowNum);
+			$primaryDGC = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(PACKINGGROUP_COL,$rowNum);
+			$packingGroup = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(HAZARDOUS_COL,$rowNum);
+			$hazardous = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(POISONSSCHEDULE_COL,$rowNum);
+			$poisonsSchedule = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(QUANTITY_COL,$rowNum);
+			$quantity = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(UNIT_COL,$rowNum);
+			$unit = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(BUILDING_COL,$rowNum);
+			$building = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(FLOOR_COL,$rowNum);
+			$floor = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(ROOM_COL,$rowNum);
+			$room = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(CAMPUS_COL,$rowNum);
+			$campus = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(CARCINOGEN_COL,$rowNum);
+			$carcinogen = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(CHEMICALWEAPON_COL,$rowNum);
+			$chemicalWeapon = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(CSC_COL,$rowNum);
+			$CSC = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(OTOTOXIC_COL,$rowNum);
+			$ototoxic = $cell->getValue();
+			$cell = $worksheet->getCellByColumnAndRow(RESTRICTEDHAZARDOUS_COL,$rowNum);
+			$restrictedHazardous = $cell->getValue();
 			
 			$sql = "insert into Building values('" . $building . "','" . $campus . "')";
-			$conn.query($sql);
+			mysql_query($sql);
 			
 			$sql = "insert into Room values('" . $room . "','" . $floor . "','" . $building . "')";
-			$conn.query($sql);
+			mysql_query($sql);
 			
 			$sql = "insert into Supplier values('" . $supplier . "')";
-			$conn.query($sql);
+			mysql_query($sql);
 			
 			$sql = "insert into Chemical values('" . $chemical . "','" . $primaryDGC . "','" . $packingGroup . "','" . $hazardous . "','" . $poisonsSchedule . "','" . $quantity . "','" . $unit . "','" . $carcinogen . "', '" . $chemicalWeapon . "', '" . $CSC . "', '" . $ototoxic . "', '" . $restrictedHazardous . "', '" . $supplier . "','" . $room . "')";
-			$conn.query($sql);
+			mysql_query($sql);
 		}
 	}
 	
