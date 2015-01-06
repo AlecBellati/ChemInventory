@@ -79,13 +79,32 @@
 	
 	// Create the markup for the end of the web page
 	function pageEnd(){
+		// Text links
 		print '<br />';
 		print '<br />';
-		print textLink('Search','search.php');
+		
+		print '<form method="POST" action="search.php" id="linkform" name="linkform">';
+		
+		print '<input type="hidden" id="link" name="link" value="">';
+		print textLinkForm('Search','linkform','link','search');
 		print ' | ';
-		print textLink('Browse','browse.php');
+		print textLinkForm('Browse','linkform','link','browse');
+		
+		print '</form>';
+		
+		// End markup
 		print '	</body>
 </html>';
+	}
+	
+	// Create the code for the link handler
+	function linkHandler($link){
+		if ($link == "search"){
+			header("Location:search.php");
+		}
+		else if ($link == "browse"){
+			header("Location:browse.php");
+		}
 	}
 	
 	// Create a text box
@@ -104,9 +123,15 @@
 		return '<input type="submit" name="'.$name.'" value="'.$value.'" />';
 	}
 	
-	// Create a text link
-	function textLink($title,$url){
+	// Create a text link to a url
+	function textLinkUrl($title,$url){
+		
 		return '<a href="'.$url.'">'.$title.'</a>';
+	}
+	
+	// Create a text link to a form
+	function textLinkForm($title,$form,$field,$value){
+		return '<a href="javascript: submit('."'".$form."','".$field."','".$value."'".')">'.$title.'</a>';
 	}
 	
 	// Parse the excel data
@@ -170,3 +195,11 @@
 	
 	
 ?>
+
+<script type="text/javascript">
+	function submit(form,field,value){
+		document.getElementById(field).value = value;
+		document.forms[form].submit();
+	}
+	
+</script>

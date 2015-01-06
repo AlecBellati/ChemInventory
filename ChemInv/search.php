@@ -8,12 +8,20 @@
 	
 	$_SESSION['lastPage'] = 'search';
 	
-	// Process the search
-	if(count($_GET) > 0){
-		$chemical = $_GET['chemical'];
-		$room = $_GET['room'];
+	// Process the form request
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		// Process the link input
+		$link = $_POST["link"];
+		if ($link != ''){
+			linkHandler($link);
+		}
 		
-		// Check if there is any input
+		// Process the search input
+		$_SESSION["chemical"] = $_POST["chemical"];
+		$_SESSION["room"] = $_POST["room"];
+		$chemical = $_SESSION["chemical"];
+		$room = $_SESSION["room"];
+		
 		if ($chemical != '' && $room != ''){
 			$query = "SELECT ChemicalName FROM chemical WHERE ChemicalName='" . $chemical . "' AND Room='" . $room . "'";
 			if ($result = mysql_query($query)){
@@ -48,7 +56,7 @@
 	
 	
 	// Form to search for a chemical
-	print '<form action="search.php" method \'get\'>';
+	print '<form method="POST" action="search.php" id="searchform" name="searchform">';
 	
 	print inputText('Chemical: ','chemical','40','');
 	print '<br />';

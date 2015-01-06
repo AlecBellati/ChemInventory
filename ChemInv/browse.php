@@ -6,21 +6,13 @@
 	setupConnection();
 	session_start();
 	
-	if ($_SESSION['lastPage'] != 'browse'){
-		$_SESSION['limitStart'] = 0;
-		$_SESSION['limitEnd'] = 25;
-		
-		$_SESSION['lastPage'] = 'browse';
-	}
-	else{
-		$_SESSION['limitStart'] += 25;
-		$_SESSION['limitEnd'] += 25;
-	}
-	
-	
-	// Process the search
-	if(count($_GET) > 0){
-		
+	// Process the form request
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		// Process the link input
+		$link = $_POST["link"];
+		if ($link != ''){
+			linkHandler($link);
+		}
 	}
 	
 	// Create a table of chemicals
@@ -43,7 +35,7 @@
 	
 	
 	// Form to search for a chemical
-	print '<form action="search.php" method \'get\'>';
+	print '<form method="POST" action="browse.php" id="browseform" name="browseform">';
 	
 	print '</form>';
 	
