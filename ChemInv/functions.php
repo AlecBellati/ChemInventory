@@ -85,7 +85,7 @@
 		print '<br />';
 		print '<br />';
 		
-		print '<form method="POST" action="link.php" id="linkform" name="linkform">';
+		print '<form method="POST" action="forms/link_form.php" id="linkform" name="linkform">';
 		
 		print '<input type="hidden" id="link" name="link" value="">';
 		print textLinkForm('Search','linkform','link','search');

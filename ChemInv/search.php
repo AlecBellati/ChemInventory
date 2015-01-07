@@ -50,7 +50,7 @@
 	
 	
 	// Form to search for a chemical
-	print '<form method="POST" action="search.php" id="searchform" name="searchform">';
+	print '<form method="POST" action="forms/search_form.php" id="searchform" name="searchform">';
 	
 	print inputText('Chemical: ','chemical','40','');
 	print '<br />';
