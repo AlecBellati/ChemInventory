@@ -20,6 +20,8 @@
 	define('OTOTOXIC_COL',15);
 	define('RESTRICTEDHAZARDOUS_COL',16);
 	
+	define('DEFAULT_RESULTS_SIZE',25);
+	
 	// Connect to the database
 	function databaseConnect(){
 		// Since we're testing, turn error reporting on 
@@ -83,7 +85,7 @@
 		print '<br />';
 		print '<br />';
 		
-		print '<form method="POST" action="search.php" id="linkform" name="linkform">';
+		print '<form method="POST" action="link.php" id="linkform" name="linkform">';
 		
 		print '<input type="hidden" id="link" name="link" value="">';
 		print textLinkForm('Search','linkform','link','search');
@@ -95,16 +97,6 @@
 		// End markup
 		print '	</body>
 </html>';
-	}
-	
-	// Create the code for the link handler
-	function linkHandler($link){
-		if ($link == "search"){
-			header("Location:search.php");
-		}
-		else if ($link == "browse"){
-			header("Location:browse.php");
-		}
 	}
 	
 	// Create a text box

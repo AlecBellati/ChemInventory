@@ -10,12 +10,6 @@
 	
 	// Process the form request
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		// Process the link input
-		$link = $_POST["link"];
-		if ($link != ''){
-			linkHandler($link);
-		}
-		
 		// Process the search input
 		$_SESSION["chemical"] = $_POST["chemical"];
 		$_SESSION["room"] = $_POST["room"];

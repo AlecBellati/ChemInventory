@@ -8,10 +8,12 @@
 	
 	// Process the form request
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		// Process the link input
-		$link = $_POST["link"];
-		if ($link != ''){
-			linkHandler($link);
+		// Process the scroll input
+		$scroll = $_POST["scroll"];
+		if ($scroll == "Back"){
+			$_SESSION['resultsStart'] -= $_SESSION['resultsSize'];
+		} else if ($scroll == "Next"){
+			$_SESSION['resultsStart'] += $_SESSION['resultsSize'];
 		}
 	}
 	
@@ -21,7 +23,10 @@
 				<td>Chemical:</td>
 				<td>Room:</td>
 			</tr>';
-	$query = "SELECT ChemicalName,Room FROM chemical LIMIT ".$_SESSION['limitStart'].",".$_SESSION['limitEnd'];
+	$query = "SELECT ChemicalName,Room
+				FROM chemical
+				ORDER BY ChemicalName ASC
+				LIMIT ".$_SESSION['resultsStart'].",".$_SESSION['resultsSize'];
 	if ($result = mysql_query($query)){
 		while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
 			print '	<tr>
@@ -32,10 +37,19 @@
 	}
 	print '</table>';
 	
+	$query = 'SELECT COUNT(*) FROM chemical';
+	$result = mysql_query($query);
+	$size = mysql_result($result,0);
 	
-	
-	// Form to search for a chemical
+	// Form to scroll the results table
 	print '<form method="POST" action="browse.php" id="browseform" name="browseform">';
+	
+	if ($_SESSION['resultsStart'] > 0){
+		print inputButton('scroll','Back');
+	}
+	if ($_SESSION['resultsStart'] + $_SESSION['resultsSize'] < $size){
+		print inputButton('scroll','Next');
+	}
 	
 	print '</form>';
 	
