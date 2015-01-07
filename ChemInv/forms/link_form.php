@@ -1,5 +1,5 @@
 <?php
-	include '../functions.php';
+	define('DEFAULT_RESULTS_SIZE',25);
 	
 	session_start();
 	

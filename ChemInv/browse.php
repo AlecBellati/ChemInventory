@@ -1,9 +1,10 @@
 <?php
-	include 'functions.php';
+	require_once 'functions/markup_funcs.php';
+	require_once 'functions/db_funcs.php';
 	
 	// The starting page code
 	pageStart('Home');
-	setupConnection();
+	databaseConnect();
 	session_start();
 	
 	// Process the form request
