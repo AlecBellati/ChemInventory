@@ -1,5 +1,10 @@
 <?php
+	define('DEFAULT_RESULTS_SIZE',25);
+	
 	session_start();
+	
+	$_SESSION['resultsStart'] = 0;
+	$_SESSION['resultsSize'] = DEFAULT_RESULTS_SIZE;
 	
 	// Process the link input
 	if($_SERVER["REQUEST_METHOD"] == "POST"){

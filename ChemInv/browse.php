@@ -1,6 +1,7 @@
 <?php
 	require_once 'functions/markup_funcs.php';
 	require_once 'functions/db_funcs.php';
+	require_once 'obj/table_obj.php';
 	
 	// The starting page code
 	pageStart('Home');
@@ -19,11 +20,9 @@
 	}
 	
 	// Create a table of chemicals
-	print '<table border="1">';
-	print '	<tr>
-				<td>Chemical:</td>
-				<td>Room:</td>
-			</tr>';
+	$resultsTable = new Table();
+	$row = array("Chemical:", "Room:");
+	$resultsTable->addRow($row);
 	
 	$query = "SELECT ChemicalName,Room FROM chemical";
 	
@@ -44,14 +43,13 @@
 	$query .= " ORDER BY ChemicalName ASC LIMIT ".$_SESSION['resultsStart'].",".$_SESSION['resultsSize'];
 	
 	if ($result = mysql_query($query)){
-		while ($row = mysql_fetch_array($result, MYSQL_BOTH)){
-			print '	<tr>
-						<td>'.$row["ChemicalName"].'</td>
-						<td>'.$row["Room"].'</td>
-					</tr>';
+		while ($resultsRow = mysql_fetch_array($result, MYSQL_BOTH)){
+			$tableRow = array($resultsRow["ChemicalName"],$resultsRow["Room"]);
+			$resultsTable->addRow($tableRow);
 		}
 	}
-	print '</table>';
+	
+	print $resultsTable->outputTable();
 	
 	$query = 'SELECT COUNT(*) FROM chemical';
 	$result = mysql_query($query);
