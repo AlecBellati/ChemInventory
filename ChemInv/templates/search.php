@@ -1,9 +1,10 @@
 <?php
+	include "templates/include/header.php";
+	
 	require_once 'functions/markup_funcs.php';
 	require_once 'functions/db_funcs.php';
 	
 	// The starting page code
-	pageStart('Home');
 	databaseConnect();
 	session_start();
 	
@@ -59,7 +60,5 @@
 	
 	print '</form>';
 	
-	// The ending page code
-	pageEnd();
-	
+	include "templates/include/footer.php";
 ?>

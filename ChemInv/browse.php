@@ -1,7 +1,7 @@
 <?php
 	require_once 'functions/markup_funcs.php';
 	require_once 'functions/db_funcs.php';
-	require_once 'obj/table_obj.php';
+	require_once 'classes/table.php';
 	
 	// The starting page code
 	pageStart('Home');

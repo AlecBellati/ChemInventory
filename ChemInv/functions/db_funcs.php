@@ -29,10 +29,6 @@
 		ini_set ('display_errors', TRUE);
 		error_reporting (E_ALL);
 		
-		define ('DB_USER','root');
-		define ('DB_PASSWORD','');
-		define ('DB_HOST','localhost');
-		
 		// Connect to the server
 		$conn = @mysql_pconnect(DB_HOST,DB_USER,DB_PASSWORD);
 		if (!$conn){
