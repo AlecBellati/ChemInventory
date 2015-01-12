@@ -10,6 +10,10 @@
 	define("DB_NAME","inventory");
 	
 	define("CLASS_PATH", "classes");
-	define("TEMPLATE_PATH", "templates");
+	define("FORMS_PATH", "forms");
+	define("FUNCTIONS_PATH", "functions");
+	define("LIB_PATH", "lib");
+	define("SCHEMA_PATH", "schema");
+	define("TEMPLATES_PATH", "templates");
 	
 ?>

@@ -1,7 +1,7 @@
 <?php
-	include "templates/include/header.php";
+	include TEMPLATES_PATH."/include/header.php";
 	
 	echo '<a href="./?action=search">Search</a>';
 	
-	include "templates/include/footer.php";
+	include TEMPLATES_PATH."/include/footer.php";
 ?>

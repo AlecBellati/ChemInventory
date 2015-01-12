@@ -1,5 +1,5 @@
 <?php
-	include "templates/include/header.php";
+	include TEMPLATES_PATH."/include/header.php";
 	
 	$chemicalTable = new Table();
 	
@@ -30,5 +30,5 @@
 	
 	print $chemicalTable->outputTable();
 	
-	include "templates/include/footer.php";
+	include TEMPLATES_PATH."/include/footer.php";
 ?>

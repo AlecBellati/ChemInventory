@@ -1,9 +1,9 @@
 <?php
-	require_once 'schema/building_schema.php';
-	require_once 'schema/chemical_schema.php';
-	require_once 'schema/room_schema.php';
-	require_once 'schema/supplier_schema.php';
-	require_once 'lib/PHPExcel.php';
+	require_once SCHEMA_PATH.'/building_schema.php';
+	require_once SCHEMA_PATH.'/chemical_schema.php';
+	require_once SCHEMA_PATH.'/room_schema.php';
+	require_once SCHEMA_PATH.'/supplier_schema.php';
+	require_once LIB_PATH.'/PHPExcel.php';
 	
 	define('CHEMICAL_COL',0);
 	define('SUPPLIER_COL',1);
