@@ -38,7 +38,7 @@
 	echo '<br />';
 	
 	// Go back to the search list
-	echo '<form method="POST" action="./?action=resultsChemical">';
+	echo '<form method="POST" action="./'.$_SESSION['return'].'">';
 	
 	echo inputButton('button','Return');
 	

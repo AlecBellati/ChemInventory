@@ -20,6 +20,14 @@
 	
 	// Go back to the homepage
 	echo '<br />';
+	echo '<form method="POST" action="./?action=viewChemicals">';
+	
+	echo inputButton('button','View all chemicals');
+	
+	echo '</form>';
+	
+	// Go back to the homepage
+	echo '<br />';
 	echo '<form method="POST" action="./">';
 	
 	echo inputButton('button','Return');
