@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title><?php echo htmlspecialchars($results['pageTitle'])?></title>
+		<title><?php echo htmlspecialchars($_SESSION['pageTitle'])?></title>
 		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>

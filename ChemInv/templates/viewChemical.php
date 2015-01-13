@@ -1,31 +1,33 @@
 <?php
 	include TEMPLATES_PATH."/include/header.php";
 	
+	require_once CLASSES_PATH."/table.php";
+	
 	$chemicalTable = new Table();
 	
-	$row = array("Chemical:", $results['chemical']->getChemicalName());
+	$row = array("Chemical:", $_SESSION['chemical']->getChemicalName());
 	$chemicalTable->addRow($row);
-	$row = array("Supplier:", $results['chemical']->getSupplier());
+	$row = array("Supplier:", $_SESSION['chemical']->getSupplier());
 	$chemicalTable->addRow($row);
-	$row = array("Primary DGC:", $results['chemical']->getPrimaryDGC());
+	$row = array("Primary DGC:", $_SESSION['chemical']->getPrimaryDGC());
 	$chemicalTable->addRow($row);
-	$row = array("Hazardous:", $results['chemical']->isHazardous());
+	$row = array("Hazardous:", $_SESSION['chemical']->isHazardous());
 	$chemicalTable->addRow($row);
-	$row = array("Poisonous Schedule:", $results['chemical']->getPoisonousSchedule());
+	$row = array("Poisonous Schedule:", $_SESSION['chemical']->getPoisonousSchedule());
 	$chemicalTable->addRow($row);
-	$row = array("Total amount:", $results['chemical']->getTotalAmount().$results['chemical']->getUnit());
+	$row = array("Total amount:", $_SESSION['chemical']->getTotalAmount().$_SESSION['chemical']->getUnit());
 	$chemicalTable->addRow($row);
-	$row = array("Room:", $results['chemical']->getRoom());
+	$row = array("Room:", $_SESSION['chemical']->getRoom());
 	$chemicalTable->addRow($row);
-	$row = array("Carcinogenic:", $results['chemical']->isCarcinogenic());
+	$row = array("Carcinogenic:", $_SESSION['chemical']->isCarcinogenic());
 	$chemicalTable->addRow($row);
-	$row = array("Chemical Weapon:", $results['chemical']->isChemcialWeapon());
+	$row = array("Chemical Weapon:", $_SESSION['chemical']->isChemicalWeapon());
 	$chemicalTable->addRow($row);
-	$row = array("CSC:", $results['chemical']->isCSC());
+	$row = array("CSC:", $_SESSION['chemical']->isCSC());
 	$chemicalTable->addRow($row);
-	$row = array("Ototoxic:", $results['chemical']->isOtotoxic());
+	$row = array("Ototoxic:", $_SESSION['chemical']->isOtotoxic());
 	$chemicalTable->addRow($row);
-	$row = array("Restricted Hazardous:", $results['chemical']->isRestrictedHazardous());
+	$row = array("Restricted Hazardous:", $_SESSION['chemical']->isRestrictedHazardous());
 	$chemicalTable->addRow($row);
 	
 	print $chemicalTable->outputTable();

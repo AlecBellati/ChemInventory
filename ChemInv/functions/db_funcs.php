@@ -30,7 +30,7 @@
 		error_reporting (E_ALL);
 		
 		// Connect to the server
-		$conn = @mysql_pconnect(DB_HOST,DB_USER,DB_PASSWORD);
+		$conn = @mysql_pconnect(DB_HOST,DB_USERNAME,DB_PASSWORD);
 		if (!$conn){
 			$err = oci_error ();
 			print (htmlentities ($err['message']));

@@ -8,8 +8,9 @@
 	define("DB_USERNAME", "root");
 	define("DB_PASSWORD", "");
 	define("DB_NAME","inventory");
+	define('DEFAULT_RESULTS_SIZE',25);
 	
-	define("CLASS_PATH", "classes");
+	define("CLASSES_PATH", "classes");
 	define("FORMS_PATH", "forms");
 	define("FUNCTIONS_PATH", "functions");
 	define("LIB_PATH", "lib");

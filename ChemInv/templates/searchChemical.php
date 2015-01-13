@@ -8,9 +8,9 @@
 	databaseConnect();
 	
 	// Form to search for a chemical
-	print '<form method="GET" action="./?action=resultsChemical" response="resultsChemical">';
+	print '<form method="POST" action="./?action=resultsChemical" response="resultsChemical">';
 	
-	print inputText('Chemical: ','chemical','40','');
+	print inputText('Chemical: ','chemicalName','40','');
 	print '<br />';
 	print inputText('Room: ','room','20','');
 	print '<br />';
