@@ -53,10 +53,21 @@
 			return;
 		}
 		
-		// Reset the search results page if a new search has been made
-		if (isset($_POST["button"]) && $_POST["button"] == "Search"){
-			$_SESSION['resultsStart'] = 0;
-			$_SESSION['resultsSize'] = DEFAULT_RESULTS_SIZE;
+		// Parse any actions pertaining to button input
+		if (isset($_POST["button"])){
+			// Reset the search results page if a new search has been made
+			if ($_POST["button"] == "Search"){
+				$_SESSION['resultsStart'] = 0;
+				$_SESSION['resultsSize'] = DEFAULT_RESULTS_SIZE;
+			}
+			// Go back a page in the results
+			else if ($_POST["button"] == "Back"){
+				$_SESSION['resultsStart'] -= $_SESSION['resultsSize'];
+			}
+			// Go to the next page in the results
+			else if ($_POST["button"] == "Next"){
+				$_SESSION['resultsStart'] += $_SESSION['resultsSize'];
+			}
 		}
 		
 		$_SESSION['pageTitle'] = "Results | ChemSearch";

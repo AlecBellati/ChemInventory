@@ -10,21 +10,23 @@
 	$row = array("Chemical:", "Room:");
 	$resultsTable->addRow($row);
 	
-	$query = "SELECT ID,ChemicalName,Room FROM chemical";
+	$query = "SELECT ID,ChemicalName,Room FROM chemical ";
 	
 	// Get the search conditions
 	$chemical = $_SESSION['chemicalName'];
 	$room = $_SESSION['room'];
+	$condition = "";
 	if ($chemical != ''){
-		$query .= " WHERE ChemicalName RLIKE '".$chemical."'";
+		$condition .= " WHERE ChemicalName RLIKE '".$chemical."'";
 		
 		if ($room != ''){
-			$query .= " AND Room RLIKE '".$room."'";
+			$condition .= " AND Room RLIKE '".$room."'";
 		}
 	}
 	else if ($room != ''){
-		$query .= " WHERE Room RLIKE '".$room."'";
+		$condition .= " WHERE Room RLIKE '".$room."'";
 	}
+	$query .= $condition;
 	
 	// Get the results in alphanumerical order
 	$query .= " ORDER BY ChemicalName ASC LIMIT ".$_SESSION['resultsStart'].",".$_SESSION['resultsSize'];
@@ -38,30 +40,30 @@
 	
 	echo $resultsTable->outputTable();
 	
+	
+	// Form to scroll the results table
 	echo '<br />';
 	
-	// Go back to the search page
-	echo '<form method="POST" action="./?action=searchChemical">';
-	
-	echo inputButton('button','Back');
-	
-	echo '</form>';
-	/*
-	$query = 'SELECT COUNT(*) FROM chemical';
+	$query = 'SELECT COUNT(*) FROM chemical '.$condition;
 	$result = mysql_query($query);
 	$size = mysql_result($result,0);
 	
-	// Form to scroll the results table
-	echo '<form method="POST" action="forms/scroll_form.php" id="scrollform" name="scrollform">';
+	echo '<form method="POST" action="./?action=resultsChemical">';
 	
 	if ($_SESSION['resultsStart'] > 0){
-		echo inputButton('scroll','Back');
+		echo inputButton('button','Back');
 	}
 	if ($_SESSION['resultsStart'] + $_SESSION['resultsSize'] < $size){
-		echo inputButton('scroll','Next');
+		echo inputButton('button','Next');
 	}
 	
 	echo '</form>';
-	*/
+	
+	// Go back to the search page
+	echo '<br />';
+	echo '<form method="POST" action="./?action=searchChemical">';
+	echo inputButton('button','Return');
+	echo '</form>';
+	
 	include TEMPLATES_PATH."/include/footer.php";
 ?>

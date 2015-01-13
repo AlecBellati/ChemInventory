@@ -38,7 +38,7 @@
 	// Go back to the search list
 	echo '<form method="POST" action="./?action=resultsChemical">';
 	
-	echo inputButton('button','Back');
+	echo inputButton('button','Return');
 	
 	echo '</form>';
 	

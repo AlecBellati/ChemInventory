@@ -11,7 +11,6 @@
 	define('DEFAULT_RESULTS_SIZE',25);
 	
 	define("CLASSES_PATH", "classes");
-	define("FORMS_PATH", "forms");
 	define("FUNCTIONS_PATH", "functions");
 	define("LIB_PATH", "lib");
 	define("SCHEMA_PATH", "schema");

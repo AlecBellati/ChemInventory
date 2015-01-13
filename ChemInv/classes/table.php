@@ -18,6 +18,11 @@
 			$this->rowsNum++;
 		}
 		
+		// Get the number of rows in the table
+		public function getRowNum(){
+			return $rowsNum;
+		}
+		
 		// Output the html markup of the table
 		public function outputTable(){
 			$table = '<table border="1">';
