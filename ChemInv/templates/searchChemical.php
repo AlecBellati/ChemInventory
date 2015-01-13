@@ -18,5 +18,13 @@
 	
 	echo '</form>';
 	
+	// Go back to the homepage
+	echo '<br />';
+	echo '<form method="POST" action="./">';
+	
+	echo inputButton('button','Return');
+	
+	echo '</form>';
+	
 	include TEMPLATES_PATH."/include/footer.php";
 ?>

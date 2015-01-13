@@ -18,8 +18,8 @@
 		case "resultsChemical":
 			resultsChemical();
 			return;
-		case "viewChemical":
-			viewChemical();
+		case "chemical":
+			chemical();
 			return;
 	}
 	
@@ -75,7 +75,7 @@
 	}
 	
 	// Handle the actions for going to a chemical page
-	function viewChemical(){
+	function chemical(){
 		if ( !isset($_GET["chemicalId"]) || !$_GET["chemicalId"] ) {
 			homepage();
 			return;
@@ -85,7 +85,7 @@
 		$chemical->setByID($_GET["chemicalId"]);
 		$_SESSION['chemical'] = $chemical;
 		$_SESSION['pageTitle'] = $_SESSION['chemical']->getChemicalName()." | ChemSearch";
-		require(TEMPLATES_PATH."/viewChemical.php");
+		require(TEMPLATES_PATH."/chemical.php");
 	}
 	
 ?>

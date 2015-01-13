@@ -12,6 +12,8 @@
 	$chemicalTable->addRow($row);
 	$row = array("Primary DGC:", $_SESSION['chemical']->getPrimaryDGC());
 	$chemicalTable->addRow($row);
+	$row = array("Packing Group:", $_SESSION['chemical']->getPackingGroup());
+	$chemicalTable->addRow($row);
 	$row = array("Hazardous:", $_SESSION['chemical']->isHazardous());
 	$chemicalTable->addRow($row);
 	$row = array("Poisonous Schedule:", $_SESSION['chemical']->getPoisonousSchedule());

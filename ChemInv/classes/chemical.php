@@ -4,6 +4,7 @@
 		private $chemicalName;
 		private $supplier;
 		private $primaryDGC;
+		private $packingGroup;
 		private $hazardous;
 		private $poisonousSchedule;
 		private $totalAmount;
@@ -33,6 +34,7 @@
 			if (isset($_data['ChemicalName'])) $this->chemicalName = $_data['ChemicalName'];
 			if (isset($_data['Supplier'])) $this->supplier = $_data['Supplier'];
 			if (isset($_data['PrimaryDGC'])) $this->primaryDGC = $_data['PrimaryDGC'];
+			if (isset($_data['PackingGroup'])) $this->packingGroup = $_data['PackingGroup'];
 			if (isset($_data['Hazardous'])) $this->hazardous = $_data['Hazardous'];
 			if (isset($_data['PoisonousSchedule'])) $this->poisonousSchedule = $_data['PoisonousSchedule'];
 			if (isset($_data['TotalAmount'])) $this->totalAmount = (int) $_data['TotalAmount'];
@@ -63,6 +65,11 @@
 		// Get the primaryDGC
 		public function getPrimaryDGC(){
 			return $this->primaryDGC;
+		}
+		
+		// Get the packing group
+		public function getPackingGroup(){
+			return $this->packingGroup;
 		}
 		
 		// Get hazardous indicator

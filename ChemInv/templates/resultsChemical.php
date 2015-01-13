@@ -32,7 +32,7 @@
 	$query .= " ORDER BY ChemicalName ASC LIMIT ".$_SESSION['resultsStart'].",".$_SESSION['resultsSize'];
 	if ($result = mysql_query($query)){
 		while ($resultsRow = mysql_fetch_array($result, MYSQL_BOTH)){
-			$link = '<a href="./?action=viewChemical&chemicalId='.$resultsRow["ID"].'">'.$resultsRow["ChemicalName"].'</a>';
+			$link = '<a href="./?action=chemical&chemicalId='.$resultsRow["ID"].'">'.$resultsRow["ChemicalName"].'</a>';
 			$tableRow = array($link,$resultsRow["Room"]);
 			$resultsTable->addRow($tableRow);
 		}
