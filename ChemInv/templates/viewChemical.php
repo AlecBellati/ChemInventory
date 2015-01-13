@@ -1,6 +1,7 @@
 <?php
 	include TEMPLATES_PATH."/include/header.php";
 	
+	require_once FUNCTIONS_PATH."/markup_funcs.php";
 	require_once CLASSES_PATH."/table.php";
 	
 	$chemicalTable = new Table();
@@ -30,7 +31,17 @@
 	$row = array("Restricted Hazardous:", $_SESSION['chemical']->isRestrictedHazardous());
 	$chemicalTable->addRow($row);
 	
-	print $chemicalTable->outputTable();
+	echo $chemicalTable->outputTable();
+	
+	echo '<br />';
+	
+	// Go back to the search list
+	echo '<form method="POST" action="./?action=resultsChemical">';
+	
+	echo inputButton('button','Back');
+	
+	echo '</form>';
+	
 	
 	include TEMPLATES_PATH."/include/footer.php";
 ?>

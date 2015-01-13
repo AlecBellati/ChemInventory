@@ -37,19 +37,28 @@
 	
 	// Handle the actions for going to the chemical results page
 	function resultsChemical(){
-		if (!isset($_POST["chemicalName"]) || !isset($_POST["room"])
-		|| ($_POST["chemicalName"] == "" && $_POST["room"] == "")){
+		// Ensure that results are retrieved
+		if (isset($_POST["chemicalName"]) && isset($_POST["room"])){
+			$_SESSION['chemicalName'] = $_POST["chemicalName"];
+			$_SESSION['room'] = $_POST["room"];
+		}
+		else if (!isset($_SESSION["chemicalName"]) || !isset($_SESSION["room"])){
 			searchChemical();
 			return;
 		}
 		
-		if (isset($_POST["search"]) && $_POST["search"] == "Search"){
+		// Check if the search input is valid
+		if ($_SESSION["chemicalName"] == "" && $_SESSION["room"] == ""){
+			searchChemical();
+			return;
+		}
+		
+		// Reset the search results page if a new search has been made
+		if (isset($_POST["button"]) && $_POST["button"] == "Search"){
 			$_SESSION['resultsStart'] = 0;
 			$_SESSION['resultsSize'] = DEFAULT_RESULTS_SIZE;
 		}
 		
-		$_SESSION['chemicalName'] = $_POST["chemicalName"];
-		$_SESSION['room'] = $_POST["room"];
 		$_SESSION['pageTitle'] = "Results | ChemSearch";
 		require(TEMPLATES_PATH."/resultsChemical.php");
 	}

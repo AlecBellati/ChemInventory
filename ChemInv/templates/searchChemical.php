@@ -8,15 +8,15 @@
 	databaseConnect();
 	
 	// Form to search for a chemical
-	print '<form method="POST" action="./?action=resultsChemical" response="resultsChemical">';
+	echo '<form method="POST" action="./?action=resultsChemical">';
 	
-	print inputText('Chemical: ','chemicalName','40','');
-	print '<br />';
-	print inputText('Room: ','room','20','');
-	print '<br />';
-	print inputButton('search','Search');
+	echo inputText('Chemical: ','chemicalName','40','');
+	echo '<br />';
+	echo inputText('Room: ','room','20','');
+	echo '<br />';
+	echo inputButton('button','Search');
 	
-	print '</form>';
+	echo '</form>';
 	
 	include TEMPLATES_PATH."/include/footer.php";
 ?>

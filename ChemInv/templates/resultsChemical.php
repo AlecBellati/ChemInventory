@@ -36,23 +36,32 @@
 		}
 	}
 	
-	print $resultsTable->outputTable();
+	echo $resultsTable->outputTable();
+	
+	echo '<br />';
+	
+	// Go back to the search page
+	echo '<form method="POST" action="./?action=searchChemical">';
+	
+	echo inputButton('button','Back');
+	
+	echo '</form>';
 	/*
 	$query = 'SELECT COUNT(*) FROM chemical';
 	$result = mysql_query($query);
 	$size = mysql_result($result,0);
 	
 	// Form to scroll the results table
-	print '<form method="POST" action="forms/scroll_form.php" id="scrollform" name="scrollform">';
+	echo '<form method="POST" action="forms/scroll_form.php" id="scrollform" name="scrollform">';
 	
 	if ($_SESSION['resultsStart'] > 0){
-		print inputButton('scroll','Back');
+		echo inputButton('scroll','Back');
 	}
 	if ($_SESSION['resultsStart'] + $_SESSION['resultsSize'] < $size){
-		print inputButton('scroll','Next');
+		echo inputButton('scroll','Next');
 	}
 	
-	print '</form>';
+	echo '</form>';
 	*/
 	include TEMPLATES_PATH."/include/footer.php";
 ?>
