@@ -16,15 +16,21 @@
 		private $ototoxic;
 		private $restrictedHazardous;
 		
+		// Database interface
+		private $dbi;
+		
+		
 		// Constructor
-		function __construct(){}
+		function __construct($_dbi){
+			$this->dbi = $_dbi;
+		}
 		
 		// Get the chemical by id
 		public function setByID($_id){
 			$query = "SELECT * FROM chemical WHERE ID=".$_id;
 			$result = mysql_query($query);
 			$row = mysql_fetch_array($result, MYSQL_BOTH);
-			
+
 			$this->setProperties($row);
 		}
 		

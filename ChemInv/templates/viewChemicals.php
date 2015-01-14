@@ -2,8 +2,9 @@
 	include TEMPLATES_PATH."/include/header.php";
 	
 	require_once FUNCTIONS_PATH."/markup_funcs.php";
-	require_once FUNCTIONS_PATH."/db_funcs.php";
 	require_once CLASSES_PATH."/table.php";
+	
+	$dbi = $_SESSION['dbi'];
 	
 	// Create a table of chemicals
 	$chemicalsTable = new Table();
@@ -14,7 +15,7 @@
 	
 	// Get the results in alphanumerical order
 	$query .= " ORDER BY ChemicalName ASC LIMIT ".$_SESSION['resultsStart'].",".$_SESSION['resultsSize'];
-	if ($result = mysql_query($query)){
+	if ($result = $dbi->query($query)){
 		while ($resultsRow = mysql_fetch_array($result, MYSQL_BOTH)){
 			$link = '<a href="./?action=chemical&chemicalId='.$resultsRow["ID"].'">'.$resultsRow["ChemicalName"].'</a>';
 			$tableRow = array($link,$resultsRow["Room"]);

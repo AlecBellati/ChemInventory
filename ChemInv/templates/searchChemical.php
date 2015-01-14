@@ -2,10 +2,12 @@
 	include TEMPLATES_PATH."/include/header.php";
 	
 	require_once FUNCTIONS_PATH."/markup_funcs.php";
-	require_once FUNCTIONS_PATH."/db_funcs.php";
 	
-	// The starting page code
-	databaseConnect();
+	// Alert the user they must search if necessary
+	if (isset($_SESSION['missingSearch']) && $_SESSION['missingSearch'] == true){
+		$_SESSION['missingSearch'] = false;
+		echo 'Please enter a chemical and room before searching<br />';
+	}
 	
 	// Form to search for a chemical
 	echo '<form method="POST" action="./?action=resultsChemical">';

@@ -1,10 +1,14 @@
 <?php
 	require("config.php");
 	include_once(CLASSES_PATH."/chemical.php");
-	require_once FUNCTIONS_PATH."/db_funcs.php";
+	require_once CLASSES_PATH."/DatabaseInterface.php";
 	
+	// Start the session and database connection
 	session_start();
-	databaseConnect();
+	if (!isset($_SESSION['dbi'])){
+		$_SESSION['dbi'] = new DatabaseInterface();
+	}
+	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -45,13 +49,14 @@
 			$_SESSION['chemicalName'] = $_POST["chemicalName"];
 			$_SESSION['room'] = $_POST["room"];
 		}
-		else if (!isset($_SESSION["chemicalName"]) || !isset($_SESSION["room"])){
+		else if (!isset($_SESSION['chemicalName']) || !isset($_SESSION['room'])){
 			searchChemical();
 			return;
 		}
 		
 		// Check if the search input is valid
-		if ($_SESSION["chemicalName"] == "" && $_SESSION["room"] == ""){
+		if ($_SESSION['chemicalName'] == "" && $_SESSION['room'] == ""){
+			$_SESSION['missingSearch'] = true;
 			searchChemical();
 			return;
 		}
@@ -112,12 +117,12 @@
 		}
 		
 		// Check there is a set return page
-		if ( !isset($_SESSION["return"]) || !$_SESSION['return'] ) {
+		if ( !isset($_SESSION['return']) || !$_SESSION['return'] ) {
 			$_SESSION['return'] = "./?action=viewChemicals";
 		}
 		
 		
-		$chemical = new Chemical();
+		$chemical = new Chemical($_SESSION['dbi']);
 		$chemical->setByID($_GET["chemicalId"]);
 		$_SESSION['chemical'] = $chemical;
 		$_SESSION['pageTitle'] = $_SESSION['chemical']->getChemicalName()." | ChemSearch";

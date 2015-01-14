@@ -4,6 +4,9 @@
 	require_once FUNCTIONS_PATH."/markup_funcs.php";
 	require_once CLASSES_PATH."/table.php";
 	
+	$dbi = $_SESSION['dbi'];
+	
+	// Create the table
 	$chemicalTable = new Table();
 	
 	$row = array("Chemical:", $_SESSION['chemical']->getChemicalName());
@@ -38,7 +41,7 @@
 	echo '<br />';
 	
 	// Go back to the search list
-	echo '<form method="POST" action="./'.$_SESSION['return'].'">';
+	echo '<form method="POST" action="'.$_SESSION['return'].'">';
 	
 	echo inputButton('button','Return');
 	
