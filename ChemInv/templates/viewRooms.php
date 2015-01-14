@@ -14,13 +14,12 @@
 	$query = "SELECT * FROM room ";
 	
 	// Get the room conditions
-	$building = $_GET['BuildingName'];
+	$building = $_SESSION['building'];
 	$condition = "WHERE Building='".$building."'";
 	$query .= $condition;
 	
 	// Get the results in alphanumerical order
 	$query .= " ORDER BY RoomFloor ASC,RoomName ASC LIMIT ".$_SESSION['roomsStart'].",".$_SESSION['resultsSize'];
-	echo $query;
 	if ($result = $dbi->query($query)){
 		while ($resultsRow = mysql_fetch_array($result, MYSQL_BOTH)){
 			$floor = $resultsRow["RoomFloor"];
@@ -51,7 +50,7 @@
 	
 	echo '</form>';
 	
-	// Go back to the search page
+	// Go back to the view buildings page
 	echo '<br />';
 	echo '<form method="POST" action="./?action=viewBuildings">';
 	echo inputButton('button','Return');
