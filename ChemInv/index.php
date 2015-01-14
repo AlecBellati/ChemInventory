@@ -25,6 +25,12 @@
 		case "viewChemicals":
 			viewChemicals();
 			return;
+		case "viewBuildings":
+			viewBuildings();
+			return;
+		case "viewRooms":
+			viewRooms();
+			return;
 		case "chemical":
 			chemical();
 			return;
@@ -106,6 +112,54 @@
 		$_SESSION['return'] = "./?action=viewChemicals";
 		$_SESSION['pageTitle'] = "Chemicals | ChemSearch";
 		require(TEMPLATES_PATH."/viewChemicals.php");
+	}
+	
+	// Handle the actions for going to the view buildings page
+	function viewBuildings(){
+		// Parse any actions pertaining to button input
+		if (isset($_POST["button"])){
+			// Go back a page in the results
+			if ($_POST["button"] == "Back"){
+				$_SESSION['buildingsStart'] -= $_SESSION['buildingsSize'];
+			}
+			// Go to the next page in the results
+			else if ($_POST["button"] == "Next"){
+				$_SESSION['buildingsStart'] += $_SESSION['buildingsSize'];
+			}
+			// Reset the start of the table if it has been just opened
+			else if ($_POST["button"] != "Return"){
+				$_SESSION['buildingsStart'] = 0;
+				$_SESSION['buildingsSize'] = DEFAULT_RESULTS_SIZE;
+			}
+			
+		}
+		
+		$_SESSION['pageTitle'] = "Buildings | ChemSearch";
+		require(TEMPLATES_PATH."/viewBuildings.php");
+	}
+	
+	// Handle the actions for going to the view rooms page
+	function viewRooms(){
+		// Parse any actions pertaining to button input
+		if (isset($_POST["button"])){
+			// Go back a page in the results
+			if ($_POST["button"] == "Back"){
+				$_SESSION['roomsStart'] -= $_SESSION['roomsSize'];
+			}
+			// Go to the next page in the results
+			else if ($_POST["button"] == "Next"){
+				$_SESSION['roomsStart'] += $_SESSION['roomsSize'];
+			}
+		}
+		// Reset the start of the table if it has been just opened
+		else{
+			$_SESSION['roomsStart'] = 0;
+			$_SESSION['roomsSize'] = DEFAULT_RESULTS_SIZE;
+		}
+		
+		$_SESSION['return'] = "./?action=viewRooms";
+		$_SESSION['pageTitle'] = "Rooms | ChemSearch";
+		require(TEMPLATES_PATH."/viewRooms.php");
 	}
 	
 	// Handle the actions for going to a chemical page
