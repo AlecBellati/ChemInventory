@@ -40,6 +40,13 @@
 			}
 		}
 		
+		// Setup the database
+		public function setupDatabase(){
+			// Create the tables in the database
+			$this->dropTables();
+			$this->createTables();
+		}
+		
 		// Create the tables in the database
 		private function createTables(){
 			createTableBuilding($this->conn);

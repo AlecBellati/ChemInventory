@@ -46,10 +46,8 @@
 			$worksheet = $file->getActiveSheet();
 			
 			// Read each row
-			foreach($worksheet->getRowIterator() as $row){
+			for($rowIndex = 2; $rowIndex <= $worksheet->getHighestRow(); $rowIndex++){
 				// Parse the contents of the row
-				$rowIndex = $row->getRowIndex();
-				
 				$chemical = parseChemical($worksheet, $rowIndex);
 				$supplier = parseSupplier($worksheet, $rowIndex);
 				$primaryDGC = parsePrimaryDGC($worksheet, $rowIndex);
