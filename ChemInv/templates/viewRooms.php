@@ -19,7 +19,7 @@
 	$query .= $condition;
 	
 	// Get the results in alphanumerical order
-	$query .= " ORDER BY RoomFloor ASC,RoomName ASC LIMIT ".$_SESSION['roomsStart'].",".$_SESSION['resultsSize'];
+	$query .= " ORDER BY RoomFloor ASC,RoomName ASC LIMIT ".$_SESSION['roomsStart'].",".$_SESSION['roomsSize'];
 	if ($result = $dbi->query($query)){
 		while ($resultsRow = mysql_fetch_array($result, MYSQL_BOTH)){
 			$floor = $resultsRow["RoomFloor"];

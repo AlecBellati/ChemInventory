@@ -32,13 +32,6 @@
 			$this->dbi = $_dbi;
 		}
 		
-		// Setup the database
-		public function setupDatabase(){
-			// Create the tables in the database
-			$this->dbi->dropTables();
-			$this->dbi->createTables();
-		}
-		
 		// Parse an excel spreadsheet
 		public function parseData($filename){
 			// Open the file
