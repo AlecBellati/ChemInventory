@@ -1,9 +1,10 @@
 <?php
 	function createTableSupplier($conn){
 		$create = "create table Supplier(";
-		$create = $create . "SupplierName char(20),";
-		$create = $create . "primary key(SupplierName)";
-		$create = $create . ")";
+		$create .= "ID int NOT NULL AUTO_INCREMENT,";
+		$create .= "SupplierName char(20),";
+		$create .= "primary key(ID)";
+		$create .= ")";
 		
 		return mysql_query($create);
 	}

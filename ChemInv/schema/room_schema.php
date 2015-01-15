@@ -1,12 +1,13 @@
 <?php
 	function createTableRoom($conn){
 		$create = "create table Room(";
-		$create = $create . "RoomName char(10) not null,";
-		$create = $create . "RoomFloor char(5),";
-		$create = $create . "Building char(40) not null,";
-		$create = $create . "foreign key(Building) references building(BuildingName),";
-		$create = $create . "primary key(RoomName)";
-		$create = $create . ")";
+		$create .= "ID int NOT NULL AUTO_INCREMENT,";
+		$create .= "RoomName char(10) NOT NULL,";
+		$create .= "RoomFloor char(5),";
+		$create .= "BuildingID int NOT NULL,";
+		$create .= "foreign key(BuildingID) references building(ID),";
+		$create .= "primary key(ID)";
+		$create .= ")";
 		
 		return mysql_query($create);
 	}

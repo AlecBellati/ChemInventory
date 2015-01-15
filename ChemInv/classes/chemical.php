@@ -43,7 +43,7 @@
 			if (isset($_data['PackingGroup'])) $this->packingGroup = $_data['PackingGroup'];
 			if (isset($_data['Hazardous'])) $this->hazardous = $_data['Hazardous'];
 			if (isset($_data['PoisonousSchedule'])) $this->poisonousSchedule = $_data['PoisonousSchedule'];
-			if (isset($_data['TotalAmount'])) $this->totalAmount = (int) $_data['TotalAmount'];
+			if (isset($_data['TotalAmount'])) $this->totalAmount = $_data['TotalAmount'];
 			if (isset($_data['Unit'])) $this->unit = $_data['Unit'];
 			if (isset($_data['Room'])) $this->room = $_data['Room'];
 			if (isset($_data['Carcinogen'])) $this->carcinogen = (int) $_data['Carcinogen'];
