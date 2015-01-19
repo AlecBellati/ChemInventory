@@ -14,7 +14,7 @@
 	define('AMOUNT_COL','G');
 	define('UNIT_COL','H');
 	define('BUILDING_COL','I');
-	define('FLOOR_COL','J');
+	define('LEVEL_COL','J');
 	define('ROOM_COL','K');
 	define('CAMPUS_COL','L');
 	define('CARCINOGEN_COL','M');
@@ -41,29 +41,31 @@
 			// Read each row
 			for($rowIndex = 2; $rowIndex <= $worksheet->getHighestRow(); $rowIndex++){
 				// Parse the contents of the row
-				$chemical = parseChemical($worksheet, $rowIndex);
-				$supplier = parseSupplier($worksheet, $rowIndex);
-				$primaryDGC = parsePrimaryDGC($worksheet, $rowIndex);
-				$packingGroup = parsePackingGroup($worksheet, $rowIndex);
-				$hazardous = parseHazardous($worksheet, $rowIndex);
-				$poisonsSchedule = parsePoisonsSchedule($worksheet, $rowIndex);
-				$amount = parseAmount($worksheet, $rowIndex);
-				$unit = parseUnit($worksheet, $rowIndex);
-				$building = parseBuilding($worksheet, $rowIndex);
-				$floor = parseFloor($worksheet, $rowIndex);
-				$room = parseRoom($worksheet, $rowIndex);
-				$campus = parseCampus($worksheet, $rowIndex);
-				$carcinogen = parseCarcinogen($worksheet, $rowIndex);
-				$chemicalWeapon = parseChemicalWeapon($worksheet, $rowIndex);
-				$CSC = parseCSC($worksheet, $rowIndex);
-				$ototoxic = parseOtotoxic($worksheet, $rowIndex);
-				$restrictedHazardous = parseRestrictedHazardous($worksheet, $rowIndex);
+				$chemical = $this->parseChemical($worksheet, $rowIndex);
+				echo $chemical;
+				echo "<br />";
+				$supplier = $this->parseSupplier($worksheet, $rowIndex);
+				$primaryDGC = $this->parsePrimaryDGC($worksheet, $rowIndex);
+				$packingGroup = $this->parsePackingGroup($worksheet, $rowIndex);
+				$hazardous = $this->parseHazardous($worksheet, $rowIndex);
+				$poisonsSchedule = $this->parsePoisonsSchedule($worksheet, $rowIndex);
+				$amount = $this->parseAmount($worksheet, $rowIndex);
+				$unit = $this->parseUnit($worksheet, $rowIndex);
+				$building = $this->parseBuilding($worksheet, $rowIndex);
+				$level = $this->parseLevel($worksheet, $rowIndex);
+				$room = $this->parseRoom($worksheet, $rowIndex);
+				$campus = $this->parseCampus($worksheet, $rowIndex);
+				$carcinogen = $this->parseCarcinogen($worksheet, $rowIndex);
+				$chemicalWeapon = $this->parseChemicalWeapon($worksheet, $rowIndex);
+				$CSC = $this->parseCSC($worksheet, $rowIndex);
+				$ototoxic = $this->parseOtotoxic($worksheet, $rowIndex);
+				$restrictedHazardous = $this->parseRestrictedHazardous($worksheet, $rowIndex);
 				
 				// Insert the information from this row
-				$buildingID = insertBuilding($building, $campus);
-				$roomID = insertRoom($room, $floor, $buildingID);
-				$supplierID = insertSupplier($supplier);
-				insertChemical($chemicalName, $supplierID, $primaryDGC, $packingGroup, $hazardous, $poisonsSchedule, $amount, $unit, $roomID, $carcinogen, $chemicalWeapon, $CSC, $ototoxic, $restrictedHazardous);
+				$buildingID = $this->insertBuilding($building, $campus);
+				$roomID = $this->insertRoom($room, $level, $buildingID);
+				$supplierID = $this->insertSupplier($supplier);
+				$this->insertChemical($chemical, $supplierID, $primaryDGC, $packingGroup, $hazardous, $poisonsSchedule, $amount, $unit, $roomID, $carcinogen, $chemicalWeapon, $CSC, $ototoxic, $restrictedHazardous);
 			}
 		}
 		
@@ -71,22 +73,24 @@
 		 * @param _buildingName - The name of the building
 		 * @param _campus - The name of the campus
 		 * @return:
-		 *		The building's ID if successfully added
-		 *		0 if it was already added or unsuccessfully added
+		 *		The ID of building matching the parameters successfully or already added
+		 *		0 if unsuccessfully added
 		 */
 		public function insertBuilding($_buildingName, $_campus){
 			// Check if this record has already been added
 			$from = " FROM building WHERE BuildingName='".$_buildingName."' AND Campus='".$_campus."'";
-			$query = "SELECT COUNT(*)".$from;
+			$query = "SELECT ID".$from;
 			if (!($result = $this->dbi->query($query))){
 				return 0;
 			}
-			else if(mysql_result($result,0) > 0){
-				return 0;
+			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
+			if($resultsRow){
+				return $resultsRow['ID'];
 			}
 			
 			// Insert the record
-			$query = "insert into Building values('".$_buildingName."','".$_campus."')";
+			$query = "INSERT INTO Building (BuildingName, campus)";
+			$query .= " VALUES('".$_buildingName."','".$_campus."')";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}
@@ -100,25 +104,27 @@
 		
 		/* Insert a record into the room table
 		 * @param _roomName - The name of the room
-		 * @param _roomFloor - The floor of the room
+		 * @param _level - The level the room is on
 		 * @param _buildingID - The ID of the building
 		 * @return:
-		 *		The room's ID if successfully added
-		 *		0 if it was already added or unsuccessfully added
+		 *		The ID of room matching the parameters successfully or already added
+		 *		0 if unsuccessfully added
 		 */
-		public function insertRoom($_roomName, $_roomFloor, $_buildingID){
+		public function insertRoom($_roomName, $_level, $_buildingID){
 			// Check if this record has already been added
-			$from = " FROM room WHERE RoomName='".$_roomName."' AND RoomFloor='".$_roomFloor."' AND BuildingId='".$_buildingID."'";
-			$query = "SELECT COUNT(*)".$from;
+			$from = " FROM room WHERE RoomName='".$_roomName."' AND Level='".$_level."' AND BuildingId='".$_buildingID."'";
+			/*$query = "SELECT ID".$from;
 			if (!($result = $this->dbi->query($query))){
 				return 0;
 			}
-			else if(mysql_result($result,0) > 0){
-				return 0;
-			}
+			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
+			if($resultsRow){
+				return $resultsRow['ID'];
+			}*/
 			
 			// Insert the record
-			$query = "insert into Room values('".$_roomName."','".$_roomFloor."','".$_buildingID."')";
+			$query = "INSERT INTO Room(RoomName, Level, BuildingID)";
+			$query .= " VALUES('".$_roomName."','".$_level."',".$_buildingID.")";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}
@@ -133,22 +139,24 @@
 		/* Insert a record into the supplier table
 		 * @param _supplierName - The name of the supplier
 		 * @return:
-		 *		The supplier's ID if successfully added
-		 *		0 if it was already added or unsuccessfully added
+		 *		The ID of supplier matching the parameters successfully or already added
+		 *		0 if unsuccessfully added
 		 */
 		public function insertSupplier($_supplierName){
 			// Check if this record has already been added
 			$from = " FROM supplier WHERE SupplierName='".$_supplierName."'";
-			$query = "SELECT COUNT(*)".$from;
+			$query = "SELECT ID".$from;
 			if (!($result = $this->dbi->query($query))){
 				return 0;
 			}
-			else if(mysql_result($result,0) > 0){
-				return 0;
+			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
+			if($resultsRow){
+				return $resultsRow['ID'];
 			}
 			
 			// Insert the record
-			$query = "insert into Supplier values('".$_supplierName."')";
+			$query = "INSERT INTO Supplier(SupplierName)";
+			$query .= " VALUES('".$_supplierName."')";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}
@@ -176,22 +184,26 @@
 		 * @param _ototoxic - The indicator of whether the chemical is ototoxic
 		 * @param _restrictedHazardous - The indicator of whether the chemical is restricted hazardous
 		 * @return:
-		 *		The chemical's ID if successfully added
-		 *		0 if it was already added or unsuccessfully added
+		 *		The ID of chemical matching the parameters successfully or already added
+		 *		0 if unsuccessfully added
 		 */
 		public function insertChemical($_chemicalName, $_supplierID, $_primaryDGC, $_packingGroup, $_hazardous, $_poisonsSchedule, $_amount, $_unit, $_roomID, $_carcinogen, $_chemicalWeapon, $_CSC, $_ototoxic, $_restrictedHazardous){
 			// Check if this record has already been added
 			$from = " FROM chemical WHERE ChemicalName='".$_chemicalName."' AND SupplierID='".$_supplierID."' AND PrimaryDGC='".$_primaryDGC."' AND PackingGroup='".$_packingGroup."' AND Hazardous='".$_hazardous."' AND PoisonsSchedule='".$_poisonsSchedule."' AND Amount='".$_amount."' AND Unit='".$_unit."' AND RoomID='".$_roomID."' AND Carcinogen='".$_carcinogen."' AND CSC='".$_CSC."' AND Ototoxic='".$_ototoxic."' AND RestrictedHazardous='".$_restrictedHazardous."'";
-			$query = "SELECT COUNT(*)".$from;
+			$query = "SELECT ID".$from;
 			if (!($result = $this->dbi->query($query))){
 				return 0;
 			}
-			else if(mysql_result($result,0) > 0){
-				return 0;
+			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
+			if($resultsRow){
+				return $resultsRow['ID'];
 			}
 			
 			// Insert the record
-			$query = "insert into Chemical values('".$_chemicalName."','".$_supplierID."','".$_primaryDGC."','".$_packingGroup."','".$_hazardous."','".$_poisonsSchedule."','".$_amount."','".$_unit."','".$_roomID."','".$_carcinogen."','".$_CSC."','".$_ototoxic."','".$_restrictedHazardous."')";
+			$query = "INSERT INTO Chemical(ChemicalName, SupplierID, PrimaryDGC, PackingGroup, Hazardous, PoisonsSchedule, Amount, Unit, RoomID, Carcinogen, ChemicalWeapon, CSC, Ototoxic, RestrictedHazardous)";
+			$query .= " VALUES('".$_chemicalName."',".$_supplierID.",'".$_primaryDGC."','".$_packingGroup."','".$_hazardous."','".$_poisonsSchedule."','".$_amount."','".$_unit."',".$_roomID.",'".$_carcinogen."','".$_chemicalWeapon."','".$_CSC."','".$_ototoxic."','".$_restrictedHazardous."')";
+			echo $query;
+			echo "<br />";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}
@@ -211,6 +223,7 @@
 		private function parseChemical($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(CHEMICAL_COL . $_rowIndex);
 			$chemical = trim($cell->getValue());
+			$chemical = htmlspecialchars($chemical,ENT_QUOTES);
 			return $chemical;
 		}
 		
@@ -308,15 +321,15 @@
 			return $building;
 		}
 		
-		/* Parse the cell containing the floor
+		/* Parse the cell containing the level
 		 * @param _worksheet - The worksheet being parsed
 		 * @param _rowIndex - The row index of the worksheet being parsed
-		 * @return The floor
+		 * @return The level
 		 */
-		private function parseFloor($_worksheet, $_rowIndex){
-			$cell = $_worksheet->getCell(FLOOR_COL . $_rowIndex);
-			$floor = trim($cell->getValue());
-			return $floor;
+		private function parseLevel($_worksheet, $_rowIndex){
+			$cell = $_worksheet->getCell(LEVEL_COL . $_rowIndex);
+			$level = trim($cell->getValue());
+			return $level;
 		}
 		
 		/* Parse the cell containing the room

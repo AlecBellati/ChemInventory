@@ -5,20 +5,22 @@
 	require_once SCHEMA_PATH.'/supplier_schema.php';
 	
 	class DatabaseInterface{
+	private $conn;
+		
 		// Constructor
 		function __construct(){}
 		
 		// Connect to the database
 		public function connect($_user,$_pass,$_host,$_db, $_persist){
 			try{
-				$conn = @mysql_pconnect(DB_HOST,DB_USERNAME,DB_PASSWORD);
-				if (!$conn){
+				$this->conn = @mysql_pconnect(DB_HOST,DB_USERNAME,DB_PASSWORD);
+				if (!$this->conn){
 					$err = oci_error ();
 					print (htmlentities ($err['message']));
 					exit ();
 				}
 				
-				mysql_select_db('inventory',$conn);
+				mysql_select_db('inventory',$this->conn);
 			} catch(Exception $e){
 				return false;
 			}

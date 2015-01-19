@@ -2,6 +2,7 @@
 	require("config.php");
 	include_once(CLASSES_PATH."/chemical.php");
 	require_once CLASSES_PATH."/DatabaseInterface.php";
+	require_once CLASSES_PATH."/ChemicalParser.php";
 	
 	// Start the session and database connection
 	session_start();
@@ -15,6 +16,9 @@
 	switch($action){
 		case "":
 			homepage();
+			return;
+		case "updateChemicalDatabase":
+			updateChemicalDatabase();
 			return;
 		case "searchChemical":
 			searchChemical();
@@ -42,6 +46,17 @@
 	// Handle the actions for going to the homepage
 	function homepage(){
 		$_SESSION['pageTitle'] = "Home | ChemSearch";
+		require(TEMPLATES_PATH."/homepage.php");
+	}
+	
+	// Handle the actions for updating the chemical database on the homepage
+	function updateChemicalDatabase(){
+		$_SESSION['pageTitle'] = "Home | ChemSearch";
+		
+		$_SESSION['dbi']->setupDatabase();
+		$cp = new ChemicalParser($_SESSION['dbi']);
+		$cp->parseData("data/ChemicalDatabase.xlsx");
+		
 		require(TEMPLATES_PATH."/homepage.php");
 	}
 	
