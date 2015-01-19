@@ -42,8 +42,6 @@
 			for($rowIndex = 2; $rowIndex <= $worksheet->getHighestRow(); $rowIndex++){
 				// Parse the contents of the row
 				$chemical = $this->parseChemical($worksheet, $rowIndex);
-				echo $chemical;
-				echo "<br />";
 				$supplier = $this->parseSupplier($worksheet, $rowIndex);
 				$primaryDGC = $this->parsePrimaryDGC($worksheet, $rowIndex);
 				$packingGroup = $this->parsePackingGroup($worksheet, $rowIndex);
@@ -67,6 +65,7 @@
 				$supplierID = $this->insertSupplier($supplier);
 				$this->insertChemical($chemical, $supplierID, $primaryDGC, $packingGroup, $hazardous, $poisonsSchedule, $amount, $unit, $roomID, $carcinogen, $chemicalWeapon, $CSC, $ototoxic, $restrictedHazardous);
 			}
+			
 		}
 		
 		/* Insert a record into the buildings table
@@ -113,14 +112,14 @@
 		public function insertRoom($_roomName, $_level, $_buildingID){
 			// Check if this record has already been added
 			$from = " FROM room WHERE RoomName='".$_roomName."' AND Level='".$_level."' AND BuildingId='".$_buildingID."'";
-			/*$query = "SELECT ID".$from;
+			$query = "SELECT ID".$from;
 			if (!($result = $this->dbi->query($query))){
 				return 0;
 			}
 			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
 			if($resultsRow){
 				return $resultsRow['ID'];
-			}*/
+			}
 			
 			// Insert the record
 			$query = "INSERT INTO Room(RoomName, Level, BuildingID)";
@@ -190,20 +189,10 @@
 		public function insertChemical($_chemicalName, $_supplierID, $_primaryDGC, $_packingGroup, $_hazardous, $_poisonsSchedule, $_amount, $_unit, $_roomID, $_carcinogen, $_chemicalWeapon, $_CSC, $_ototoxic, $_restrictedHazardous){
 			// Check if this record has already been added
 			$from = " FROM chemical WHERE ChemicalName='".$_chemicalName."' AND SupplierID='".$_supplierID."' AND PrimaryDGC='".$_primaryDGC."' AND PackingGroup='".$_packingGroup."' AND Hazardous='".$_hazardous."' AND PoisonsSchedule='".$_poisonsSchedule."' AND Amount='".$_amount."' AND Unit='".$_unit."' AND RoomID='".$_roomID."' AND Carcinogen='".$_carcinogen."' AND CSC='".$_CSC."' AND Ototoxic='".$_ototoxic."' AND RestrictedHazardous='".$_restrictedHazardous."'";
-			$query = "SELECT ID".$from;
-			if (!($result = $this->dbi->query($query))){
-				return 0;
-			}
-			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
-			if($resultsRow){
-				return $resultsRow['ID'];
-			}
 			
 			// Insert the record
 			$query = "INSERT INTO Chemical(ChemicalName, SupplierID, PrimaryDGC, PackingGroup, Hazardous, PoisonsSchedule, Amount, Unit, RoomID, Carcinogen, ChemicalWeapon, CSC, Ototoxic, RestrictedHazardous)";
 			$query .= " VALUES('".$_chemicalName."',".$_supplierID.",'".$_primaryDGC."','".$_packingGroup."','".$_hazardous."','".$_poisonsSchedule."','".$_amount."','".$_unit."',".$_roomID.",'".$_carcinogen."','".$_chemicalWeapon."','".$_CSC."','".$_ototoxic."','".$_restrictedHazardous."')";
-			echo $query;
-			echo "<br />";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}

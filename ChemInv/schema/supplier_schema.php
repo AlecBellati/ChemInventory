@@ -2,7 +2,7 @@
 	function createTableSupplier($conn){
 		$create = "create table Supplier(";
 		$create .= "ID int NOT NULL AUTO_INCREMENT,";
-		$create .= "SupplierName char(20),";
+		$create .= "SupplierName char(50),";
 		$create .= "primary key(ID)";
 		$create .= ")";
 		
