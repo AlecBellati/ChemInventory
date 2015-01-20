@@ -4,13 +4,12 @@
 	require_once FUNCTIONS_PATH."/markup_funcs.php";
 	
 	// Alert the user they must search if necessary
-	if (isset($_SESSION['missingSearch']) && $_SESSION['missingSearch'] == true){
-		$_SESSION['missingSearch'] = false;
+	if (isset($_GET['error']) && $_GET['error'] == 1){
 		echo 'Please enter a chemical and room before searching<br />';
 	}
 	
 	// Form to search for a chemical
-	echo '<form method="POST" action="./?action=resultsChemical">';
+	echo '<form method="POST" action="./?action=search">';
 	
 	echo inputText('Chemical: ','chemicalName','40','');
 	echo '<br />';

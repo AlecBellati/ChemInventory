@@ -9,10 +9,10 @@
 	define("DB_NAME","inventory");
 	define('DEFAULT_TABLE_SIZE',25);
 	
-	define("CLASSES_PATH", "classes");
-	define("FUNCTIONS_PATH", "functions");
-	define("LIB_PATH", "lib");
-	define("SCHEMA_PATH", "schema");
-	define("TEMPLATES_PATH", "templates");
+	define("CLASSES_PATH", "../../classes");
+	define("FUNCTIONS_PATH", "../../functions");
+	define("LIB_PATH", "../../lib");
+	define("SCHEMA_PATH", "../../schema");
+	define("TEMPLATES_PATH", "../../templates");
 	
 ?>

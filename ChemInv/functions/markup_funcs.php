@@ -17,6 +17,11 @@
 		return '<input type="submit" name="'.$name.'" value="'.$value.'" />';
 	}
 	
+	// Create a hidden input
+	function inputHidden($name,$value){
+		return '<input type="hidden" name="'.$name.'" value="'.$value.'" />';
+	}
+	
 	// Create a text link to a url
 	function textLinkUrl($title,$url){
 		

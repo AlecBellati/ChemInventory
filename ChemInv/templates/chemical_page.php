@@ -40,13 +40,5 @@
 	
 	echo '<br />';
 	
-	// Go back to the search list
-	echo '<form method="POST" action="'.$_SESSION['return'].'">';
-	
-	echo inputButton('button','Return');
-	
-	echo '</form>';
-	
-	
 	include TEMPLATES_PATH."/include/footer.php";
 ?>
