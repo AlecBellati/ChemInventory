@@ -59,27 +59,8 @@
 	
 	// Handle the actions for going to the view chemicals page
 	function viewChemicals(){
-		// Parse any actions pertaining to button input
-		if (isset($_POST["button"])){
-			// Go back a page in the results
-			if ($_POST["button"] == "Back"){
-				$_SESSION['resultsStart'] -= $_SESSION['resultsSize'];
-			}
-			// Go to the next page in the results
-			else if ($_POST["button"] == "Next"){
-				$_SESSION['resultsStart'] += $_SESSION['resultsSize'];
-			}
-			// Reset the search results page if a new search has been made
-			else if ($_POST["button"] != "Return"){
-				$_SESSION['resultsStart'] = 0;
-				$_SESSION['resultsSize'] = DEFAULT_RESULTS_SIZE;
-			}
-			
-		}
-		
-		$_SESSION['return'] = "./?action=viewChemicals";
-		$_SESSION['pageTitle'] = "Chemicals | ChemSearch";
-		require(TEMPLATES_PATH."/viewChemicals.php");
+		// Head to the results page
+		header("Location: ./chemicals/");
 	}
 	
 	// Handle the actions for going to the view buildings page
@@ -182,27 +163,6 @@
 		$_SESSION['return'] = "./?action=room";
 		$_SESSION['pageTitle'] = "Results | ChemSearch";
 		require(TEMPLATES_PATH."/room.php");
-	}
-	
-	// Handle the actions for going to a chemical page
-	function chemical(){
-		// Check whether a chemical ID is given
-		if ( !isset($_GET['chemicalId']) || !$_GET['chemicalId'] ) {
-			viewChemicals();
-			return;
-		}
-		
-		// Check there is a set return page
-		if ( !isset($_SESSION['return']) || !$_SESSION['return'] ) {
-			$_SESSION['return'] = "./?action=viewChemicals";
-		}
-		
-		
-		$chemical = new Chemical($_SESSION['dbi']);
-		$chemical->setByID($_GET["chemicalId"]);
-		$_SESSION['chemical'] = $chemical;
-		$_SESSION['pageTitle'] = $_SESSION['chemical']->getChemicalName()." | ChemSearch";
-		require(TEMPLATES_PATH."/chemical.php");
 	}
 	
 ?>

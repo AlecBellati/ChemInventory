@@ -10,7 +10,7 @@
 		$_SESSION['dbi'] = new DatabaseInterface();
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "Results | ChemSearch";
+	$_SESSION['pageTitle'] = "Chemicals | ChemSearch";
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -34,16 +34,10 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		// Ensure that results are retrieved
-		if (!isset($_GET["chemicalName"]) || !isset($_GET["room"])){
-			header("Location: ../?error=1");
-			return;
-		}
-		
 		// Setup the results table size
 		$_SESSION['tablePage'] = 1;
 		
-		require(TEMPLATES_PATH."/chemical_results.php");
+		require(TEMPLATES_PATH."/chemical_view.php");
 	}
 	
 	// Handle the actions for going forward a page
@@ -55,7 +49,7 @@
 			$_SESSION['tablePage'] = 1;
 		}
 		
-		require(TEMPLATES_PATH."/chemical_results.php");
+		require(TEMPLATES_PATH."/chemical_view.php");
 	}
 	
 	// Handle the actions for going back a page
@@ -67,7 +61,7 @@
 			$_SESSION['tablePage'] = 1;
 		}
 		
-		require(TEMPLATES_PATH."/chemical_results.php");
+		require(TEMPLATES_PATH."/chemical_view.php");
 	}
 	
 	// Handle the actions for going to the search chemicals page
@@ -83,7 +77,7 @@
 			return;
 		}
 		
-		header('Location: ../chemicals/view/?chemicalId='.$_GET['chemicalId']);
+		header('Location: ./view/?chemicalId='.$_GET['chemicalId']);
 	}
 	
 ?>
