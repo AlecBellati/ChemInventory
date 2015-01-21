@@ -2,7 +2,7 @@
 	include TEMPLATES_PATH."/include/header.php";
 	
 	require_once FUNCTIONS_PATH."/markup_funcs.php";
-	require_once CLASSES_PATH."/table.php";
+	require_once CLASSES_PATH."/Table.php";
 	
 	$dbi = $_SESSION['dbi'];
 	

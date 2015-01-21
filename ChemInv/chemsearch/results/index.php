@@ -3,6 +3,7 @@
 	include_once(CLASSES_PATH."/chemical.php");
 	require_once CLASSES_PATH."/DatabaseInterface.php";
 	require_once CLASSES_PATH."/ChemicalParser.php";
+	require_once CLASSES_PATH."/Table_ChemicalList.php";
 	
 	// Start the session and database connection
 	session_start();
@@ -40,32 +41,41 @@
 			return;
 		}
 		
-		// Setup the results table size
-		$_SESSION['tablePage'] = 1;
+		// Setup the results table
+		$table = new Table_ChemicalList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		$chemical = $_GET["chemicalName"];
+		$room = $_GET["room"];
+		if ($chemical != ""){
+			$table->setChemicalSearch($chemical);
+		}
+		if ($room != ""){
+			$table->setRoomSearch($room);
+		}
 		
+		$_SESSION['table'] = $table;
 		require(TEMPLATES_PATH."/chemical_results.php");
 	}
 	
 	// Handle the actions for going forward a page
 	function nextPage(){
-		if(isset($_SESSION['tablePage'])){
-			$_SESSION['tablePage']++;
+		if(!isset($_SESSION['table'])){
+			load();
+			return;
 		}
-		else{
-			$_SESSION['tablePage'] = 1;
-		}
+		
+		$_SESSION['table']->nextPage();
 		
 		require(TEMPLATES_PATH."/chemical_results.php");
 	}
 	
 	// Handle the actions for going back a page
 	function backPage(){
-		if(isset($_SESSION['tablePage'])){
-			$_SESSION['tablePage']--;
+		if(!isset($_SESSION['table'])){
+			load();
+			return;
 		}
-		else{
-			$_SESSION['tablePage'] = 1;
-		}
+		
+		$_SESSION['table']->backPage();
 		
 		require(TEMPLATES_PATH."/chemical_results.php");
 	}
