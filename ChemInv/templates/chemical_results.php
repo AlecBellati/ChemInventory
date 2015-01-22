@@ -11,7 +11,7 @@
 	// Print the table
 	echo $table->getTable();
 	
-	// Form to scroll the results table
+	// Form to scroll the table
 	echo '<br />';
 	
 	echo '<form method="GET">';
@@ -26,12 +26,6 @@
 		echo inputButton('action','Next');
 	}
 	
-	echo '</form>';
-	
-	// Go back to the search page
-	echo '<br />';
-	echo '<form method="GET">';
-	echo inputButton('action','Return');
 	echo '</form>';
 	
 	include TEMPLATES_PATH."/include/footer.php";

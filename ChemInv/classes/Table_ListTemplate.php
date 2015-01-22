@@ -61,7 +61,6 @@
 			$query .= $this->getQueryFrom();
 			$query .= $this->getQueryOrder();
 			
-			echo $query;
 			if ($result = $this->dbi->query($query)){
 				while ($row = mysql_fetch_array($result, MYSQL_ASSOC)){
 					$this->parseRow($row);

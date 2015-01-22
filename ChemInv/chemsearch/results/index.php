@@ -2,7 +2,6 @@
 	require("config.php");
 	include_once(CLASSES_PATH."/chemical.php");
 	require_once CLASSES_PATH."/DatabaseInterface.php";
-	require_once CLASSES_PATH."/ChemicalParser.php";
 	require_once CLASSES_PATH."/Table_ChemicalList.php";
 	
 	// Start the session and database connection
@@ -24,9 +23,6 @@
 			return;
 		case "Back":
 			backPage();
-			return;
-		case "Return":
-			searchChemical();
 			return;
 		case "chemical":
 			chemical();
@@ -78,11 +74,6 @@
 		$_SESSION['table']->backPage();
 		
 		require(TEMPLATES_PATH."/chemical_results.php");
-	}
-	
-	// Handle the actions for going to the search chemicals page
-	function searchChemical(){
-		header("Location: ../");
 	}
 	
 	// Handle the actions for going to a chemical page

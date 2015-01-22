@@ -2,7 +2,7 @@
 	require("config.php");
 	include_once(CLASSES_PATH."/chemical.php");
 	require_once CLASSES_PATH."/DatabaseInterface.php";
-	require_once CLASSES_PATH."/ChemicalParser.php";
+	require_once CLASSES_PATH."/Table_ChemicalList.php";
 	
 	// Start the session and database connection
 	session_start();
@@ -10,7 +10,7 @@
 		$_SESSION['dbi'] = new DatabaseInterface();
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "Chemicals | ChemSearch";
+	$_SESSION['pageTitle'] = "View all Chemicals | ChemSearch";
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -24,9 +24,6 @@
 		case "Back":
 			backPage();
 			return;
-		case "Return":
-			searchChemical();
-			return;
 		case "chemical":
 			chemical();
 			return;
@@ -34,39 +31,34 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		// Setup the results table size
-		$_SESSION['tablePage'] = 1;
+		// Setup the results table
+		$_SESSION['table'] = new Table_ChemicalList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
 		
 		require(TEMPLATES_PATH."/chemical_view.php");
 	}
 	
 	// Handle the actions for going forward a page
 	function nextPage(){
-		if(isset($_SESSION['tablePage'])){
-			$_SESSION['tablePage']++;
+		if(!isset($_SESSION['table'])){
+			load();
+			return;
 		}
-		else{
-			$_SESSION['tablePage'] = 1;
-		}
+		
+		$_SESSION['table']->nextPage();
 		
 		require(TEMPLATES_PATH."/chemical_view.php");
 	}
 	
 	// Handle the actions for going back a page
 	function backPage(){
-		if(isset($_SESSION['tablePage'])){
-			$_SESSION['tablePage']--;
-		}
-		else{
-			$_SESSION['tablePage'] = 1;
+		if(!isset($_SESSION['table'])){
+			load();
+			return;
 		}
 		
+		$_SESSION['table']->backPage();
+		
 		require(TEMPLATES_PATH."/chemical_view.php");
-	}
-	
-	// Handle the actions for going to the search chemicals page
-	function searchChemical(){
-		header("Location: ../");
 	}
 	
 	// Handle the actions for going to a chemical page
