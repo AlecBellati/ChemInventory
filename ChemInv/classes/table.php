@@ -1,17 +1,11 @@
 <?php
 	class Table{
-		private $rows;
-		private $rowsNum;
+		protected $rows;
+		protected $rowsNum;
 		
 		// Constructor
 		function __construct(){
 			$this->setup();
-		}
-		
-		// Set up the table
-		public function setup(){
-			$this->rows = array();
-			$this->rowsNum = 0;
 		}
 		
 		// Add another row to the table
@@ -42,9 +36,10 @@
 			return $table;
 		}
 		
-		// Clear all the rows from the table
-		public function removeAllRows(){
-			$this->setup();
+		// Set up the table
+		protected function rowSetup(){
+			$this->rows = array();
+			$this->rowsNum = 0;
 		}
 	}
 ?>
