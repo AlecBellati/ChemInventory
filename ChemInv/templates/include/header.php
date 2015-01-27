@@ -3,6 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title><?php echo htmlspecialchars($_SESSION['pageTitle'])?></title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo STYLESHEETS_PATH."/style.css";?>" />
 	</head>
 	<body>
+		<div id="header">ChemSearch</div>
+		<div id="navigation">
+			<a href="<?php echo ROOT_PATH;?>chemsearch/">Search</a><br />
+			<a href="<?php echo ROOT_PATH;?>chemsearch/chemicals/">Chemical</a><br />
+			<a href="<?php echo ROOT_PATH;?>chemsearch/buildings/">Buildings</a><br />
+			<a href="<?php echo ROOT_PATH;?>chemsearch/buildings/rooms/">Rooms</a><br />
+		</div>
+		<div id="content">

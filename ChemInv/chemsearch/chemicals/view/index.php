@@ -1,8 +1,7 @@
 <?php
 	require("config.php");
-	include_once(CLASSES_PATH."/chemical.php");
-	require_once CLASSES_PATH."/DatabaseInterface.php";
-	require_once CLASSES_PATH."/ChemicalParser.php";
+	require_once CLASSES_PATH."DatabaseInterface.php";
+	require_once CLASSES_PATH."ChemicalParser.php";
 	
 	// Start the session and database connection
 	session_start();

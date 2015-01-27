@@ -1,8 +1,8 @@
 <?php
-	include TEMPLATES_PATH."/include/header.php";
+	include TEMPLATES_PATH."include/header.php";
 	
-	require_once FUNCTIONS_PATH."/markup_funcs.php";
-	require_once CLASSES_PATH."/Table_ChemicalView.php";
+	require_once FUNCTIONS_PATH."markup_funcs.php";
+	require_once CLASSES_PATH."Table_ChemicalView.php";
 	
 	$dbi = $_SESSION['dbi'];
 	$id = $_GET['chemicalId'];
@@ -14,5 +14,5 @@
 	
 	echo '<br />';
 	
-	include TEMPLATES_PATH."/include/footer.php";
+	include TEMPLATES_PATH."include/footer.php";
 ?>

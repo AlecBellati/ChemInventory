@@ -1,5 +1,5 @@
 <?php
-	require_once CLASSES_PATH."/Table.php";
+	require_once CLASSES_PATH."Table.php";
 	
 	class Table_ListTemplate extends Table{
 		protected $dbi;

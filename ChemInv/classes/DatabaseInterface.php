@@ -1,8 +1,8 @@
 <?php
-	require_once SCHEMA_PATH.'/building_schema.php';
-	require_once SCHEMA_PATH.'/chemical_schema.php';
-	require_once SCHEMA_PATH.'/room_schema.php';
-	require_once SCHEMA_PATH.'/supplier_schema.php';
+	require_once SCHEMA_PATH.'building_schema.php';
+	require_once SCHEMA_PATH.'chemical_schema.php';
+	require_once SCHEMA_PATH.'room_schema.php';
+	require_once SCHEMA_PATH.'supplier_schema.php';
 	
 	class DatabaseInterface{
 	private $conn;

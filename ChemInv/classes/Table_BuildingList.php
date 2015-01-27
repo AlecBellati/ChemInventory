@@ -1,5 +1,5 @@
 <?php
-	require_once CLASSES_PATH."/Table_ListTemplate.php";
+	require_once CLASSES_PATH."Table_ListTemplate.php";
 	
 	class Table_BuildingList extends Table_ListTemplate{
 		private $buildingName;

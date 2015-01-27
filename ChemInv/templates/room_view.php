@@ -1,8 +1,8 @@
 <?php
-	include TEMPLATES_PATH."/include/header.php";
+	include TEMPLATES_PATH."include/header.php";
 	
-	require_once FUNCTIONS_PATH."/markup_funcs.php";
-	require_once CLASSES_PATH."/Table_RoomList.php";
+	require_once FUNCTIONS_PATH."markup_funcs.php";
+	require_once CLASSES_PATH."Table_RoomList.php";
 	
 	$table = $_SESSION['table'];
 	if (isset($_GET['buildingId'])){
@@ -31,5 +31,5 @@
 	
 	echo '</form>';
 	
-	include TEMPLATES_PATH."/include/footer.php";
+	include TEMPLATES_PATH."include/footer.php";
 ?>

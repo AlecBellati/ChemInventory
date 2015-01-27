@@ -1,6 +1,6 @@
 <?php
-	require_once CLASSES_PATH."/Table.php";
-	require_once CLASSES_PATH."/Chemical.php";
+	require_once CLASSES_PATH."Table.php";
+	require_once CLASSES_PATH."Chemical.php";
 	
 	class Table_ChemicalView extends Table{
 		protected $dbi;
@@ -45,7 +45,7 @@
 			$this->addRow($row);
 			$row = array("Hazardous:", $chemical->isHazardous());
 			$this->addRow($row);
-			$row = array("Poisonous Schedule:", $chemical->getPoisonousSchedule());
+			$row = array("Poisons Schedule:", $chemical->getPoisonsSchedule());
 			$this->addRow($row);
 			$row = array("Total amount:", $chemical->getTotalAmount().$chemical->getUnit());
 			$this->addRow($row);

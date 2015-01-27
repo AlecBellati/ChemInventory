@@ -6,7 +6,7 @@
 		private $primaryDGC;
 		private $packingGroup;
 		private $hazardous;
-		private $poisonousSchedule;
+		private $poisonsSchedule;
 		private $totalAmount;
 		private $unit;
 		private $room;
@@ -48,7 +48,7 @@
 			if (isset($_data['PrimaryDGC'])) $this->primaryDGC = $_data['PrimaryDGC'];
 			if (isset($_data['PackingGroup'])) $this->packingGroup = $_data['PackingGroup'];
 			if (isset($_data['Hazardous'])) $this->hazardous = $_data['Hazardous'];
-			if (isset($_data['PoisonousSchedule'])) $this->poisonousSchedule = $_data['PoisonousSchedule'];
+			if (isset($_data['PoisonsSchedule'])) $this->poisonsSchedule = $_data['PoisonsSchedule'];
 			if (isset($_data['TotalAmount'])) $this->totalAmount = $_data['TotalAmount'];
 			if (isset($_data['Unit'])) $this->unit = $_data['Unit'];
 			if (isset($_data['RoomName'])) $this->room = $_data['RoomName'];
@@ -90,9 +90,9 @@
 			return $this->hazardous;
 		}
 		
-		// Get the poisonous schedule
-		public function getPoisonousSchedule(){
-			return $this->poisonousSchedule;
+		// Get the poisons schedule
+		public function getPoisonsSchedule(){
+			return $this->poisonsSchedule;
 		}
 		
 		// Get the totalAmount

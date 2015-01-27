@@ -1,7 +1,7 @@
 <?php
-	include TEMPLATES_PATH."/include/header.php";
+	include TEMPLATES_PATH."include/header.php";
 	
-	require_once FUNCTIONS_PATH."/markup_funcs.php";
+	require_once FUNCTIONS_PATH."markup_funcs.php";
 	
 	// Alert the user they must search if necessary
 	if (isset($_GET['error']) && $_GET['error'] == 1){
@@ -35,5 +35,5 @@
 	
 	echo '</form>';
 	
-	include TEMPLATES_PATH."/include/footer.php";
+	include TEMPLATES_PATH."include/footer.php";
 ?>
