@@ -1,6 +1,7 @@
 <?php
 	require("config.php");
 	require_once CLASSES_PATH."DatabaseInterface.php";
+	require_once CLASSES_PATH."Table_ChemicalList.php";
 	
 	// Start the session and database connection
 	session_start();
