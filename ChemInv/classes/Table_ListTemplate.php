@@ -12,7 +12,6 @@
 		}
 		
 		// Setup the table
-		// Overwrites the parent method
 		protected function setup($_dbi, $_tableSize){
 			$this->rowSetup();
 			$this->addHeader();

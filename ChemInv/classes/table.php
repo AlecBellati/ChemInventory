@@ -5,7 +5,7 @@
 		
 		// Constructor
 		function __construct(){
-			$this->setup();
+			$this->rowSetup();
 		}
 		
 		// Add another row to the table

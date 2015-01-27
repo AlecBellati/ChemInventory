@@ -28,10 +28,6 @@
 			return;
 		}
 		
-		$chemical = new Chemical($_SESSION['dbi']);
-		$chemical->setByID($_GET["chemicalId"]);
-		$_SESSION['chemical'] = $chemical;
-		$_SESSION['pageTitle'] = $_SESSION['chemical']->getChemicalName()." | ChemSearch";
 		require(TEMPLATES_PATH."/chemical_page.php");
 	}
 	
