@@ -49,7 +49,7 @@
 		}
 		
 		$_SESSION['table'] = $table;
-		require(TEMPLATES_PATH."/chemical_results.php");
+		require(TEMPLATES_PATH."/view.php");
 	}
 	
 	// Handle the actions for going forward a page
@@ -61,7 +61,7 @@
 		
 		$_SESSION['table']->nextPage();
 		
-		require(TEMPLATES_PATH."/chemical_results.php");
+		require(TEMPLATES_PATH."/view.php");
 	}
 	
 	// Handle the actions for going back a page
@@ -73,7 +73,7 @@
 		
 		$_SESSION['table']->backPage();
 		
-		require(TEMPLATES_PATH."/chemical_results.php");
+		require(TEMPLATES_PATH."/view.php");
 	}
 	
 	// Handle the actions for going to a chemical page

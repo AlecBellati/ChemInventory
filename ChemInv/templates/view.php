@@ -2,7 +2,6 @@
 	include TEMPLATES_PATH."include/header.php";
 	
 	require_once FUNCTIONS_PATH."markup_funcs.php";
-	require_once CLASSES_PATH."Table_RoomList.php";
 	
 	$table = $_SESSION['table'];
 	
@@ -14,9 +13,22 @@
 	
 	echo '<form method="GET">';
 	
+	if (isset($_GET['campusId'])){
+		echo inputHidden('campusId', $_GET['campusId']);
+	}
 	if (isset($_GET['buildingId'])){
 		echo inputHidden('buildingId', $_GET['buildingId']);
 	}
+	if (isset($_GET['roomId'])){
+		echo inputHidden('roomId', $_GET['roomId']);
+	}
+	if (isset($_GET['chemicalName'])){
+		echo inputHidden('chemicalName', $_GET['chemicalName']);
+	}
+	if (isset($_GET['roomName'])){
+		echo inputHidden('roomName', $_GET['roomName']);
+	}
+	
 	
 	if ($table->getPage() > 1){
 		echo inputButton('action','Back');

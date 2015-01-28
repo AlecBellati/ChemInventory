@@ -5,7 +5,7 @@
 	
 	// Alert the user they must search if necessary
 	if (isset($_GET['error']) && $_GET['error'] == 1){
-		echo 'Please enter a chemical and room before searching<br />';
+		echo 'Please enter a chemical or room before searching<br />';
 	}
 	
 	// Form to search for a chemical

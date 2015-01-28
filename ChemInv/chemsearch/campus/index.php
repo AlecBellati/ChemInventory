@@ -33,7 +33,7 @@
 		// Setup the table
 		$_SESSION['table'] = new Table_CampusList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
 		
-		require(TEMPLATES_PATH."/campus_view.php");
+		require(TEMPLATES_PATH."/view.php");
 	}
 	
 	// Handle the actions for going forward a page
@@ -45,7 +45,7 @@
 		
 		$_SESSION['table']->nextPage();
 		
-		require(TEMPLATES_PATH."/campus_view.php");
+		require(TEMPLATES_PATH."/view.php");
 	}
 	
 	// Handle the actions for going back a page
@@ -57,7 +57,7 @@
 		
 		$_SESSION['table']->backPage();
 		
-		require(TEMPLATES_PATH."/campus_view.php");
+		require(TEMPLATES_PATH."/view.php");
 	}
 	
 	// Handle the actions for selecting a campus
