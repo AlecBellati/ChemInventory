@@ -75,7 +75,7 @@
 			return;
 		}
 		
-		header('Location: ./rooms/?buildingId='.$_GET['buildingId']);
+		header('Location: ../rooms/?buildingId='.$_GET['buildingId']);
 	}
 	
 ?>
