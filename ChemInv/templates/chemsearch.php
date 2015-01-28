@@ -19,21 +19,5 @@
 	
 	echo '</form>';
 	
-	// View all chemicals
-	echo '<br />';
-	echo '<form method="POST" action="./?action=viewChemicals">';
-	
-	echo inputButton('button','View all chemicals');
-	
-	echo '</form>';
-	
-	// View by building
-	echo '<br />';
-	echo '<form method="POST" action="./?action=viewBuildings">';
-	
-	echo inputButton('button','View by building');
-	
-	echo '</form>';
-	
 	include TEMPLATES_PATH."include/footer.php";
 ?>

@@ -20,12 +20,6 @@
 		case "search":
 			search();
 			return;
-		case "viewChemicals":
-			viewChemicals();
-			return;
-		case "viewBuildings":
-			viewBuildings();
-			return;
 	}
 	
 	// Handle the actions for arriving at the page
@@ -45,18 +39,6 @@
 		
 		// Head to the results page
 		header("Location: ./results/?chemicalName=".$_POST['chemicalName']."&room=".$_POST['room']);
-	}
-	
-	// Handle the actions for going to the view chemicals page
-	function viewChemicals(){
-		// Head to the chemicals page
-		header("Location: ./chemicals/");
-	}
-	
-	// Handle the actions for going to the view buildings page
-	function viewBuildings(){
-		// Head to the buildings page
-		header("Location: ./buildings/");
 	}
 	
 ?>

@@ -5,6 +5,7 @@
 	class Table_ChemicalView extends Table{
 		protected $dbi;
 		protected $id;
+		protected $chemical;
 		
 		// Constructor
 		function __construct($_dbi){
@@ -14,11 +15,20 @@
 		// Set the id of the chemical viewed in the table
 		public function setID($_id){
 			$this->id = $_id;
+			
+			// Set the chemical
+			$this->chemical = new Chemical($this->dbi);
+			$this->chemical->setByID($this->id);
 		}
 		
 		// Get the id of the chemical viewed in the table
 		public function getID(){
 			return $this->id;
+		}
+		
+		// Get the chemical associated with this table
+		public function getChemical(){
+			return $this->chemical;
 		}
 		
 		// Setup the table
@@ -30,38 +40,34 @@
 		
 		// Get the table
 		public function getTable(){
-			// Get the chemical
-			$chemical = new Chemical($this->dbi);
-			$chemical->setByID($this->id);
-			
 			// Add the rows to the table
-			$row = array("Chemical:", $chemical->getChemicalName());
+			$row = array("Chemical:", $this->chemical->getChemicalName());
 			$this->addRow($row);
-			$row = array("Supplier:", $chemical->getSupplier());
+			$row = array("Supplier:", $this->chemical->getSupplier());
 			$this->addRow($row);
-			$row = array("Primary DGC:", $chemical->getPrimaryDGC());
+			$row = array("Primary DGC:", $this->chemical->getPrimaryDGC());
 			$this->addRow($row);
-			$row = array("Packing Group:", $chemical->getPackingGroup());
+			$row = array("Packing Group:", $this->chemical->getPackingGroup());
 			$this->addRow($row);
-			$row = array("Hazardous:", $chemical->isHazardous());
+			$row = array("Hazardous:", $this->chemical->isHazardous());
 			$this->addRow($row);
-			$row = array("Poisons Schedule:", $chemical->getPoisonsSchedule());
+			$row = array("Poisons Schedule:", $this->chemical->getPoisonsSchedule());
 			$this->addRow($row);
-			$row = array("Total amount:", $chemical->getTotalAmount().$chemical->getUnit());
+			$row = array("Total amount:", $this->chemical->getTotalAmount().$this->chemical->getUnit());
 			$this->addRow($row);
-			$row = array("Room:", $chemical->getRoom());
+			$row = array("Room:", $this->chemical->getRoom());
 			$this->addRow($row);
-			$row = array("Building:", $chemical->getBuilding());
+			$row = array("Building:", $this->chemical->getBuilding());
 			$this->addRow($row);
-			$row = array("Carcinogenic:", $chemical->isCarcinogenic());
+			$row = array("Carcinogenic:", $this->chemical->isCarcinogenic());
 			$this->addRow($row);
-			$row = array("Chemical Weapon:", $chemical->isChemicalWeapon());
+			$row = array("Chemical Weapon:", $this->chemical->isChemicalWeapon());
 			$this->addRow($row);
-			$row = array("CSC:", $chemical->isCSC());
+			$row = array("CSC:", $this->chemical->isCSC());
 			$this->addRow($row);
-			$row = array("Ototoxic:", $chemical->isOtotoxic());
+			$row = array("Ototoxic:", $this->chemical->isOtotoxic());
 			$this->addRow($row);
-			$row = array("Restricted Hazardous:", $chemical->isRestrictedHazardous());
+			$row = array("Restricted Hazardous:", $this->chemical->isRestrictedHazardous());
 			$this->addRow($row);
 			
 			// Return the table
