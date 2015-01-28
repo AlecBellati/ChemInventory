@@ -9,7 +9,7 @@
 		$_SESSION['dbi'] = new DatabaseInterface();
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "View all Chemicals | ChemSearch";
+	$_SESSION['pageTitle'] = "Chemicals | ChemSearch";
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -31,8 +31,18 @@
 	// Handle the actions for arriving at the page
 	function load(){
 		// Setup the results table
-		$_SESSION['table'] = new Table_ChemicalList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		$table = new Table_ChemicalList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		if (isset($_GET["chemicalName"])){
+			$table->setChemicalNameSearch($_GET["chemicalName"]);
+		}
+		if (isset($_GET["roomName"])){
+			$table->setRoomNameSearch($_GET["roomName"]);
+		}
+		if (isset($_GET["roomId"])){
+			$table->setRoomIDSearch($_GET["roomId"]);
+		}
 		
+		$_SESSION['table'] = $table;
 		require(TEMPLATES_PATH."/view.php");
 	}
 	

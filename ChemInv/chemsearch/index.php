@@ -38,7 +38,7 @@
 		}
 		
 		// Head to the results page
-		header("Location: ./results/?chemicalName=".$_POST['chemicalName']."&roomName=".$_POST['roomName']);
+		header("Location: ./chemicals/?chemicalName=".$_POST['chemicalName']."&roomName=".$_POST['roomName']);
 	}
 	
 ?>
