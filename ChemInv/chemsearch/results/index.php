@@ -31,20 +31,21 @@
 	// Handle the actions for arriving at the page
 	function load(){
 		// Ensure that results are retrieved
-		if (!isset($_GET["chemicalName"]) || !isset($_GET["room"])){
+		if (!isset($_GET["chemicalName"]) && !isset($_GET["roomName"]) && !isset($_GET["roomId"])){
 			header("Location: ../?error=1");
 			return;
 		}
 		
 		// Setup the results table
 		$table = new Table_ChemicalList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
-		$chemical = $_GET["chemicalName"];
-		$room = $_GET["room"];
-		if ($chemical != ""){
-			$table->setChemicalSearch($chemical);
+		if (isset($_GET["chemicalName"])){
+			$table->setChemicalNameSearch($_GET["chemicalName"]);
 		}
-		if ($room != ""){
-			$table->setRoomSearch($room);
+		if (isset($_GET["roomName"])){
+			$table->setRoomNameSearch($_GET["roomName"]);
+		}
+		if (isset($_GET["roomId"])){
+			$table->setRoomIDSearch($_GET["roomId"]);
 		}
 		
 		$_SESSION['table'] = $table;

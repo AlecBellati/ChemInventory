@@ -4,12 +4,14 @@
 	class Table_ChemicalList extends Table_ListTemplate{
 		private $chemicalName;
 		private $roomName;
+		private $roomID;
 		
 		// Constructor
 		function __construct($_dbi, $_tableSize){
 			$this->setup($_dbi, $_tableSize);
-			$this->setChemicalSearch("");
-			$this->setRoomSearch("");
+			$this->setChemicalNameSearch("");
+			$this->setRoomNameSearch("");
+			$this->setRoomIDSearch(null);
 		}
 		
 		// Add the table header
@@ -19,13 +21,18 @@
 		}
 		
 		// Set the chemical name search condition
-		public function setChemicalSearch($_chemicalName){
+		public function setChemicalNameSearch($_chemicalName){
 			$this->chemicalName = $_chemicalName;
 		}
 		
 		// Set the room name search condition
-		public function setRoomSearch($_roomName){
+		public function setRoomNameSearch($_roomName){
 			$this->roomName = $_roomName;
+		}
+		
+		// Set the room ID search condition
+		public function setRoomIDSearch($_roomID){
+			$this->roomID = $_roomID;
 		}
 		
 		// Get the query select
@@ -48,6 +55,13 @@
 				}
 				
 				$where .= " room.RoomName RLIKE '".$this->roomName."'";
+			}
+			if ($this->roomID != null){
+				if ($where != ""){
+					$where .= " AND";
+				}
+				
+				$where .= " room.ID=".$this->roomID;
 			}
 			if ($where != ""){
 				$condition .= " WHERE";

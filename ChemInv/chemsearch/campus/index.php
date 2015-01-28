@@ -1,7 +1,7 @@
 <?php
 	require("config.php");
 	require_once CLASSES_PATH."DatabaseInterface.php";
-	require_once CLASSES_PATH."Table_RoomList.php";
+	require_once CLASSES_PATH."Table_CampusList.php";
 	
 	// Start the session and database connection
 	session_start();
@@ -9,7 +9,7 @@
 		$_SESSION['dbi'] = new DatabaseInterface();
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "Rooms | ChemSearch";
+	$_SESSION['pageTitle'] = "Campuses | ChemSearch";
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -23,24 +23,17 @@
 		case "Back":
 			backPage();
 			return;
-		case "room":
-			room();
+		case "campus":
+			campus();
 			return;
 	}
 	
 	// Handle the actions for arriving at the page
 	function load(){
 		// Setup the table
-		$table = new Table_RoomList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
-		if (isset($_GET['buildingId'])){
-			$table->setBuildingSearch($_GET['buildingId']);
-		}
-		else{
-			$table->setBuildingSearch(null);
-		}
+		$_SESSION['table'] = new Table_CampusList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
 		
-		$_SESSION['table'] = $table;
-		require(TEMPLATES_PATH."/room_view.php");
+		require(TEMPLATES_PATH."/campus_view.php");
 	}
 	
 	// Handle the actions for going forward a page
@@ -52,7 +45,7 @@
 		
 		$_SESSION['table']->nextPage();
 		
-		require(TEMPLATES_PATH."/room_view.php");
+		require(TEMPLATES_PATH."/campus_view.php");
 	}
 	
 	// Handle the actions for going back a page
@@ -64,18 +57,18 @@
 		
 		$_SESSION['table']->backPage();
 		
-		require(TEMPLATES_PATH."/room_view.php");
+		require(TEMPLATES_PATH."/campus_view.php");
 	}
 	
-	// Handle the actions for selecting a room
-	function room(){
-		// Check whether a room ID is given
-		if ( !isset($_GET['roomId']) || !$_GET['roomId'] ) {
+	// Handle the actions for selecting a campus
+	function campus(){
+		// Check whether a campus ID is given
+		if ( !isset($_GET['campusId']) || !$_GET['campusId'] ) {
 			load();
 			return;
 		}
 		
-		header('Location: ../../results/?roomId='.$_GET['roomId']);
+		header('Location: ../buildings/?campusId='.$_GET['campusId']);
 	}
 	
 ?>

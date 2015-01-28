@@ -2,7 +2,7 @@
 	include TEMPLATES_PATH."include/header.php";
 	
 	require_once FUNCTIONS_PATH."markup_funcs.php";
-	require_once CLASSES_PATH."Table_RoomList.php";
+	require_once CLASSES_PATH."Table_CampusList.php";
 	
 	$table = $_SESSION['table'];
 	
@@ -13,10 +13,6 @@
 	echo '<br />';
 	
 	echo '<form method="GET">';
-	
-	if (isset($_GET['buildingId'])){
-		echo inputHidden('buildingId', $_GET['buildingId']);
-	}
 	
 	if ($table->getPage() > 1){
 		echo inputButton('action','Back');

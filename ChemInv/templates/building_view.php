@@ -14,6 +14,10 @@
 	
 	echo '<form method="GET">';
 	
+	if (isset($_GET['campusId'])){
+		echo inputHidden('campusId', $_GET['campusId']);
+	}
+	
 	if ($table->getPage() > 1){
 		echo inputButton('action','Back');
 	}

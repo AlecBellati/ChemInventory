@@ -9,7 +9,7 @@
 		$_SESSION['dbi'] = new DatabaseInterface();
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "View all Buildings | ChemSearch";
+	$_SESSION['pageTitle'] = "Buildings | ChemSearch";
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -31,8 +31,15 @@
 	// Handle the actions for arriving at the page
 	function load(){
 		// Setup the table
-		$_SESSION['table'] = new Table_BuildingList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		$table = new Table_BuildingList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		if (isset($_GET['campusId'])){
+			$table->setCampusSearch($_GET['campusId']);
+		}
+		else{
+			$table->setCampusSearch(null);
+		}
 		
+		$_SESSION['table'] = $table;
 		require(TEMPLATES_PATH."/building_view.php");
 	}
 	

@@ -79,7 +79,7 @@
 		
 		// Parse the current row found from the query
 		protected function parseRow($_row){
-			$link = '<a href="./?action=room&roomName='.$_row['RoomName'].'">'.$_row['RoomName'].'</a>';
+			$link = '<a href="./?action=room&roomId='.$_row['ID'].'">'.$_row['RoomName'].'</a>';
 			$row = array($_row['BuildingName'], $_row['Level'], $link);
 			$this->addRow($row);
 		}

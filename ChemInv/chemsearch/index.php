@@ -30,15 +30,15 @@
 	// Handle the actions when the user searches
 	function search(){
 		// Ensure that results are retrieved
-		if ((!isset($_POST['chemicalName']) || !isset($_POST['room']))
-		||	($_POST['chemicalName'] == "" && $_POST['room'] == "")){
+		if ((!isset($_POST['chemicalName']) || !isset($_POST['roomName']))
+		||	($_POST['chemicalName'] == "" && $_POST['roomName'] == "")){
 			// Head to the results page
 			header("Location: ./?error=1");
 			return;
 		}
 		
 		// Head to the results page
-		header("Location: ./results/?chemicalName=".$_POST['chemicalName']."&room=".$_POST['room']);
+		header("Location: ./results/?chemicalName=".$_POST['chemicalName']."&roomName=".$_POST['roomName']);
 	}
 	
 ?>

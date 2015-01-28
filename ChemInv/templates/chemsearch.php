@@ -13,7 +13,7 @@
 	
 	echo inputText('Chemical: ','chemicalName','40','');
 	echo '<br />';
-	echo inputText('Room: ','room','20','');
+	echo inputText('Room: ','roomName','20','');
 	echo '<br />';
 	echo inputButton('button','Search');
 	
