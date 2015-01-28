@@ -1,4 +1,5 @@
 <?php
+	require_once SCHEMA_PATH.'campus_schema.php';
 	require_once SCHEMA_PATH.'building_schema.php';
 	require_once SCHEMA_PATH.'chemical_schema.php';
 	require_once SCHEMA_PATH.'room_schema.php';
@@ -51,6 +52,7 @@
 		
 		// Create the tables in the database
 		private function createTables(){
+			createTableCampus($this->conn);
 			createTableBuilding($this->conn);
 			createTableRoom($this->conn);
 			createTableSupplier($this->conn);
@@ -63,6 +65,7 @@
 			dropTableSupplier($this->conn);
 			dropTableRoom($this->conn);
 			dropTableBuilding($this->conn);
+			dropTableCampus($this->conn);
 		}
 		
 	}

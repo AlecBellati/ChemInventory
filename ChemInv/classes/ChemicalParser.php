@@ -1,4 +1,5 @@
 <?php
+	require_once SCHEMA_PATH.'chemical_schema.php';
 	require_once SCHEMA_PATH.'building_schema.php';
 	require_once SCHEMA_PATH.'chemical_schema.php';
 	require_once SCHEMA_PATH.'room_schema.php';
@@ -60,7 +61,8 @@
 				$restrictedHazardous = $this->parseRestrictedHazardous($worksheet, $rowIndex);
 				
 				// Insert the information from this row
-				$buildingID = $this->insertBuilding($building, $campus);
+				$campusID = $this->insertCampus($campus);
+				$buildingID = $this->insertBuilding($building, $campusID);
 				$roomID = $this->insertRoom($room, $level, $buildingID);
 				$supplierID = $this->insertSupplier($supplier);
 				$this->insertChemical($chemical, $supplierID, $primaryDGC, $packingGroup, $hazardous, $poisonsSchedule, $amount, $unit, $roomID, $carcinogen, $chemicalWeapon, $CSC, $ototoxic, $restrictedHazardous);
@@ -68,16 +70,15 @@
 			
 		}
 		
-		/* Insert a record into the buildings table
-		 * @param _buildingName - The name of the building
-		 * @param _campus - The name of the campus
+		/* Insert a record into the campus table
+		 * @param _campusName - The name of the campus
 		 * @return:
-		 *		The ID of building matching the parameters successfully or already added
+		 *		The ID of campus matching the parameters successfully or already added
 		 *		0 if unsuccessfully added
 		 */
-		public function insertBuilding($_buildingName, $_campus){
+		public function insertCampus($_campusName){
 			// Check if this record has already been added
-			$from = " FROM building WHERE BuildingName='".$_buildingName."' AND Campus='".$_campus."'";
+			$from = " FROM campus WHERE CampusName='".$_campusName."'";
 			$query = "SELECT ID".$from;
 			if (!($result = $this->dbi->query($query))){
 				return 0;
@@ -88,8 +89,41 @@
 			}
 			
 			// Insert the record
-			$query = "INSERT INTO Building (BuildingName, campus)";
-			$query .= " VALUES('".$_buildingName."','".$_campus."')";
+			$query = "INSERT INTO Campus (CampusName)";
+			$query .= " VALUES('".$_campusName."')";
+			if(!($this->dbi->query($query))){
+				return 0;
+			}
+			
+			// Get the ID of the building added
+			$query = "SELECT ID".$from;
+			$result = $this->dbi->query($query);
+			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
+			return $resultsRow["ID"];
+		}
+		
+		/* Insert a record into the buildings table
+		 * @param _buildingName - The name of the building
+		 * @param _campusID - The ID of the campus
+		 * @return:
+		 *		The ID of building matching the parameters successfully or already added
+		 *		0 if unsuccessfully added
+		 */
+		public function insertBuilding($_buildingName, $_campusID){
+			// Check if this record has already been added
+			$from = " FROM building WHERE BuildingName='".$_buildingName."' AND CampusID='".$_campusID."'";
+			$query = "SELECT ID".$from;
+			if (!($result = $this->dbi->query($query))){
+				return 0;
+			}
+			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
+			if($resultsRow){
+				return $resultsRow['ID'];
+			}
+			
+			// Insert the record
+			$query = "INSERT INTO Building (BuildingName, CampusID)";
+			$query .= " VALUES('".$_buildingName."','".$_campusID."')";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}

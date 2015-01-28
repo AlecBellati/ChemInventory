@@ -3,7 +3,8 @@
 		$create = "create table Building(";
 		$create .= "ID int NOT NULL AUTO_INCREMENT,";
 		$create .= "BuildingName char(40) NOT NULL,";
-		$create .= "Campus char(40) NOT NULL,";
+		$create .= "CampusID int NOT NULL,";
+		$create .= "foreign key(CampusID) references campus(ID),";
 		$create .= "primary key(ID)";
 		$create .= ")";
 		
