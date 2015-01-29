@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title><?php echo htmlspecialchars($_SESSION['pageTitle'])?></title>
+		<title><?php echo htmlspecialchars($_SESSION['pageTitle'])?> | ChemSearch</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo STYLESHEETS_PATH."/style.css";?>" />
 	</head>
 	<body>

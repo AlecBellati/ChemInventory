@@ -11,7 +11,7 @@
 	
 	// Set the page title
 	$chemical = $chemicalTable->getChemical();
-	$_SESSION['pageTitle'] = $chemical->getChemicalName()." | ChemSearch";
+	$_SESSION['pageTitle'] = $chemical->getChemicalName();
 	
 	
 	// Create the page header

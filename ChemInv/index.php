@@ -9,7 +9,7 @@
 		$_SESSION['dbi'] = new DatabaseInterface();
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "Home | ChemInv";
+	$_SESSION['pageTitle'] = "Home";
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -32,8 +32,6 @@
 	
 	// Handle the actions for updating the chemical database on the homepage
 	function updateChemicalDatabase(){
-		$_SESSION['pageTitle'] = "Home | ChemInv";
-		
 		$_SESSION['dbi']->setupDatabase();
 		$cp = new ChemicalParser($_SESSION['dbi']);
 		$cp->parseData("data/ChemicalDatabase.xlsx");
