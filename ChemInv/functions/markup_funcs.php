@@ -22,6 +22,11 @@
 		return '<input type="hidden" name="'.$name.'" value="'.$value.'" />';
 	}
 	
+	// Create a file input
+	function inputFile($name){
+		return '<input type="file" name="'.$name.'" />';
+	}
+	
 	// Create a text link to a url
 	function textLinkUrl($title,$url){
 		
