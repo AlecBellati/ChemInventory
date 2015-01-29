@@ -6,12 +6,17 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo STYLESHEETS_PATH."/style.css";?>" />
 	</head>
 	<body>
-		<div id="header">ChemSearch</div>
+		<div id="header"><?php echo htmlspecialchars($_SESSION['pageTitle'])?></div>
 		<div id="navigation">
 			<a href="<?php echo ROOT_PATH;?>chemsearch/">Search</a><br />
+			<br />
 			<a href="<?php echo ROOT_PATH;?>chemsearch/chemicals/">Chemicals</a><br />
+			<br />
 			<a href="<?php echo ROOT_PATH;?>chemsearch/campus/">Campus</a><br />
 			<a href="<?php echo ROOT_PATH;?>chemsearch/buildings/">Buildings</a><br />
 			<a href="<?php echo ROOT_PATH;?>chemsearch/rooms/">Rooms</a><br />
+			<br />
+			<br />
+			<a href="<?php echo ROOT_PATH;?>chemsearch/administrator/">Administrator</a><br />
 		</div>
 		<div id="content">
