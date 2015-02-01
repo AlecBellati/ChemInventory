@@ -59,16 +59,40 @@
 			$this->addRow($row);
 			$row = array("Building:", $this->chemical->getBuilding());
 			$this->addRow($row);
-			$row = array("Carcinogenic:", $this->chemical->isCarcinogenic());
-			$this->addRow($row);
-			$row = array("Chemical Weapon:", $this->chemical->isChemicalWeapon());
-			$this->addRow($row);
-			$row = array("CSC:", $this->chemical->isCSC());
-			$this->addRow($row);
-			$row = array("Ototoxic:", $this->chemical->isOtotoxic());
-			$this->addRow($row);
-			$row = array("Restricted Hazardous:", $this->chemical->isRestrictedHazardous());
-			$this->addRow($row);
+			
+			$warning = "";
+			if($this->chemical->isCarcinogenic()){
+				$warning .= "Carcinogenic";
+			}
+			if($this->chemical->isChemicalWeapon()){
+				if ($warning != ""){
+					$warning .= "<br />";
+				}
+				$warning .= "Chemical Weapon";
+			}
+			if($this->chemical->isCSC()){
+				if ($warning != ""){
+					$warning .= "<br />";
+				}
+				$warning .= "CSC";
+			}
+			if($this->chemical->isOtotoxic()){
+				if ($warning != ""){
+					$warning .= "<br />";
+				}
+				$warning .= "Ototoxic";
+			}
+			if($this->chemical->isRestrictedHazardous()){
+				if ($warning != ""){
+					$warning .= "<br />";
+				}
+				$warning .= "Restricted Hazardous";
+			}
+			
+			if($warning != ""){
+				$row = array("Warning:", $warning);
+				$this->addRow($row);
+			}
 			
 			// Return the table
 			return $this->outputTable();
