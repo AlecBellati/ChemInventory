@@ -7,7 +7,7 @@
 		private $packingGroup;
 		private $hazardous;
 		private $poisonsSchedule;
-		private $totalAmount;
+		private $amount;
 		private $unit;
 		private $room;
 		private $building;
@@ -49,7 +49,7 @@
 			if (isset($_data['PackingGroup'])) $this->packingGroup = $_data['PackingGroup'];
 			if (isset($_data['Hazardous'])) $this->hazardous = $_data['Hazardous'];
 			if (isset($_data['PoisonsSchedule'])) $this->poisonsSchedule = $_data['PoisonsSchedule'];
-			if (isset($_data['TotalAmount'])) $this->totalAmount = $_data['TotalAmount'];
+			if (isset($_data['Amount'])) $this->amount = $_data['Amount'];
 			if (isset($_data['Unit'])) $this->unit = $_data['Unit'];
 			if (isset($_data['RoomName'])) $this->room = $_data['RoomName'];
 			if (isset($_data['BuildingName'])) $this->building = $_data['BuildingName'];
@@ -95,9 +95,9 @@
 			return $this->poisonsSchedule;
 		}
 		
-		// Get the totalAmount
-		public function getTotalAmount(){
-			return $this->totalAmount;
+		// Get the amount
+		public function getAmount(){
+			return $this->amount;
 		}
 		
 		// Get the units used

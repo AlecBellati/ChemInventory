@@ -53,7 +53,7 @@
 			$this->addRow($row);
 			$row = array("Poisons Schedule:", $this->chemical->getPoisonsSchedule());
 			$this->addRow($row);
-			$row = array("Total amount:", $this->chemical->getTotalAmount().$this->chemical->getUnit());
+			$row = array("Total amount:", $this->chemical->getAmount().$this->chemical->getUnit());
 			$this->addRow($row);
 			$row = array("Room:", $this->chemical->getRoom());
 			$this->addRow($row);
