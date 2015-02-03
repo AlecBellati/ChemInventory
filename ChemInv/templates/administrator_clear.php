@@ -3,26 +3,17 @@
 	
 	require_once(FUNCTIONS_PATH."markup_funcs.php");
 	
-	if (!isset($error)){
-		$error = NO_ERROR;
-	}
-	if (!isset($result)){
-		$result = "";
-	}
-	
-	if ($error == UPLOAD_WRONG_FILETYPE){
-		echo "Wrong file type";
-	}
-	else{
-		echo $result;
-	}
+	echo "Are you sure you wish to clear the database?";
+	echo "<br />";
+	echo "Once done this action cannot be reversed.";
 	
 	echo '<br />';
 	echo '<br />';
 	
 	echo '<form method="POST">';
 	
-	echo inputButton("action","Return");
+	echo inputButton("action","Confirm");
+	echo inputButton("action","Cancel");
 	
 	echo '</form>';
 	

@@ -10,12 +10,16 @@
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
 	$_SESSION['pageTitle'] = "Chemical Database";
+	$_SESSION['error'] = NO_ERROR;
 	
 	// Handle the user action
 	$action = isset( $_GET['action'] ) ? $_GET['action'] : "";
 	switch($action){
 		case "":
 			load();
+			return;
+		case "Add Chemical Database":
+			addChemicalDatabase();
 			return;
 		case "Clear Chemical Database":
 			clearChemicalDatabase();
@@ -30,11 +34,14 @@
 		require(TEMPLATES_PATH."/administrator_chemdb.php");
 	}
 	
+	// Handle the actions for adding the chemical database in the system
+	function addChemicalDatabase(){
+		header("Location: ./add/");
+	}
+	
 	// Handle the actions for clearing the chemical database in the system
 	function clearChemicalDatabase(){
-		$_SESSION['dbi']->setupDatabase();
-		
-		load();
+		header("Location: ./clear/");
 	}
 	
 	// Handle the actions for exporting the chemical database in the system

@@ -9,7 +9,7 @@
 		$_SESSION['dbi'] = new DatabaseInterface();
 	}
 	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "Add Chemical Database";
+	$_SESSION['pageTitle'] = "Clear Chemical Database";
 	$error = NO_ERROR;
 	$result = "";
 	
@@ -19,8 +19,8 @@
 		case "":
 			load();
 			return;
-		case "Add":
-			add();
+		case "Confirm":
+			confirm();
 			return;
 		case "Cancel":
 			goback();
@@ -32,36 +32,19 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administrator_add.php");
+		require(TEMPLATES_PATH."administrator_clear.php");
 	}
 	
-	// Handle the actions for adding the spreadsheet
-	function add(){
-		set_time_limit(0);
-		$error = NO_ERROR;
-		$target_dir = "uploads/";
-		$target_file = $target_dir . basename($_FILES['spreadsheet']['name']);
-		$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
+	// Handle the actions for confirming the clear
+	function confirm(){
+		$_SESSION['dbi']->setupDatabase();
 		
-		// Check the file type
-		if($fileType != "xlsx") {
-			$error = UPLOAD_WRONG_FILETYPE;
-		}
-		
-		// Check if there is not an error
-		if ($error == NO_ERROR){
-			if (move_uploaded_file($_FILES['spreadsheet']['tmp_name'], $target_file)) {
-				$cp = new ChemicalParser($_SESSION['dbi']);
-				$cp->parseData($target_file);
-				
-				$result = "Add successful";
-			}
-		}
+		$result = "Clear successful";
 		
 		require(TEMPLATES_PATH."administrator_results.php");
 	}
 	
-	// Handle the actions for going back to the previous page
+	// Handle the actions for going back to the options page
 	function goback(){
 		header("Location: ../");
 	}
