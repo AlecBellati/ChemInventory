@@ -17,9 +17,6 @@
 		case "":
 			load();
 			return;
-		case "Add Chemical Database":
-			addChemicalDatabase();
-			return;
 		case "Clear Chemical Database":
 			clearChemicalDatabase();
 			return;
@@ -31,15 +28,6 @@
 	// Handle the actions for arriving at the page
 	function load(){
 		require(TEMPLATES_PATH."/administrator_chemdb.php");
-	}
-	
-	// Handle the actions for add a chemical database into the system
-	function addChemicalDatabase(){
-		if(isset($_GET['spreadsheet'])){
-			$cp = new ChemicalParser($_SESSION['dbi']);
-			$cp->parseData($_GET['spreadsheet']);
-		}
-		load();
 	}
 	
 	// Handle the actions for clearing the chemical database in the system

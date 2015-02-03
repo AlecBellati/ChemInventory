@@ -24,7 +24,7 @@
 	
 	// Create a file input
 	function inputFile($name){
-		return '<input type="file" name="'.$name.'" />';
+		return '<input type="file" name="'.$name.'" id="'.$name.'" />';
 	}
 	
 	// Create a text link to a url

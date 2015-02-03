@@ -16,4 +16,5 @@
 	define("STYLESHEETS_PATH", ROOT_PATH."stylesheets/");
 	define("TEMPLATES_PATH", ROOT_PATH."templates/");
 	
+	require_once(ROOT_PATH."config_error.php");
 ?>
