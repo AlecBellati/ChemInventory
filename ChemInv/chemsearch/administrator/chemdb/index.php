@@ -46,7 +46,7 @@
 	
 	// Handle the actions for exporting the chemical database in the system
 	function exportChemicalDatabase(){
-		load();
+		header("Location: ./export/");
 	}
 	
 	

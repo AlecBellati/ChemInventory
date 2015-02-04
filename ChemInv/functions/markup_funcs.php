@@ -27,6 +27,12 @@
 		return '<input type="file" name="'.$name.'" id="'.$name.'" />';
 	}
 	
+	// Create a download link
+	function downloadLink($filename, $message){
+		$_SESSION['filename'] = $filename;
+		return '<a href="'.FUNCTIONS_PATH.'download.php">'.$message.'</a>';
+	}
+	
 	// Create a text link to a url
 	function textLinkUrl($title,$url){
 		
