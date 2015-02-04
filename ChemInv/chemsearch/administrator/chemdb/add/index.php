@@ -39,8 +39,7 @@
 	function add(){
 		set_time_limit(0);
 		$error = NO_ERROR;
-		$target_dir = "uploads/";
-		$target_file = $target_dir . basename($_FILES['spreadsheet']['name']);
+		$target_file = TMP_PATH . basename($_FILES['spreadsheet']['name']);
 		$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		
 		// Check the file type

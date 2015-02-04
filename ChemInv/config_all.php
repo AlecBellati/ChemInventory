@@ -15,6 +15,7 @@
 	define("SCHEMA_PATH", ROOT_PATH."schema/");
 	define("STYLESHEETS_PATH", ROOT_PATH."stylesheets/");
 	define("TEMPLATES_PATH", ROOT_PATH."templates/");
+	define("TMP_PATH", ROOT_PATH."tmp/");
 	
 	require_once(ROOT_PATH."config_error.php");
 ?>

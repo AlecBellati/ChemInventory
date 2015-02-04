@@ -8,7 +8,7 @@
 	echo 'Only the following format is accepted: ".xlsx"';
 	echo '<br />';
 	echo '<br />';
-	echo 'Note: Adding the information may take a few minutes, please do not stop or refresh the page.';
+	echo 'Note: This may take a few minutes, please do not stop or refresh the page.';
 	
 	echo '<br />';
 	echo '<br />';
