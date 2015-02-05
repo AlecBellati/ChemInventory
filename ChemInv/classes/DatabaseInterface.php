@@ -50,6 +50,12 @@
 			$this->createTables();
 		}
 		
+		// Delete just the records in the chemicals table
+		public function deleteChemicals(){
+			$query = "DELETE FROM chemical";
+			$this->query($query);
+		}
+		
 		// Create the tables in the database
 		private function createTables(){
 			createTableCampus($this->conn);

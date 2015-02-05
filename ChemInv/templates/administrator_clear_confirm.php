@@ -3,15 +3,16 @@
 	
 	require_once(FUNCTIONS_PATH."markup_funcs.php");
 	
-	echo "Do you wish the clear the entire database or just the chemicals?";
+	echo "Are you sure you wish to clear the database?";
+	echo "<br />";
+	echo "Once done this action cannot be reversed.";
 	
 	echo '<br />';
 	echo '<br />';
 	
 	echo '<form method="POST">';
 	
-	echo inputButton("action","All");
-	echo inputButton("action","Chemicals");
+	echo inputButton("action","Confirm");
 	echo inputButton("action","Cancel");
 	
 	echo '</form>';
