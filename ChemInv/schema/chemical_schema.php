@@ -2,7 +2,7 @@
 	function createTableChemical($conn){
 		$create = "create table Chemical(";
 		$create .= "ID int NOT NULL AUTO_INCREMENT,";
-		$create .= "ChemicalName char(40) NOT NULL,";
+		$create .= "ChemicalName char(100) NOT NULL,";
 		$create .= "SupplierID	int,";
 		$create .= "PrimaryDGC char(5),";
 		$create .= "PackingGroup char(7) check(PackingGroup = 'I' OR PackingGroup = 'II' OR PackingGroup = 'III' OR PackingGroup = 'unknown'),";

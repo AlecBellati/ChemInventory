@@ -278,9 +278,15 @@
 		 * @return The packing group
 		 */
 		private function parsePackingGroup($_worksheet, $_rowIndex){
-			$cell = $_worksheet->getCell(PRIMARYDGC_COL . $_rowIndex);
+			$cell = $_worksheet->getCell(PACKINGGROUP_COL . $_rowIndex);
 			$packingGroup = trim($cell->getValue());
-			if ($packingGroup != "I" && $packingGroup != "II" && $packingGroup != "III"){
+			if ($packingGroup == "I" || $packingGroup == "l"){
+				return "I";
+			} else if ($packingGroup == "II" || $packingGroup == "ll"){
+				return "II";
+			} else if ($packingGroup == "III" || $packingGroup == "lll"){
+				return "III";
+			} else {
 				return "unknown";
 			}
 			return $packingGroup;
