@@ -1,29 +1,49 @@
 #header{
-	background: Chartreuse;
+	background: SteelBlue;
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
 	font-size: 20pt;
 	text-align: center;
 }
 
 #navigation{
-	background: DodgerBlue;
+	background: Crimson;
 	width: 15%;
-	min-height: 800px;
+	min-height: 850px;
 	margin-left: 20%;
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-bottom: 10px;
 	float: left;
 	
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
 	font-size: 15pt;
 	text-align: left;
+}
+
+#navigation a:link {
+    text-decoration: none;
+	color: black;
+}
+
+#navigation a:visited {
+    text-decoration: none;
+	color: black;
+}
+
+#navigation a:hover {
+    text-decoration: underline;
+	color: black;
+}
+
+#navigation a:active {
+    text-decoration: underline;
+	color: black;
 }
 
 #content{
@@ -33,7 +53,37 @@
 	padding-top: 20px;
 	padding-left: 20px;
 	
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
 	font-size: 15pt;
 	text-align: center;
+}
+
+#content a:link {
+    text-decoration: none;
+	color: black;
+}
+
+#content a:visited {
+    text-decoration: none;
+	color: black;
+}
+
+#content a:hover {
+    text-decoration: underline;
+	color: black;
+}
+
+#content a:active {
+    text-decoration: underline;
+	color: black;
+}
+
+table {
+	font-size: 77%;
+	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+}
+
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid black;
 }

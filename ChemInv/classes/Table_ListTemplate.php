@@ -84,6 +84,26 @@
 			return false;
 		}
 		
+		// Add another row to the table
+		// Overwrites the parent method
+		public function addRow($_row){
+			$style = "";
+			
+			if ($this->rowsNum == 0){
+				$style .= ' style="font-weight: bold; background-color: Moccasin;"';
+			} else if ($this->rowsNum % 2 == 0){
+				$style .= ' style="background-color: LemonChiffon;"';
+			}
+			
+			$this->rows .= '<tr'.$style.'>';
+			foreach($_row as $col){
+				$this->rows .= '<td>'.$col.'</td>';
+			}
+			$this->rows .= '</tr>';
+			
+			$this->rowsNum++;
+		}
+		
 		// Get the query select condition
 		// Implemented by child
 		protected function getQuerySelect(){

@@ -97,5 +97,22 @@
 			// Return the table
 			return $this->outputTable();
 		}
+		
+		// Add another row to the table
+		// Overwrites parent method
+		public function addRow($_row){
+			$color = "White";
+			
+			if ($this->rowsNum % 2 == 0){
+				$color = "Moccasin";
+			}
+			
+			$this->rows .= '<tr>';
+			$this->rows .= '<td style="font-weight: bold; background-color: '.$color.'">'.$_row[0].'</td>';
+			$this->rows .= '<td style="background-color: '.$color.'">'.$_row[1].'</td>';
+			$this->rows .= '</tr>';
+			
+			$this->rowsNum++;
+		}
 	}
 ?>

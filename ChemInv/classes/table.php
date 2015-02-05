@@ -10,7 +10,12 @@
 		
 		// Add another row to the table
 		public function addRow($_row){
-			$this->rows[$this->rowsNum] = $_row;
+			$this->rows .= '<tr>';
+			foreach($_row as $col){
+				$this->rows .= '<td>'.$col.'</td>';
+			}
+			$this->rows .= '</tr>';
+			
 			$this->rowsNum++;
 		}
 		
@@ -21,16 +26,8 @@
 		
 		// Output the html markup of the table
 		public function outputTable(){
-			$table = '<table border="1">';
-			
-			foreach($this->rows as $row){
-				$table .= '<tr>';
-				foreach($row as $col){
-					$table .= '<td>'.$col.'</td>';
-				}
-				$table .= '</tr>';
-			}
-			
+			$table = '<table>';
+			$table .= $this->rows;
 			$table .= '</table>';
 			
 			return $table;
@@ -38,7 +35,7 @@
 		
 		// Set up the table
 		protected function rowSetup(){
-			$this->rows = array();
+			$this->rows = "";
 			$this->rowsNum = 0;
 		}
 	}
