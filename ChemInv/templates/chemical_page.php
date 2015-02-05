@@ -11,8 +11,7 @@
 	
 	// Set the page title
 	$chemical = $chemicalTable->getChemical();
-	$_SESSION['pageTitle'] = $chemical->getChemicalName();
-	
+	$_SESSION['pageTitle'] = htmlspecialchars_decode($chemical->getChemicalName(),ENT_QUOTES);
 	
 	// Create the page header
 	// Note: this is lower in the template so the page title can be properly titled

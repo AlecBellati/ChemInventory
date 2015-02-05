@@ -37,8 +37,12 @@
 			return;
 		}
 		
+		// Encode the searches to use html special chars
+		$chemicalName = htmlspecialchars_decode($_POST['chemicalName'],ENT_QUOTES);
+		$roomName = htmlspecialchars_decode($_POST['roomName'],ENT_QUOTES);
+		
 		// Head to the results page
-		header("Location: ./chemicals/?chemicalName=".$_POST['chemicalName']."&roomName=".$_POST['roomName']);
+		header("Location: ./chemicals/?chemicalName=".$chemicalName."&roomName=".$roomName);
 	}
 	
 ?>
