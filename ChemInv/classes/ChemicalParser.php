@@ -258,6 +258,7 @@
 		private function parseSupplier($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(SUPPLIER_COL . $_rowIndex);
 			$supplier = trim($cell->getValue());
+			$supplier = htmlspecialchars($supplier,ENT_QUOTES);
 			return $supplier;
 		}
 		
@@ -269,6 +270,7 @@
 		private function parsePrimaryDGC($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(PRIMARYDGC_COL . $_rowIndex);
 			$primaryDGC = trim($cell->getValue());
+			$primaryDGC = htmlspecialchars($primaryDGC,ENT_QUOTES);
 			return $primaryDGC;
 		}
 		
@@ -314,6 +316,7 @@
 		private function parsePoisonsSchedule($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(POISONSSCHEDULE_COL . $_rowIndex);
 			$poisonsSchedule = trim($cell->getValue());
+			$poisonsSchedule = htmlspecialchars($poisonsSchedule,ENT_QUOTES);
 			return $poisonsSchedule;
 		}
 		
@@ -325,6 +328,7 @@
 		private function parseAmount($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(AMOUNT_COL . $_rowIndex);
 			$amount = trim($cell->getValue());
+			$amount = htmlspecialchars($amount,ENT_QUOTES);
 			return $amount;
 		}
 		
@@ -336,6 +340,7 @@
 		private function parseUnit($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(UNIT_COL . $_rowIndex);
 			$unit = trim($cell->getValue());
+			$unit = htmlspecialchars($unit,ENT_QUOTES);
 			return $unit;
 		}
 		
@@ -347,6 +352,7 @@
 		private function parseBuilding($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(BUILDING_COL . $_rowIndex);
 			$building = trim($cell->getValue());
+			$building = htmlspecialchars($building,ENT_QUOTES);
 			return $building;
 		}
 		
@@ -358,6 +364,7 @@
 		private function parseLevel($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(LEVEL_COL . $_rowIndex);
 			$level = trim($cell->getValue());
+			$level = htmlspecialchars($level,ENT_QUOTES);
 			return $level;
 		}
 		
@@ -369,6 +376,7 @@
 		private function parseRoom($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(ROOM_COL . $_rowIndex);
 			$room = trim($cell->getValue());
+			$room = htmlspecialchars($room,ENT_QUOTES);
 			return $room;
 		}
 		
@@ -380,6 +388,7 @@
 		private function parseCampus($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(CAMPUS_COL . $_rowIndex);
 			$campus = trim($cell->getValue());
+			$campus = htmlspecialchars($campus,ENT_QUOTES);
 			return $campus;
 		}
 		

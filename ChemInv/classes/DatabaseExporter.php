@@ -112,23 +112,40 @@
 					while ($row = mysql_fetch_array($result, MYSQL_ASSOC)){
 						$rowNum++;
 						$worksheet = $this->excelObj->getActiveSheet();
-						$worksheet->setCellValue(CHEMICAL_COL.$rowNum, $row['ChemicalName']);
-						$worksheet->setCellValue(SUPPLIER_COL.$rowNum, $row['SupplierName']);
-						$worksheet->setCellValue(PRIMARYDGC_COL.$rowNum, $row['PrimaryDGC']);
-						$worksheet->setCellValue(PACKINGGROUP_COL.$rowNum, $row['PackingGroup']);
-						$worksheet->setCellValue(HAZARDOUS_COL.$rowNum, $row['Hazardous']);
-						$worksheet->setCellValue(POISONSSCHEDULE_COL.$rowNum, $row['PoisonsSchedule']);
-						$worksheet->setCellValue(AMOUNT_COL.$rowNum, $row['Amount']);
-						$worksheet->setCellValue(UNIT_COL.$rowNum, $row['Unit']);
-						$worksheet->setCellValue(BUILDING_COL.$rowNum, $row['BuildingName']);
-						$worksheet->setCellValue(LEVEL_COL.$rowNum, $row['Level']);
-						$worksheet->setCellValue(ROOM_COL.$rowNum, $row['RoomName']);
-						$worksheet->setCellValue(CAMPUS_COL.$rowNum, $row['CampusName']);
-						$worksheet->setCellValue(CARCINOGEN_COL.$rowNum, $row['Carcinogen']);
-						$worksheet->setCellValue(CHEMICALWEAPON_COL.$rowNum, $row['ChemicalWeapon']);
-						$worksheet->setCellValue(CSC_COL.$rowNum, $row['CSC']);
-						$worksheet->setCellValue(OTOTOXIC_COL.$rowNum, $row['Ototoxic']);
-						$worksheet->setCellValue(RESTRICTEDHAZARDOUS_COL.$rowNum, $row['RestrictedHazardous']);
+						$value = htmlspecialchars_decode($row['ChemicalName'],ENT_QUOTES);
+						$worksheet->setCellValue(CHEMICAL_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['SupplierName'],ENT_QUOTES);
+						$worksheet->setCellValue(SUPPLIER_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['PrimaryDGC'],ENT_QUOTES);
+						$worksheet->setCellValue(PRIMARYDGC_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['PackingGroup'],ENT_QUOTES);
+						$worksheet->setCellValue(PACKINGGROUP_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['Hazardous'],ENT_QUOTES);
+						$worksheet->setCellValue(HAZARDOUS_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['PoisonsSchedule'],ENT_QUOTES);
+						$worksheet->setCellValue(POISONSSCHEDULE_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['Amount'],ENT_QUOTES);
+						$worksheet->setCellValue(AMOUNT_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['Unit'],ENT_QUOTES);
+						$worksheet->setCellValue(UNIT_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['BuildingName'],ENT_QUOTES);
+						$worksheet->setCellValue(BUILDING_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['Level'],ENT_QUOTES);
+						$worksheet->setCellValue(LEVEL_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['RoomName'],ENT_QUOTES);
+						$worksheet->setCellValue(ROOM_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['CampusName'],ENT_QUOTES);
+						$worksheet->setCellValue(CAMPUS_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['Carcinogen'],ENT_QUOTES);
+						$worksheet->setCellValue(CARCINOGEN_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['ChemicalWeapon'],ENT_QUOTES);
+						$worksheet->setCellValue(CHEMICALWEAPON_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['CSC'],ENT_QUOTES);
+						$worksheet->setCellValue(CSC_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['Ototoxic'],ENT_QUOTES);
+						$worksheet->setCellValue(OTOTOXIC_COL.$rowNum, $value);
+						$value = htmlspecialchars_decode($row['RestrictedHazardous'],ENT_QUOTES);
+						$worksheet->setCellValue(RESTRICTEDHAZARDOUS_COL.$rowNum, $value);
 						
 					}
 				}
