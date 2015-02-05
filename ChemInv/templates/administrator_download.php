@@ -5,10 +5,10 @@
 	
 	$filename = isset( $_SESSION['db_filename'] ) ? $_SESSION['db_filename'] : "";
 	if ($filename == "Chemical_Database.xlsx"){
-		echo downloadLink(TMP_PATH.$filename, "Download");
+		echo downloadLink($filename, "Download");
 	}
 	else if ($filename == "Chemical_Database_Template.xlsx"){
-		echo downloadLink(TMP_PATH.$filename, "Download");
+		echo downloadLink($filename, "Download");
 	}
 	else{
 		echo "Sorry, something unexpected occurred. Please try again.";

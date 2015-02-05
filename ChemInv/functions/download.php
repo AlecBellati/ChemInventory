@@ -1,7 +1,10 @@
 <?php
+	define("ROOT_PATH", "../");
+	require_once(ROOT_PATH."config_all.php");
+	
 	session_start();
 	
-	$filename = $_SESSION['filename'];
+	$filename = TMP_PATH.$_SESSION['filename'];
 	
 	header('Pragma: public');
 	header('Expires: 0');
