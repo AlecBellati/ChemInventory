@@ -14,7 +14,7 @@
 #navigation{
 	background: Crimson;
 	width: 15%;
-	min-height: 850px;
+	min-height: 700px;
 	margin-left: 20%;
 	padding-top: 10px;
 	padding-left: 10px;
@@ -86,4 +86,16 @@ table {
 table, th, td {
 	border-collapse: collapse;
 	border: 1px solid black;
+}
+
+#footer{
+	width: 45%;
+	margin-left: 35%;
+	margin-right: 20%;
+	padding-top: 20px;
+	padding-left: 20px;
+	
+	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+	font-size: 10pt;
+	text-align: center;
 }
