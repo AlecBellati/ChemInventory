@@ -1,9 +1,10 @@
 <?php
 	include TEMPLATES_PATH."include/header.php";
 	
-	echo '<a href="./?action=searchChemical">Search Chemicals</a>';
+	echo 'Welcome to ChemSearch!';
 	echo '<br />';
-	echo '<a href="./?action=updateChemicalDatabase">Update Chemical Database</a>';
+	echo '<br />';
+	echo 'Please use one of the links in the sidebar to find any chemical that exists within The University of Adelaide.';
 	
 	include TEMPLATES_PATH."include/footer.php";
 ?>
