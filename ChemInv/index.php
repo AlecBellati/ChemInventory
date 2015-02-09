@@ -17,31 +17,11 @@
 		case "":
 			homepage();
 			return;
-		case "updateChemicalDatabase":
-			updateChemicalDatabase();
-			return;
-		case "searchChemical":
-			searchChemical();
-			return;
 	}
 	
 	// Handle the actions for going to the homepage
 	function homepage(){
 		require(TEMPLATES_PATH."/homepage.php");
-	}
-	
-	// Handle the actions for updating the chemical database on the homepage
-	function updateChemicalDatabase(){
-		$_SESSION['dbi']->setupDatabase();
-		$cp = new ChemicalParser($_SESSION['dbi']);
-		$cp->parseData("data/ChemicalDatabase.xlsx");
-		
-		require(TEMPLATES_PATH."/homepage.php");
-	}
-	
-	// Handle the actions for going to the search chemicals page
-	function searchChemical(){
-		header("Location: ./chemsearch/");
 	}
 	
 ?>

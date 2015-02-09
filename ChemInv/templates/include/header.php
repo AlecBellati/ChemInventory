@@ -8,6 +8,8 @@
 	<body>
 		<div id="header"><?php echo htmlspecialchars($_SESSION['pageTitle'])?></div>
 		<div id="navigation">
+			<a href="<?php echo ROOT_PATH;?>">Home</a><br />
+			<br />
 			<a href="<?php echo ROOT_PATH;?>chemsearch/">Search</a><br />
 			<br />
 			<a href="<?php echo ROOT_PATH;?>chemsearch/chemicals/">Chemicals</a><br />
