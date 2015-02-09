@@ -9,13 +9,13 @@
 	define("DB_NAME","inventory");
 	define('DEFAULT_TABLE_SIZE',25);
 	
-	define("CLASSES_PATH", ROOT_PATH."classes/");
-	define("FUNCTIONS_PATH", ROOT_PATH."functions/");
-	define("LIB_PATH", ROOT_PATH."lib/");
-	define("SCHEMA_PATH", ROOT_PATH."schema/");
-	define("STYLESHEETS_PATH", ROOT_PATH."stylesheets/");
-	define("TEMPLATES_PATH", ROOT_PATH."templates/");
-	define("TMP_PATH", ROOT_PATH."tmp/");
+	define("CLASSES_PATH", ROOT_PATH."_classes/");
+	define("FUNCTIONS_PATH", ROOT_PATH."_functions/");
+	define("LIB_PATH", ROOT_PATH."_lib/");
+	define("SCHEMA_PATH", ROOT_PATH."_schema/");
+	define("STYLESHEETS_PATH", ROOT_PATH."_stylesheets/");
+	define("TEMPLATES_PATH", ROOT_PATH."_templates/");
+	define("TMP_PATH", ROOT_PATH."_tmp/");
 	
 	require_once(ROOT_PATH."config_error.php");
 ?>

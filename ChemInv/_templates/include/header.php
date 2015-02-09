@@ -19,6 +19,6 @@
 			<a href="<?php echo ROOT_PATH;?>chemsearch/rooms/">Rooms</a><br />
 			<br />
 			<br />
-			<a href="<?php echo ROOT_PATH;?>chemsearch/administrator/">Administrator</a><br />
+			<a href="<?php echo ROOT_PATH;?>administrator/">Administrator</a><br />
 		</div>
 		<div id="content">
