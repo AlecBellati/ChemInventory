@@ -1,24 +1,8 @@
 <?php
 	require("config.php");
-	require_once CLASSES_PATH."DatabaseInterface.php";
-	require_once CLASSES_PATH."ChemicalParser.php";
-	
-	// Start the session and database connection
-	session_start();
-	if (!isset($_SESSION['dbi'])){
-		$_SESSION['dbi'] = new DatabaseInterface();
-	}
-	$_SESSION['dbi']->connect(DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, true);
-	$_SESSION['pageTitle'] = "Clear Chemical Database";
-	$error = NO_ERROR;
-	$result = "";
 	
 	// Handle the user action
-	$action = isset( $_POST['action'] ) ? $_POST['action'] : "";
 	switch($action){
-		case "":
-			load();
-			return;
 		case "Confirm":
 			confirm();
 			return;
@@ -27,6 +11,9 @@
 			return;
 		case "Return":
 			goback();
+			return;
+		default:
+			load();
 			return;
 	}
 	

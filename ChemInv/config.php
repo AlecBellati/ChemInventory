@@ -1,5 +1,22 @@
 <?php
-	define("ROOT_PATH", "./");
+	if(!defined("ROOT_PATH")){
+		define("ROOT_PATH", "./");
+		$home = true;
+	}
+	else{
+		$home = false;
+	}
 	
-	require_once(ROOT_PATH."config_all.php");
+	define("CONFIG_PATH", ROOT_PATH."_config/");
+	
+	require_once(CONFIG_PATH."config_paths.php");
+	require_once(CONFIG_PATH."config_setup.php");
+	require_once(CONFIG_PATH."config_database.php");
+	require_once(CONFIG_PATH."config_error.php");
+	
+	if($home){
+		require_once(CLASSES_PATH."/ChemicalParser.php");
+		
+		$_SESSION['pageTitle'] = "Home";
+	}
 ?>
