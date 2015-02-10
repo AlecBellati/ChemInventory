@@ -1,6 +1,11 @@
 <?php
 	require("config.php");
 	
+	// Check if an admin is logged in
+	if(!loggedIn()){
+		gotoLogin();
+	}
+	
 	// Handle the user action
 	switch($action){
 		case "All":

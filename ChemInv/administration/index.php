@@ -2,6 +2,11 @@
 	require("config.php");
 	require_once CLASSES_PATH."DatabaseInterface.php";
 	
+	// Check if an admin is logged in
+	if(!loggedIn()){
+		gotoLogin();
+	}
+	
 	// Handle the user action
 	switch($action){
 		case "updateChemicalDatabase":

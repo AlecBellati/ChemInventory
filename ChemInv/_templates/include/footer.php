@@ -11,7 +11,7 @@
 			&copy 2015, School of Chemical Engineering, The University of Adelaide
 			<br />
 			<?php
-				if (isset($_SESSION['username']) && $_SESSION['username'] != ""){
+				if (loggedIn()){
 					echo '<a href="'.ROOT_PATH.'administration/signout/">Sign out</a><br />';
 				}
 				else{

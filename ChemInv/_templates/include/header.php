@@ -20,7 +20,7 @@
 			<br />
 			<br />
 			<?php
-				if (isset($_SESSION['username']) && $_SESSION['username'] != ""){
+				if (loggedIn()){
 					echo '<a href="'.ROOT_PATH.'administration/">Administration</a><br />';
 				}
 			?>
