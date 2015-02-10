@@ -12,7 +12,7 @@
 }
 
 #navigation{
-	background: Crimson;
+	background: #E64848;
 	width: 15%;
 	min-height: 700px;
 	margin-left: 20%;
@@ -59,12 +59,12 @@
 }
 
 #content a:link {
-    text-decoration: none;
+    text-decoration: underline;
 	color: black;
 }
 
 #content a:visited {
-    text-decoration: none;
+    text-decoration: underline;
 	color: black;
 }
 
