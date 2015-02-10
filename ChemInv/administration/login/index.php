@@ -25,7 +25,7 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administrator_login.php");
+		require(TEMPLATES_PATH."administration_login.php");
 	}
 	
 	// Handle the actions for logging in
@@ -49,6 +49,6 @@
 			$error = INVALID_USERNAME;
 		}
 		
-		require(TEMPLATES_PATH."administrator_login.php");
+		require(TEMPLATES_PATH."administration_login.php");
 	}
 ?>

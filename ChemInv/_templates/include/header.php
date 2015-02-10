@@ -19,6 +19,10 @@
 			<a href="<?php echo ROOT_PATH;?>chemsearch/rooms/">Rooms</a><br />
 			<br />
 			<br />
-			<a href="<?php echo ROOT_PATH;?>administrator/">Administrator</a><br />
+			<?php
+				if (isset($_SESSION['username']) && $_SESSION['username'] != ""){
+					echo '<a href="'.ROOT_PATH.'administration/">Administration</a><br />';
+				}
+			?>
 		</div>
 		<div id="content">

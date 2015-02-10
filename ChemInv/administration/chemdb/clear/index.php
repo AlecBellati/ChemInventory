@@ -19,34 +19,35 @@
 		case "":
 			load();
 			return;
-		case "Confirm":
-			confirm();
+		case "All":
+			all();
+			return;
+		case "Chemicals":
+			chemicals();
 			return;
 		case "Cancel":
-			goback();
-			return;
-		case "Return":
 			goback();
 			return;
 	}
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administrator_clear_confirm.php");
+		require(TEMPLATES_PATH."administration_clear.php");
 	}
 	
-	// Handle the actions for confirming the clear
-	function confirm(){
-		$_SESSION['dbi']->deleteChemicals();
-		
-		$result = "Clear successful";
-		
-		require(TEMPLATES_PATH."administrator_results.php");
+	// Handle the actions for requesting to clear all
+	function all(){
+		header("Location: ./all/");
+	}
+	
+	// Handle the actions for requesting to clear chemicals
+	function chemicals(){
+		header("Location: ./chemicals/");
 	}
 	
 	// Handle the actions for going back to the options page
 	function goback(){
-		header("Location: ../../");
+		header("Location: ../");
 	}
 	
 ?>

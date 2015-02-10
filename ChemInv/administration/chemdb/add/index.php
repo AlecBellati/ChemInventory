@@ -32,7 +32,7 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administrator_add.php");
+		require(TEMPLATES_PATH."administration_add.php");
 	}
 	
 	// Handle the actions for adding the spreadsheet
@@ -57,7 +57,7 @@
 			}
 		}
 		
-		require(TEMPLATES_PATH."administrator_results.php");
+		require(TEMPLATES_PATH."administration_results.php");
 	}
 	
 	// Handle the actions for going back to the previous page

@@ -35,7 +35,7 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administrator_export.php");
+		require(TEMPLATES_PATH."administration_export.php");
 	}
 	
 	// Handle the actions for selecting data
@@ -46,7 +46,7 @@
 		$exporter->createDatabase();
 		
 		$_SESSION['db_filename'] = "Chemical_Database.xlsx";
-		require(TEMPLATES_PATH."administrator_download.php");
+		require(TEMPLATES_PATH."administration_download.php");
 	}
 	
 	// Handle the actions for selecting template
@@ -57,7 +57,7 @@
 		$exporter->createTemplate();
 		
 		$_SESSION['db_filename'] = "Chemical_Database_Template.xlsx";
-		require(TEMPLATES_PATH."administrator_download.php");
+		require(TEMPLATES_PATH."administration_download.php");
 	}
 	
 	// Handle the actions for going back to the options page

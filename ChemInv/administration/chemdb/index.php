@@ -31,7 +31,7 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."/administrator_chemdb.php");
+		require(TEMPLATES_PATH."/administration_chemdb.php");
 	}
 	
 	// Handle the actions for adding the chemical database in the system

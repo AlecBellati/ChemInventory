@@ -32,16 +32,16 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administrator_clear_confirm.php");
+		require(TEMPLATES_PATH."administration_clear_confirm.php");
 	}
 	
 	// Handle the actions for confirming the clear
 	function confirm(){
-		$_SESSION['dbi']->setupDatabase();
+		$_SESSION['dbi']->deleteChemicals();
 		
 		$result = "Clear successful";
 		
-		require(TEMPLATES_PATH."administrator_results.php");
+		require(TEMPLATES_PATH."administration_results.php");
 	}
 	
 	// Handle the actions for going back to the options page

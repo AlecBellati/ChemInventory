@@ -10,7 +10,14 @@
 			<br />
 			&copy 2015, School of Chemical Engineering, The University of Adelaide
 			<br />
-			<a href="<?php echo ROOT_PATH;?>chemsearch/">Administrator</a><br />
+			<?php
+				if (isset($_SESSION['username']) && $_SESSION['username'] != ""){
+					echo '<a href="'.ROOT_PATH.'administration/signout/">Sign out</a><br />';
+				}
+				else{
+					echo '<a href="'.ROOT_PATH.'administration/login/">Log in</a><br />';
+				}
+			?>
 		</div>
 	</body>
 </html>
