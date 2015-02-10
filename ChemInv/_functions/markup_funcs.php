@@ -12,6 +12,17 @@
 		return $input;
 	}
 	
+	// Create a password text box
+	function inputPassword($label,$name,$size,$initial){
+		if($initial != ''){
+			$input = '<label>'.$label.' <input type="password" name='.$name.' size='.$size.' value='.$initial.' /></label>';
+		}
+		else{
+			$input = '<label>'.$label.' <input type="password" name='.$name.' size='.$size.' /></label>';
+		}
+		return $input;
+	}
+	
 	// Create a button
 	function inputButton($name,$value){
 		return '<input type="submit" name="'.$name.'" value="'.$value.'" />';
