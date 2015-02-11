@@ -4,14 +4,13 @@
 	require_once FUNCTIONS_PATH."markup_funcs.php";
 	
 	$table = $_SESSION['table'];
+	echo '<form method="GET">';
 	
 	// Print the table
 	echo $table->getTable();
 	
 	// Form to scroll the table
 	echo '<br />';
-	
-	echo '<form method="GET">';
 	
 	if (isset($_GET['campusId'])){
 		echo inputHidden('campusId', $_GET['campusId']);

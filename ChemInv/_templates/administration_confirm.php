@@ -3,8 +3,11 @@
 	
 	require_once(FUNCTIONS_PATH."markup_funcs.php");
 	
-	echo "Are you sure you wish to clear the database?";
-	echo "<br />";
+	if ($result != ""){
+		echo $result;
+		echo "<br />";
+	}
+	
 	echo "Once done this action cannot be reversed.";
 	
 	echo '<br />';

@@ -24,7 +24,9 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administration_clear_confirm.php");
+		$result = "Are you sure you wish to clear the database?";
+		
+		require(TEMPLATES_PATH."administration_confirm.php");
 	}
 	
 	// Handle the actions for confirming the clear

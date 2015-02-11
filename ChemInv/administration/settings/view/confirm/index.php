@@ -8,9 +8,6 @@
 	
 	// Handle the user action
 	switch($action){
-		case "":
-			load();
-			return;
 		case "Confirm":
 			confirm();
 			return;
@@ -20,27 +17,43 @@
 		case "Return":
 			goback();
 			return;
+		default:
+			load();
+			return;
 	}
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		$result = "Are you sure you wish to clear the database?";
+		// Check whether a campus ID is given
+		if ( !isset($_SESSION['delete']) || !$_SESSION['delete'] ) {
+			goback();
+			return;
+		}
+		
+		$username = $_SESSION['delete'];
+		$result = "Are you sure you wish to delete ".$username."?";
 		
 		require(TEMPLATES_PATH."administration_confirm.php");
 	}
 	
 	// Handle the actions for confirming the clear
 	function confirm(){
-		$_SESSION['dbi']->deleteChemicals();
+		$username = $_SESSION['delete'];
+		$query = "DELETE FROM administrator WHERE UserName='".$username."'";
+		$_SESSION['dbi']->query($query);
 		
-		$result = "Clear successful";
+		if ($_SESSION['username'] == $username){
+			$_SESSION['username'] = "";
+		}
+		
+		$result = "Delete successful";
 		
 		require(TEMPLATES_PATH."administration_results.php");
 	}
 	
 	// Handle the actions for going back to the options page
 	function goback(){
-		header("Location: ../../");
+		header("Location: ../");
 	}
 	
 ?>
