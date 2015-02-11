@@ -46,18 +46,37 @@
 		echo '<br />';
 	}
 	
+	// Get the previously entered fields if applicable
+	if (isset($_POST['username'])){
+		$username = $_POST['username'];
+	}
+	else{
+		$username = "";
+	}
+	if (isset($_POST['firstname'])){
+		$firstname = $_POST['firstname'];
+	}
+	else{
+		$firstname = "";
+	}
+	if (isset($_POST['lastname'])){
+		$lastname = $_POST['lastname'];
+	}
+	else{
+		$lastname = "";
+	}
 	
-	// Form to search for a chemical
+	// Form to add an administrator
 	echo '<form method="POST"';
 	
-	echo inputText('Username','username','20','');
+	echo inputText('Username','username','20',$username);
 	echo '<br />';
 	echo '<div id="note">Username must be between 8-20 characters and contain only alphanumeric characters.</div>';
 	echo '<br />';
-	echo inputText('First Name:','firstname','20','');
+	echo inputText('First Name:','firstname','20',$firstname);
 	echo '<br />';
 	echo '<br />';
-	echo inputText('Last Name:','lastname','20','');
+	echo inputText('Last Name:','lastname','20',$lastname);
 	echo '<br />';
 	echo '<br />';
 	echo inputPassword('Password:','password','20','');

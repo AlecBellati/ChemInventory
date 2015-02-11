@@ -13,7 +13,8 @@
 	define("PASSWORD_MISSING", 11);
 	define("PASSWORD_NOMATCH", 12);
 	define("PASSWORD_WRONGSIZE", 13);
-	define("PASSWORD_WRONGCHAR", 15);
+	define("PASSWORD_WRONGCHAR", 14);
+	define("WRONG_PASSWORD", 15);
 	
 	$error = NO_ERROR;
 ?>

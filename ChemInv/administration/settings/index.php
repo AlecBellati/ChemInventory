@@ -38,7 +38,7 @@
 	}
 	// Handle the actions for going to the change page
 	function change(){
-		require(TEMPLATES_PATH."/administration_settings.php");
+		header("Location: ./change/");
 	}
 	
 ?>
