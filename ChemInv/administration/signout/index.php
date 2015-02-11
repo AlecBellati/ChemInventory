@@ -28,6 +28,6 @@
 	
 	// Handle the actions for going back to the home page
 	function goback(){
-		header("Location: ".ROOT_PATH."/");
+		header("Location: ".ROOT_PATH);
 	}
 ?>
