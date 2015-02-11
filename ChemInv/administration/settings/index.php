@@ -29,7 +29,7 @@
 	
 	// Handle the actions for going to the add page
 	function add(){
-		require(TEMPLATES_PATH."/administration_settings.php");
+		header("Location: ./add/");
 	}
 	
 	// Handle the actions for going to the view page

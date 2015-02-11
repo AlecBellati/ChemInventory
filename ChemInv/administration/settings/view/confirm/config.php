@@ -3,5 +3,5 @@
 	
 	require_once(ROOT_PATH."config.php");
 	
-	$_SESSION['pageTitle'] = "View Administrators";
+	$_SESSION['pageTitle'] = "Delete";
 ?>

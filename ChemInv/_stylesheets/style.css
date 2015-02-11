@@ -78,6 +78,12 @@
 	color: black;
 }
 
+#note{
+	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+	font-size: 10pt;
+	text-align: center;
+}
+
 table {
 	font-size: 77%;
 	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
