@@ -10,13 +10,13 @@
 		<div id="navigation">
 			<a href="<?php echo ROOT_PATH;?>">Home</a><br />
 			<br />
-			<a href="<?php echo ROOT_PATH;?>chemsearch/">Search</a><br />
+			<a href="<?php echo ROOT_PATH;?>search/">Search</a><br />
 			<br />
-			<a href="<?php echo ROOT_PATH;?>chemsearch/chemicals/">Chemicals</a><br />
+			<a href="<?php echo ROOT_PATH;?>search/chemicals/">Chemicals</a><br />
 			<br />
-			<a href="<?php echo ROOT_PATH;?>chemsearch/campus/">Campus</a><br />
-			<a href="<?php echo ROOT_PATH;?>chemsearch/buildings/">Buildings</a><br />
-			<a href="<?php echo ROOT_PATH;?>chemsearch/rooms/">Rooms</a><br />
+			<a href="<?php echo ROOT_PATH;?>search/campus/">Campus</a><br />
+			<a href="<?php echo ROOT_PATH;?>search/buildings/">Buildings</a><br />
+			<a href="<?php echo ROOT_PATH;?>search/rooms/">Rooms</a><br />
 			<br />
 			<br />
 			<?php
