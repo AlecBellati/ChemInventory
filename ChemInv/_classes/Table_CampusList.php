@@ -8,6 +8,7 @@
 		function __construct($_dbi, $_tableSize){
 			$this->setup($_dbi, $_tableSize);
 			$this->setCampusSearch("");
+			$this->tableType = "campuses";
 		}
 		
 		// Add the table header

@@ -5,10 +5,12 @@
 		protected $dbi;
 		protected $tablePage;
 		protected $tableSize;
+		protected $tableType;
 		
 		// Constructor
 		function __construct($_dbi, $_tableSize){
 			$this->setup($_dbi, $_tableSize);
+			$this->tableType = "";
 		}
 		
 		// Setup the table
@@ -66,7 +68,13 @@
 				}
 			}
 			
-			return $this->outputTable();
+			if ($this->rowsNum > 1){
+				return $this->outputTable();
+			}
+			else{
+				return $this->returnMessage();
+			}
+			
 		}
 		
 		// Check if the end of the list has been reached on the current page
@@ -125,5 +133,12 @@
 		// Parse the current row found from the query
 		// Implemented by child
 		protected function parseRow($_row){}
+		
+		// Return a message indicating the table is empty
+		protected function returnMessage(){
+			return "No ".$this->tableType." found";
+		}
+		
+		
 	}
 ?>

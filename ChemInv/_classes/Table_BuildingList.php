@@ -10,6 +10,7 @@
 			$this->setup($_dbi, $_tableSize);
 			$this->setBuildingSearch("");
 			$this->setCampusSearch(null);
+			$this->tableType = "buildings";
 		}
 		
 		// Add the table header

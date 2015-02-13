@@ -12,6 +12,7 @@
 			$this->setChemicalNameSearch("");
 			$this->setRoomNameSearch("");
 			$this->setRoomIDSearch(null);
+			$this->tableType = "chemicals";
 		}
 		
 		// Add the table header

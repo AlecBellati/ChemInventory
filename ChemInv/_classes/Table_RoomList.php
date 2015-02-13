@@ -12,6 +12,7 @@
 			$this->setBuildingSearch(null);
 			$this->setLevelSearch("");
 			$this->setRoomSearch("");
+			$this->tableType = "rooms";
 		}
 		
 		// Add the table header
