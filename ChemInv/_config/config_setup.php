@@ -1,4 +1,6 @@
 <?php
+	require_once(CLASSES_PATH."DatabaseInterface.php");
+	
 	ini_set ('display_errors', TRUE);
 	error_reporting (E_ALL);
 	date_default_timezone_set("Australia/Adelaide");
