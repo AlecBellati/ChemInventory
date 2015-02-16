@@ -1,8 +1,0 @@
-host:
-localhost
-username:
-root
-password:
-
-database name:
-inventory
