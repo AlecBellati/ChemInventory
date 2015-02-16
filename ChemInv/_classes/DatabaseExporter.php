@@ -137,14 +137,19 @@
 						$value = htmlspecialchars_decode($row['CampusName'],ENT_QUOTES);
 						$worksheet->setCellValue(CAMPUS_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['Carcinogen'],ENT_QUOTES);
+						if ($value == "0") $value = "";
 						$worksheet->setCellValue(CARCINOGEN_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['ChemicalWeapon'],ENT_QUOTES);
+						if ($value == "0") $value = "";
 						$worksheet->setCellValue(CHEMICALWEAPON_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['CSC'],ENT_QUOTES);
+						if ($value == "0") $value = "";
 						$worksheet->setCellValue(CSC_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['Ototoxic'],ENT_QUOTES);
+						if ($value == "0") $value = "";
 						$worksheet->setCellValue(OTOTOXIC_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['RestrictedHazardous'],ENT_QUOTES);
+						if ($value == "0") $value = "";
 						$worksheet->setCellValue(RESTRICTEDHAZARDOUS_COL.$rowNum, $value);
 						
 					}
