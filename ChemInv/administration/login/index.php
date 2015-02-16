@@ -13,7 +13,20 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administration_login.php");
+		// Check if there is an administrator
+		$query = "SELECT COUNT(*) FROM administrator";
+		$result = $_SESSION['dbi']->query($query);
+		
+		if ($result != false && mysql_result($result,0) > 0){
+			require(TEMPLATES_PATH."administration_login.php");
+		}
+		else {
+			// Check if any tables are missing
+			$_SESSION['dbi']->checkMissing();
+			
+			$_SESSION['username'] = "temp";
+			header("Location: ../settings/add/");
+		}
 	}
 	
 	// Handle the actions for logging in

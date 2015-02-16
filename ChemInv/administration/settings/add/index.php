@@ -2,7 +2,7 @@
 	require("config.php");
 	
 	// Check if an admin is logged in
-	if(!loggedIn()){
+	if(!loggedIn() && $_SESSION['username'] != "temp"){
 		gotoLogin();
 	}
 	

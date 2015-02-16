@@ -31,7 +31,7 @@
 	
 	// Handle the actions for confirming the clear
 	function confirm(){
-		$_SESSION['dbi']->setupDatabase();
+		$_SESSION['dbi']->clearAll();
 		
 		$result = "Clear successful";
 		
