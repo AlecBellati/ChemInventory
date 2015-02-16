@@ -3,13 +3,18 @@
 	
 	require_once(FUNCTIONS_PATH."markup_funcs.php");
 	
+	echo '<div id="heading">What would you like to do?</div>';
+	echo '<br />';
+	
 	echo '<form method="GET">';
 	
-	echo inputButton("action","Add a new administrator");
+	echo textLinkUrl("Add a new administrator", "./?action=add");
 	echo '<br />';
-	echo inputButton("action","View administrators");
 	echo '<br />';
-	echo inputButton("action","Change password");
+	echo textLinkUrl("View the administrators", "./?action=view");
+	echo '<br />';
+	echo '<br />';
+	echo textLinkUrl("Change your password", "./?action=change");
 	
 	echo '</form>';
 	

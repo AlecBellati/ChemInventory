@@ -12,6 +12,9 @@
 		case "chemical":
 			chemical();
 			return;
+		case "Return":
+			goback();
+			return;
 		default:
 			load();
 			return;
@@ -68,6 +71,11 @@
 		}
 		
 		header('Location: ./view/?chemicalId='.$_GET['chemicalId']);
+	}
+	
+	// Handle the actions for going back to the search page
+	function goback(){
+		header("Location: ../");
 	}
 	
 ?>

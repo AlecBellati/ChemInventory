@@ -13,7 +13,7 @@
 
 #navigation{
 	background: #E64848;
-	width: 15%;
+	min-width: 170px;
 	min-height: 700px;
 	margin-left: 20%;
 	padding-top: 10px;
@@ -48,8 +48,8 @@
 
 #content{
 	width: 45%;
-	margin-left: 35%;
-	margin-right: 20%;
+	margin-left: 33%;
+	margin-right: auto;
 	padding-top: 20px;
 	padding-left: 20px;
 	
@@ -78,6 +78,12 @@
 	color: black;
 }
 
+#heading{
+	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+	font-size: 18pt;
+	text-align: center;
+}
+
 #note{
 	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
 	font-size: 10pt;
@@ -87,6 +93,8 @@
 table {
 	font-size: 77%;
 	font-family: "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 table, th, td {

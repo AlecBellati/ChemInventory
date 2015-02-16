@@ -16,6 +16,7 @@
 	echo '<form method="POST">';
 	
 	echo inputButton("action","Confirm");
+	echo ' ';
 	echo inputButton("action","Cancel");
 	
 	echo '</form>';

@@ -1,8 +1,12 @@
 <?php
 	include TEMPLATES_PATH."include/header.php";
 	
-	echo '<a href="./?action=updateChemicalDatabase">Update Chemical Database</a><br />';
-	echo '<a href="./?action=adminSettings">Administrator Settings</a><br />';
+	require_once(FUNCTIONS_PATH."markup_funcs.php");
+	
+	echo textLinkUrl("Update the chemical database", "./?action=updateChemicalDatabase");
+	echo "<br />";
+	echo "<br />";
+	echo textLinkUrl("Access the administrator settings", "./?action=adminSettings");
 	
 	include TEMPLATES_PATH."include/footer.php";
 ?>

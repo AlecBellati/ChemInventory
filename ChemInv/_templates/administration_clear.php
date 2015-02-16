@@ -11,7 +11,9 @@
 	echo '<form method="POST">';
 	
 	echo inputButton("action","All");
+	echo ' ';
 	echo inputButton("action","Chemicals");
+	echo ' ';
 	echo inputButton("action","Cancel");
 	
 	echo '</form>';

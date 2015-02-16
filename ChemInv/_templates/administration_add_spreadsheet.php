@@ -19,6 +19,7 @@
 	echo '<br />';
 	echo '<br />';
 	echo inputButton("action","Add");
+	echo ' ';
 	echo inputButton("action","Cancel");
 	
 	echo '</form>';

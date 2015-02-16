@@ -24,7 +24,7 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."administration_add.php");
+		require(TEMPLATES_PATH."administration_add_spreadsheet.php");
 	}
 	
 	// Handle the actions for adding the spreadsheet

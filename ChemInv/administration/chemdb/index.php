@@ -8,13 +8,13 @@
 	
 	// Handle the user action
 	switch($action){
-		case "Add Chemical Database":
+		case "add":
 			addChemicalDatabase();
 			return;
-		case "Clear Chemical Database":
+		case "clear":
 			clearChemicalDatabase();
 			return;
-		case "Export Chemical Database":
+		case "export":
 			exportChemicalDatabase();
 			return;
 		default:

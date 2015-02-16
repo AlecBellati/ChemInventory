@@ -14,14 +14,17 @@
 			<br />
 			<a href="<?php echo ROOT_PATH;?>search/chemicals/">Chemicals</a><br />
 			<br />
-			<a href="<?php echo ROOT_PATH;?>search/campus/">Campus</a><br />
-			<a href="<?php echo ROOT_PATH;?>search/buildings/">Buildings</a><br />
-			<a href="<?php echo ROOT_PATH;?>search/rooms/">Rooms</a><br />
+			Location:<br />
+			<a href="<?php echo ROOT_PATH;?>search/campus/">- Campus</a><br />
+			<a href="<?php echo ROOT_PATH;?>search/buildings/">- Buildings</a><br />
+			<a href="<?php echo ROOT_PATH;?>search/rooms/">- Rooms</a><br />
 			<br />
 			<br />
 			<?php
 				if (loggedIn()){
-					echo '<a href="'.ROOT_PATH.'administration/">Administration</a><br />';
+					echo '<a href="'.ROOT_PATH.'administration/">Administration:</a><br />';
+					echo '<a href="'.ROOT_PATH.'administration/chemdb/">- Database</a><br />';
+					echo '<a href="'.ROOT_PATH.'administration/settings/">- Settings</a><br />';
 				}
 			?>
 		</div>

@@ -31,10 +31,15 @@
 	
 	if ($table->getPage() > 1){
 		echo inputButton('action','Back');
+		echo " ";
 	}
 	if (!$table->endReached()){
 		echo inputButton('action','Next');
+		echo " ";
 	}
+	
+	echo '<br />';
+	echo inputButton('action','Return');
 	
 	echo '</form>';
 	

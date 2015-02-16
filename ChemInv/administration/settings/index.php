@@ -8,13 +8,13 @@
 	
 	// Handle the user action
 	switch($action){
-		case "Add a new administrator":
+		case "add":
 			add();
 			return;
-		case "View administrators":
+		case "view":
 			view();
 			return;
-		case "Change password":
+		case "change":
 			change();
 			return;
 		default:

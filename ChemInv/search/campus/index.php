@@ -12,6 +12,9 @@
 		case "campus":
 			campus();
 			return;
+		case "Return":
+			goback();
+			return;
 		default:
 			load();
 			return;
@@ -58,6 +61,11 @@
 		}
 		
 		header('Location: ../buildings/?campusId='.$_GET['campusId']);
+	}
+	
+	// Handle the actions for going back to the search page
+	function goback(){
+		header("Location: ../");
 	}
 	
 ?>

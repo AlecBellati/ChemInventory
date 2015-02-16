@@ -17,6 +17,9 @@
 		case "delete":
 			delete();
 			return;
+		case "Return":
+			goback();
+			return;
 		default:
 			load();
 			return;
@@ -65,6 +68,11 @@
 		$_SESSION['delete'] = $_GET['username'];
 		
 		header("Location: ./confirm/");
+	}
+	
+	// Handle the actions for going back to the options page
+	function goback(){
+		header("Location: ../");
 	}
 	
 ?>

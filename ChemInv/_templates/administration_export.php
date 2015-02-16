@@ -14,7 +14,9 @@
 	echo '<form method="POST">';
 	
 	echo inputButton("action","Data");
+	echo ' ';
 	echo inputButton("action","Template");
+	echo ' ';
 	echo inputButton("action","Cancel");
 	
 	echo '</form>';
