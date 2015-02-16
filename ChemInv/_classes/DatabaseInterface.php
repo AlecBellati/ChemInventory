@@ -14,14 +14,14 @@
 		// Connect to the database
 		public function connect($_user,$_pass,$_host,$_db, $_persist){
 			try{
-				$this->conn = @mysql_pconnect(DB_HOST,DB_USERNAME,DB_PASSWORD);
+				$this->conn = @mysql_pconnect($_host,$_user,$_password);
 				if (!$this->conn){
 					$err = oci_error ();
 					print (htmlentities ($err['message']));
 					exit ();
 				}
 				
-				mysql_select_db('inventory',$this->conn);
+				mysql_select_db($_db,$this->conn);
 			} catch(Exception $e){
 				return false;
 			}
