@@ -1,0 +1,8 @@
+Username:
+root
+Password:
+
+Host:
+localhost
+Database name:
+inventory

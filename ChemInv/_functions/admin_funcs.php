@@ -1,7 +1,7 @@
 <?php
 	// Check if a user is logged in
 	function loggedIn(){
-		if (isset($_SESSION['username']) && $_SESSION['username'] != "" && $_SESSION['username'] != "temp"){
+		if (isset($_SESSION['username']) && $_SESSION['username'] != ""){
 			return true;
 		}
 		return false;
