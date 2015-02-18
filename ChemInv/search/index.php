@@ -13,7 +13,7 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."/chemsearch.php");
+		require(TEMPLATES_PATH."/search.php");
 	}
 	
 	// Handle the actions when the user searches
