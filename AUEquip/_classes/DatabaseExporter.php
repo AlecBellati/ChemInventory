@@ -1,40 +1,32 @@
 <?php
 	require_once LIB_PATH.'PHPExcel.php';
 	
-	define('CHEMICAL_COL','A');
-	define('CHEMICAL_TITLE','Chemical');
-	define('SUPPLIER_COL','B');
-	define('SUPPLIER_TITLE','Supplier');
-	define('PRIMARYDGC_COL','C');
-	define('PRIMARYDGC_TITLE','Primary DGC');
-	define('PACKINGGROUP_COL','D');
-	define('PACKINGGROUP_TITLE','Packing Group');
-	define('HAZARDOUS_COL','E');
-	define('HAZARDOUS_TITLE','Hazardous');
-	define('POISONSSCHEDULE_COL','F');
-	define('POISONSSCHEDULE_TITLE','Poisons Schedule');
-	define('AMOUNT_COL','G');
-	define('AMOUNT_TITLE','Amount');
-	define('UNIT_COL','H');
-	define('UNIT_TITLE','Unit');
-	define('BUILDING_COL','I');
+	define('EQUIPMENT_COL','A');
+	define('EQUIPMENT_TITLE','Equipment Name');
+	define('FUNCTION_COL','B');
+	define('FUNCTION_TITLE','What would you like to do?');
+	define('WHATITDOES_COL','C');
+	define('WHATITDOES_TITLE','What does it do?');
+	define('WHATSAMPLE_COL','D');
+	define('WHATSAMPLE_TITLE','What kind of sample do you need?');
+	define('WHATINFORMATION_COL','E');
+	define('WHATINFORMATION_TITLE','What information does this equipment give you?');
+	define('BUILDING_COL','F');
 	define('BUILDING_TITLE','Building');
-	define('LEVEL_COL','J');
+	define('LEVEL_COL','G');
 	define('LEVEL_TITLE','Level');
-	define('ROOM_COL','K');
+	define('ROOM_COL','H');
 	define('ROOM_TITLE','Room');
-	define('CAMPUS_COL','L');
+	define('CAMPUS_COL','I');
 	define('CAMPUS_TITLE','Campus');
-	define('CARCINOGEN_COL','M');
-	define('CARCINOGEN_TITLE','Carcinogen');
-	define('CHEMICALWEAPON_COL','N');
-	define('CHEMICALWEAPON_TITLE','Chemical Weapon');
-	define('CSC_COL','O');
-	define('CSC_TITLE','CSC');
-	define('OTOTOXIC_COL','P');
-	define('OTOTOXIC_TITLE','Ototoxic');
-	define('RESTRICTEDHAZARDOUS_COL','Q');
-	define('RESTRICTEDHAZARDOUS_TITLE','Restricted Hazardous');
+	define('CONTACT_COL','J');
+	define('CONTACT_TITLE','Contact');
+	define('NUMBER_COL','K');
+	define('NUMBER_TITLE','Number Weapon');
+	define('EMAIL_COL','L');
+	define('EMAIL_TITLE','Email');
+	define('USAGEFEE_COL','M');
+	define('USAGEFEE_TITLE','Usage Fee');
 	
 	class DatabaseExporter{
 		// The database interface

@@ -2,9 +2,11 @@
 	require_once SCHEMA_PATH.'administrator_schema.php';
 	require_once SCHEMA_PATH.'campus_schema.php';
 	require_once SCHEMA_PATH.'building_schema.php';
-	require_once SCHEMA_PATH.'chemical_schema.php';
 	require_once SCHEMA_PATH.'room_schema.php';
-	require_once SCHEMA_PATH.'supplier_schema.php';
+	require_once SCHEMA_PATH.'contact_schema.php';
+	require_once SCHEMA_PATH.'equipment_schema.php';
+	require_once SCHEMA_PATH.'function_schema.php';
+	require_once SCHEMA_PATH.'equipmentfunction_schema.php';
 	
 	class DatabaseInterface{
 		private $conn;
