@@ -9,13 +9,13 @@
 	// Handle the user action
 	switch($action){
 		case "add":
-			addChemicalDatabase();
+			addEquipmentDatabase();
 			return;
 		case "clear":
-			clearChemicalDatabase();
+			clearEquipmentDatabase();
 			return;
 		case "export":
-			exportChemicalDatabase();
+			exportEquipmentDatabase();
 			return;
 		default:
 			load();
@@ -24,23 +24,22 @@
 	
 	// Handle the actions for arriving at the page
 	function load(){
-		require(TEMPLATES_PATH."/administration_chemdb.php");
+		require(TEMPLATES_PATH."administration_equipdb.php");
 	}
 	
-	// Handle the actions for adding the chemical database in the system
-	function addChemicalDatabase(){
+	// Handle the actions for adding the equipment database in the system
+	function addEquipmentDatabase(){
 		header("Location: ./add/");
 	}
 	
-	// Handle the actions for clearing the chemical database in the system
-	function clearChemicalDatabase(){
+	// Handle the actions for clearing the equipment database in the system
+	function clearEquipmentDatabase(){
 		header("Location: ./clear/");
 	}
 	
-	// Handle the actions for exporting the chemical database in the system
-	function exportChemicalDatabase(){
+	// Handle the actions for exporting the equipment database in the system
+	function exportEquipmentDatabase(){
 		header("Location: ./export/");
 	}
-	
 	
 ?>

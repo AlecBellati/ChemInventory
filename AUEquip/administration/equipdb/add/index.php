@@ -42,7 +42,7 @@
 		// Check if there is not an error
 		if ($error == NO_ERROR){
 			if (move_uploaded_file($_FILES['spreadsheet']['tmp_name'], $target_file)) {
-				$cp = new ChemicalParser($_SESSION['dbi']);
+				$cp = new EquipmentParser($_SESSION['dbi']);
 				$cp->parseData($target_file);
 				
 				$result = "Add successful";

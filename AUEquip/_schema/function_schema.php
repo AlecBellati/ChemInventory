@@ -2,7 +2,7 @@
 	function createTableFunction($conn){
 		$create = "create table Function(";
 		$create .= "ID int NOT NULL AUTO_INCREMENT,";
-		$create .= "FunctionName varchar(40) NOT NULL,";
+		$create .= "FunctionName varchar(8000) NOT NULL,";
 		$create .= "primary key(ID)";
 		$create .= ")";
 		

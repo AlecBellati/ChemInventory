@@ -9,8 +9,8 @@
 	
 	// Handle the user action
 	switch($action){
-		case "updateChemicalDatabase":
-			updateChemicalDatabase();
+		case "updateEquipmentDatabase":
+			updateEquipmentDatabase();
 			return;
 		case "adminSettings":
 			adminSettings();
@@ -25,9 +25,9 @@
 		require(TEMPLATES_PATH."/administration.php");
 	}
 	
-	// Handle the actions for heading to the chemical database settings page
-	function updateChemicalDatabase(){
-		header("Location: ./chemdb/");
+	// Handle the actions for heading to the equipment database settings page
+	function updateEquipmentDatabase(){
+		header("Location: ./equipdb/");
 	}
 	
 	// Handle the actions for heading to the admin settings page

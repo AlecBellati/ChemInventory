@@ -73,6 +73,11 @@
 		 *		0 if unsuccessfully added
 		 */
 		public function insertCampus($_campusName){
+			// Check an actual equipment and function id was given
+			if ($_campusName == NULL){
+				return 0;
+			}
+			
 			// Check if this record has already been added
 			$from = " FROM campus WHERE CampusName='".$_campusName."'";
 			$query = "SELECT ID".$from;
@@ -106,6 +111,11 @@
 		 *		0 if unsuccessfully added
 		 */
 		public function insertBuilding($_buildingName, $_campusID){
+			// Check an actual equipment and function id was given
+			if ($_buildingName == NULL || $_campusID == 0){
+				return 0;
+			}
+			
 			// Check if this record has already been added
 			$from = " FROM building WHERE BuildingName='".$_buildingName."' AND CampusID='".$_campusID."'";
 			$query = "SELECT ID".$from;
@@ -140,6 +150,11 @@
 		 *		0 if unsuccessfully added
 		 */
 		public function insertRoom($_roomName, $_level, $_buildingID){
+			// Check an actual equipment and function id was given
+			if ($_roomName == NULL || $_buildingID == 0){
+				return 0;
+			}
+			
 			// Check if this record has already been added
 			$from = " FROM room WHERE RoomName='".$_roomName."' AND Level='".$_level."' AND BuildingId='".$_buildingID."'";
 			$query = "SELECT ID".$from;
@@ -175,7 +190,7 @@
 		 */
 		public function insertContact($_contactName, $_number, $_email){
 			// Check if this record has already been added
-			$from = " FROM supplier WHERE ContactName='".$_contactName."' AND Number='".$_number."' AND Email='".$_email."'";
+			$from = " FROM contact WHERE ContactName='".$_contactName."' AND Number='".$_number."' AND Email='".$_email."'";
 			$query = "SELECT ID".$from;
 			if (!($result = $this->dbi->query($query))){
 				return 0;
@@ -187,7 +202,7 @@
 			
 			// Insert the record
 			$query = "INSERT INTO Contact(ContactName, Number, Email)";
-			$query .= " VALUES('".$_supplierName."','".$_number."','".$_email."')";
+			$query .= " VALUES('".$_contactName."','".$_number."','".$_email."')";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}
@@ -212,11 +227,16 @@
 		 *		0 if unsuccessfully added
 		 */
 		public function insertEquipment($_equipmentName, $_whatItDoes, $_whatSample, $_whatInformation, $_usageFee, $_roomID, $_contactID){
-			$from = " FROM equipment WHERE EquipmentName='".$_EquipmentName."' AND WhatItDoes='".$_whatItDoes."' AND WhatSample='".$_whatSample."' AND WhatInformation='".$_whatInformation."' AND UsageFee='".$_usageFee."' AND RoomID='".$_roomID."' AND ContactID='".$_contactID."'";
+			// Check an actual equipment and function id was given
+			if ($_equipmentName == NULL || $_roomID == 0 || $_contactID == 0){
+				return 0;
+			}
+			
+			$from = " FROM equipment WHERE EquipmentName='".$_equipmentName."' AND WhatItDoes='".$_whatItDoes."' AND WhatSample='".$_whatSample."' AND WhatInformation='".$_whatInformation."' AND UsageFee='".$_usageFee."' AND RoomID='".$_roomID."' AND ContactID='".$_contactID."'";
 			
 			// Insert the record
 			$query = "INSERT INTO Equipment(EquipmentName, WhatItDoes, WhatSample, WhatInformation, UsageFee, RoomID, ContactID)";
-			$query .= " VALUES('".$_equipmentName."',".$_whatItDoes.",'".$_whatSample."','".$_whatInformation."','".$_usageFee."','".$_roomID."','".$_contactID."')";
+			$query .= " VALUES('".$_equipmentName."','".$_whatItDoes."','".$_whatSample."','".$_whatInformation."','".$_usageFee."','".$_roomID."','".$_contactID."')";
 			if(!($this->dbi->query($query))){
 				return 0;
 			}
@@ -235,6 +255,11 @@
 		 *		0 if unsuccessfully added
 		 */
 		public function insertFunction($_functionName){
+			// Check an actual equipment and function id was given
+			if ($_functionName == NULL){
+				return 0;
+			}
+			
 			// Check if this record has already been added
 			$from = " FROM function WHERE FunctionName='".$_functionName."'";
 			$query = "SELECT ID".$from;
@@ -268,6 +293,11 @@
 		 *		0 if unsuccessfully added
 		 */
 		public function insertEquipmentFunction($_equipmentID, $_functionID){
+			// Check the given parameters are valid
+			if ($_equipmentID == 0 || $_functionID == 0){
+				return 0;
+			}
+			
 			// Check if this record has already been added
 			$from = " FROM equipmentfunction WHERE EquipmentID='".$_equipmentID."' AND FunctionID='".$_functionID."'";
 			$query = "SELECT ID".$from;
@@ -302,7 +332,12 @@
 			$cell = $_worksheet->getCell(EQUIPMENT_COL . $_rowIndex);
 			$equipment = trim($cell->getValue());
 			$equipment = htmlspecialchars($equipment,ENT_QUOTES);
-			return $equipment;
+			if ($equipment == ""){
+				return null;
+			}
+			else {
+				return $equipment;
+			}
 		}
 		
 		/* Parse the cell containing the function
@@ -314,7 +349,12 @@
 			$cell = $_worksheet->getCell(FUNCTION_COL . $_rowIndex);
 			$function = trim($cell->getValue());
 			$function = htmlspecialchars($function,ENT_QUOTES);
-			return $function;
+			if ($function == ""){
+				return null;
+			}
+			else {
+				return $function;
+			}
 		}
 		
 		/* Parse the cell containing what it does
@@ -362,7 +402,12 @@
 			$cell = $_worksheet->getCell(BUILDING_COL . $_rowIndex);
 			$building = trim($cell->getValue());
 			$building = htmlspecialchars($building,ENT_QUOTES);
-			return $building;
+			if ($building == ""){
+				return null;
+			}
+			else {
+				return $building;
+			}
 		}
 		
 		/* Parse the cell containing the level
@@ -386,7 +431,12 @@
 			$cell = $_worksheet->getCell(ROOM_COL . $_rowIndex);
 			$room = trim($cell->getValue());
 			$room = htmlspecialchars($room,ENT_QUOTES);
-			return $room;
+			if ($room == ""){
+				return null;
+			}
+			else {
+				return $room;
+			}
 		}
 		
 		/* Parse the cell containing the campus
@@ -398,7 +448,12 @@
 			$cell = $_worksheet->getCell(CAMPUS_COL . $_rowIndex);
 			$campus = trim($cell->getValue());
 			$campus = htmlspecialchars($campus,ENT_QUOTES);
-			return $campus;
+			if ($campus == ""){
+				return null;
+			}
+			else {
+				return $campus;
+			}
 		}
 		
 		/* Parse the cell containing the contact
