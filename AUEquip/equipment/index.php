@@ -9,8 +9,8 @@
 		case "Back":
 			backPage();
 			return;
-		case "room":
-			room();
+		case "equipment":
+			equipment();
 			return;
 		case "Return":
 			goback();
@@ -23,16 +23,28 @@
 	// Handle the actions for arriving at the page
 	function load(){
 		// Setup the table
-		$table = new Table_RoomList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
-		if (isset($_GET['buildingId'])){
-			$table->setBuildingSearch($_GET['buildingId']);
+		$table = new Table_EquipmentList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		if (isset($_GET['roomID'])){
+			$table->setRoomSearch($_GET['roomID']);
 		}
 		else{
-			$table->setBuildingSearch(null);
+			$table->setRoomSearch(null);
+		}
+		if (isset($_GET['functionID'])){
+			$table->setFunctionSearch($_GET['functionID']);
+		}
+		else{
+			$table->setFunctionSearch(null);
+		}
+		if (isset($_GET['equipmentName'])){
+			$table->setEquipmentSearch($_GET['equipmentName']);
+		}
+		else{
+			$table->setEquipmentSearch("");
 		}
 		
 		$_SESSION['table'] = $table;
-		require(TEMPLATES_PATH."/view.php");
+		require(TEMPLATES_PATH."view.php");
 	}
 	
 	// Handle the actions for going forward a page
@@ -44,7 +56,7 @@
 		
 		$_SESSION['table']->nextPage();
 		
-		require(TEMPLATES_PATH."/view.php");
+		require(TEMPLATES_PATH."view.php");
 	}
 	
 	// Handle the actions for going back a page
@@ -56,18 +68,18 @@
 		
 		$_SESSION['table']->backPage();
 		
-		require(TEMPLATES_PATH."/view.php");
+		require(TEMPLATES_PATH."view.php");
 	}
 	
-	// Handle the actions for selecting a room
-	function room(){
+	// Handle the actions for selecting an equipment
+	function equipment(){
 		// Check whether a room ID is given
-		if ( !isset($_GET['roomID']) || !$_GET['roomID'] ) {
+		if ( !isset($_GET['equipmentID']) || !$_GET['equipmentID'] ) {
 			load();
 			return;
 		}
 		
-		header('Location: '.ROOT_PATH.'equipment/?roomID='.$_GET['roomID']);
+		header('Location: view/?equipmentID='.$_GET['equipmentID']);
 	}
 	
 	// Handle the actions for going back to the search page

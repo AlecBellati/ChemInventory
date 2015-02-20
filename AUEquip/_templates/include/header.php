@@ -12,6 +12,8 @@
 			<br />
 			<a href="<?php echo ROOT_PATH;?>search/">Search</a><br />
 			<br />
+			<a href="<?php echo ROOT_PATH;?>equipment/">Equipment</a><br />
+			<br />
 			<a href="<?php echo ROOT_PATH;?>rooms/">Rooms</a><br />
 			<br />
 			<br />
