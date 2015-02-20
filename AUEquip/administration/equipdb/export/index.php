@@ -37,7 +37,7 @@
 		$exporter = new DatabaseExporter($_SESSION['dbi']);
 		$exporter->createDatabase();
 		
-		$_SESSION['db_filename'] = "Chemical_Database.xlsx";
+		$_SESSION['db_filename'] = "Equipment_Database.xlsx";
 		require(TEMPLATES_PATH."administration_download.php");
 	}
 	
@@ -48,7 +48,7 @@
 		$exporter = new DatabaseExporter($_SESSION['dbi']);
 		$exporter->createTemplate();
 		
-		$_SESSION['db_filename'] = "Chemical_Database_Template.xlsx";
+		$_SESSION['db_filename'] = "Equipment_Database_Template.xlsx";
 		require(TEMPLATES_PATH."administration_download.php");
 	}
 	
