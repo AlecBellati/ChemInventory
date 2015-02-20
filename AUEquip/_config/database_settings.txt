@@ -5,4 +5,4 @@ Password:
 Host:
 localhost
 Database name:
-inventory
+auequip

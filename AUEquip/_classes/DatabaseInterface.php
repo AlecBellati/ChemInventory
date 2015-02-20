@@ -55,22 +55,36 @@
 		
 		// Clear all the tables expect the administrator table
 		public function clearAll(){
-			$this->clearChemical();
-			$this->clearSupplier();
+			$this->clearEquipmentFunction();
+			$this->clearFunction();
+			$this->clearEquipment();
+			$this->clearContact();
 			$this->clearRoom();
 			$this->clearBuilding();
 			$this->clearCampus();
 		}
 		
-		// Clear the records in the chemicals table
-		public function clearChemical(){
-			$query = "DELETE FROM chemical";
+		// Clear the records in the equipmentfunction table
+		public function clearEquipmentFunction(){
+			$query = "DELETE FROM equipmentfunction";
 			$this->query($query);
 		}
 		
-		// Clear the records in the supplier table
-		public function clearSupplier(){
-			$query = "DELETE FROM supplier";
+		// Clear the records in the function table
+		public function clearFunction(){
+			$query = "DELETE FROM function";
+			$this->query($query);
+		}
+		
+		// Clear the records in the equipment table
+		public function clearEquipment(){
+			$query = "DELETE FROM equipment";
+			$this->query($query);
+		}
+		
+		// Clear the records in the contact table
+		public function clearContact(){
+			$query = "DELETE FROM contact";
 			$this->query($query);
 		}
 		
@@ -98,8 +112,10 @@
 			$this->checkCampus();
 			$this->checkBuilding();
 			$this->checkRoom();
-			$this->checkSupplier();
-			$this->checkChemical();
+			$this->checkContact();
+			$this->checkEquipment();
+			$this->checkFunction();
+			$this->checkEquipmentFunction();
 		}
 		
 		// Check if the administrator table is missing
@@ -142,23 +158,43 @@
 			}
 		}
 		
-		// Check if the supplier table is missing
+		// Check if the contact table is missing
 		// Adds it if missing
-		public function checkSupplier(){
-			$query = "SHOW TABLES LIKE 'supplier'";
+		public function checkContact(){
+			$query = "SHOW TABLES LIKE 'contact'";
 			$result = $this->query($query);
 			if(mysql_num_rows($result) != 1){
-				createTableSupplier($this->conn);
+				createTableContact($this->conn);
 			}
 		}
 		
-		// Check if the chemical table is missing
+		// Check if the equipment table is missing
 		// Adds it if missing
-		public function checkChemical(){
-			$query = "SHOW TABLES LIKE 'chemical'";
+		public function checkEquipment(){
+			$query = "SHOW TABLES LIKE 'equipment'";
 			$result = $this->query($query);
 			if(mysql_num_rows($result) != 1){
-				createTableChemical($this->conn);
+				createTableEquipment($this->conn);
+			}
+		}
+		
+		// Check if the function table is missing
+		// Adds it if missing
+		public function checkFunction(){
+			$query = "SHOW TABLES LIKE 'function'";
+			$result = $this->query($query);
+			if(mysql_num_rows($result) != 1){
+				createTableFunction($this->conn);
+			}
+		}
+		
+		// Check if the equipmentfunction table is missing
+		// Adds it if missing
+		public function checkEquipmentFunction(){
+			$query = "SHOW TABLES LIKE 'equipmentfunction'";
+			$result = $this->query($query);
+			if(mysql_num_rows($result) != 1){
+				createTableEquipmentFunction($this->conn);
 			}
 		}
 		
@@ -167,14 +203,18 @@
 			createTableCampus($this->conn);
 			createTableBuilding($this->conn);
 			createTableRoom($this->conn);
-			createTableSupplier($this->conn);
-			createTableChemical($this->conn);
+			createTableContact($this->conn);
+			createTableEquipment($this->conn);
+			createTableFunction($this->conn);
+			createTableEquipmentFunction($this->conn);
 		}
 		
 		// Drop the tables in the database
 		private function dropTables(){
-			dropTableChemical($this->conn);
-			dropTableSupplier($this->conn);
+			dropTableEquipmentFunction($this->conn);
+			dropTableFunction($this->conn);
+			dropTableEquipment($this->conn);
+			dropTableContact($this->conn);
 			dropTableRoom($this->conn);
 			dropTableBuilding($this->conn);
 			dropTableCampus($this->conn);
