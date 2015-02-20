@@ -9,8 +9,8 @@
 		case "Back":
 			backPage();
 			return;
-		case "campus":
-			campus();
+		case "room":
+			room();
 			return;
 		case "Return":
 			goback();
@@ -23,8 +23,15 @@
 	// Handle the actions for arriving at the page
 	function load(){
 		// Setup the table
-		$_SESSION['table'] = new Table_CampusList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		$table = new Table_RoomList($_SESSION['dbi'], DEFAULT_TABLE_SIZE);
+		if (isset($_GET['buildingId'])){
+			$table->setBuildingSearch($_GET['buildingId']);
+		}
+		else{
+			$table->setBuildingSearch(null);
+		}
 		
+		$_SESSION['table'] = $table;
 		require(TEMPLATES_PATH."/view.php");
 	}
 	
@@ -52,15 +59,15 @@
 		require(TEMPLATES_PATH."/view.php");
 	}
 	
-	// Handle the actions for selecting a campus
-	function campus(){
-		// Check whether a campus ID is given
-		if ( !isset($_GET['campusId']) || !$_GET['campusId'] ) {
+	// Handle the actions for selecting a room
+	function room(){
+		// Check whether a room ID is given
+		if ( !isset($_GET['roomId']) || !$_GET['roomId'] ) {
 			load();
 			return;
 		}
 		
-		header('Location: ../buildings/?campusId='.$_GET['campusId']);
+		header('Location: '.ROOT_PATH.'equipment/?roomId='.$_GET['roomId']);
 	}
 	
 	// Handle the actions for going back to the search page

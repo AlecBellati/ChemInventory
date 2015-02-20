@@ -12,10 +12,7 @@
 			<br />
 			<a href="<?php echo ROOT_PATH;?>search/">Search</a><br />
 			<br />
-			Location:<br />
-			<a href="<?php echo ROOT_PATH;?>search/campus/">- Campus</a><br />
-			<a href="<?php echo ROOT_PATH;?>search/buildings/">- Buildings</a><br />
-			<a href="<?php echo ROOT_PATH;?>search/rooms/">- Rooms</a><br />
+			<a href="<?php echo ROOT_PATH;?>rooms/">Rooms</a><br />
 			<br />
 			<br />
 			<?php
