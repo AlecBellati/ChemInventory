@@ -31,7 +31,8 @@
 	
 	// Handle the actions for confirming the clear
 	function confirm(){
-		$_SESSION['dbi']->clearChemical();
+		$_SESSION['dbi']->clearEquipmentFunction();
+		$_SESSION['dbi']->clearEquipment();
 		
 		$result = "Clear successful";
 		

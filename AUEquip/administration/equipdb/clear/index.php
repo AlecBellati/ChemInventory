@@ -11,8 +11,8 @@
 		case "All":
 			all();
 			return;
-		case "Chemicals":
-			chemicals();
+		case "Equipment":
+			equipment();
 			return;
 		case "Cancel":
 			goback();
@@ -32,9 +32,9 @@
 		header("Location: ./all/");
 	}
 	
-	// Handle the actions for requesting to clear chemicals
-	function chemicals(){
-		header("Location: ./chemicals/");
+	// Handle the actions for requesting to clear equipment
+	function equipment(){
+		header("Location: ./equipment/");
 	}
 	
 	// Handle the actions for going back to the options page
