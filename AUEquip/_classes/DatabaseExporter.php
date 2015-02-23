@@ -104,30 +104,43 @@
 						$worksheet = $this->excelObj->getActiveSheet();
 						
 						$value = htmlspecialchars_decode($row['EquipmentName'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(EQUIPMENT_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['FunctionName'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(FUNCTION_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['WhatItDoes'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(WHATITDOES_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['WhatSample'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(WHATSAMPLE_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['WhatInformation'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(WHATINFORMATION_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['BuildingName'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(BUILDING_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['Level'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(LEVEL_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['RoomName'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(ROOM_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['CampusName'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(CAMPUS_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['ContactName'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(CONTACT_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['Number'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(NUMBER_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['Email'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(EMAIL_COL.$rowNum, $value);
 						$value = htmlspecialchars_decode($row['UsageFee'],ENT_QUOTES);
+						$value = str_replace("<br />", "\n", $value);
 						$worksheet->setCellValue(USAGEFEE_COL.$rowNum, $value);
 					}
 				}
