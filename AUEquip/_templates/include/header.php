@@ -10,6 +10,9 @@
 		<div id="navigation">
 			<a href="<?php echo ROOT_PATH;?>">Home</a><br />
 			<br />
+			<a href="<?php echo ROOT_PATH;?>start/">Start</a><br />
+			<br />
+			<br />
 			<a href="<?php echo ROOT_PATH;?>search/">Search</a><br />
 			<br />
 			<a href="<?php echo ROOT_PATH;?>equipment/">Equipment</a><br />
