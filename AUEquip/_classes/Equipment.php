@@ -40,27 +40,33 @@
 			$query .= "JOIN contact ON equipment.ContactID=contact.ID ";
 			$query .= "WHERE equipment.ID=".$_id;
 			$result = mysql_query($query);
-			$row = mysql_fetch_array($result, MYSQL_BOTH);
 
-			$this->setProperties($row);
+			$this->setProperties($result);
 		}
 		
 		// Set the properties of the chemical
 		private function setProperties($_data){
-			if (isset($_data['ID'])) $this->ID = (int) $_data['ID'];
-			if (isset($_data['EquipmentName'])) $this->equipmentName = $_data['EquipmentName'];
-			if (isset($_data['WhatItDoes'])) $this->whatItDoes = $_data['WhatItDoes'];
-			if (isset($_data['WhatSample'])) $this->whatSample = $_data['WhatSample'];
-			if (isset($_data['WhatInformation'])) $this->whatInformation = $_data['WhatInformation'];
-			if (isset($_data['UsageFee'])) $this->usageFee = $_data['UsageFee'];
-			if (isset($_data['RoomName'])) $this->roomName = $_data['RoomName'];
-			if (isset($_data['Level'])) $this->roomLevel = $_data['Level'];
-			if (isset($_data['BuildingName'])) $this->buildingName = $_data['BuildingName'];
-			if (isset($_data['CampusName'])) $this->campusName = $_data['CampusName'];
-			if (isset($_data['ContactName'])) $this->contactName = $_data['ContactName'];
-			if (isset($_data['Email'])) $this->contactEmail = $_data['Email'];
-			if (isset($_data['Number'])) $this->contactNumber = $_data['Number'];
-			if (isset($_data['FunctionName'])) $this->functionName = $_data['FunctionName'];
+			$row = mysql_fetch_array($_data, MYSQL_BOTH);
+			
+			if (isset($row['ID'])) $this->ID = (int) $row['ID'];
+			if (isset($row['EquipmentName'])) $this->equipmentName = $row['EquipmentName'];
+			if (isset($row['WhatItDoes'])) $this->whatItDoes = $row['WhatItDoes'];
+			if (isset($row['WhatSample'])) $this->whatSample = $row['WhatSample'];
+			if (isset($row['WhatInformation'])) $this->whatInformation = $row['WhatInformation'];
+			if (isset($row['UsageFee'])) $this->usageFee = $row['UsageFee'];
+			if (isset($row['RoomName'])) $this->roomName = $row['RoomName'];
+			if (isset($row['Level'])) $this->roomLevel = $row['Level'];
+			if (isset($row['BuildingName'])) $this->buildingName = $row['BuildingName'];
+			if (isset($row['CampusName'])) $this->campusName = $row['CampusName'];
+			if (isset($row['ContactName'])) $this->contactName = $row['ContactName'];
+			if (isset($row['Email'])) $this->contactEmail = $row['Email'];
+			if (isset($row['Number'])) $this->contactNumber = $row['Number'];
+			if (isset($row['FunctionName'])) $this->functionName = $row['FunctionName'];
+			
+			// Check if there is more functions to add
+			while ($row = mysql_fetch_array($_data, MYSQL_BOTH)){
+				if (isset($row['FunctionName'])) $this->functionName .= "<br />".$row['FunctionName'];
+			}
 		}
 		
 		// Get the id
