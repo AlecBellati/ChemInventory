@@ -20,6 +20,10 @@
 			<a href="<?php echo ROOT_PATH;?>search/rooms/">- Rooms</a><br />
 			<br />
 			<br />
+			<a href="http://jr.chemwatch.net/chemwatch.web/dashboard">ChemWatch</a><br />
+			<br />
+			<br />
+			
 			<?php
 				if (loggedIn()){
 					echo '<a href="'.ROOT_PATH.'administration/">Administration:</a><br />';
