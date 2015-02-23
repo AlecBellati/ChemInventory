@@ -60,8 +60,8 @@
 				$roomID = $this->insertRoom($room, $level, $buildingID);
 				$contactID = $this->insertContact($contact, $number, $email);
 				$equipmentID = $this->insertEquipment($equipment, $whatItDoes, $whatSample, $whatInformation, $usageFee, $roomID, $contactID);
-				$functionID = $this->insertFunction($function);
-				$this->insertEquipmentFunction($equipmentID, $functionID);
+				$functionIDs = $this->insertFunctions($function);
+				$this->insertEquipmentFunctions($equipmentID, $functionIDs);
 			}
 			
 		}
@@ -248,14 +248,33 @@
 			return $resultsRow["ID"];
 		}
 		
+		/* Insert functions into the function table
+		 * @param _functions - The name of the functions
+		 * @return:
+		 *		The ID of function matching the parameters successfully or already added
+		 *		0 if unsuccessfully added
+		 */
+		public function insertFunctions($_functions){
+			if ($_functions == NULL){
+				return 0;
+			}
+			
+			$IDs = array(count($_functions));
+			
+			for ($i = 0; $i < count($_functions); $i++){
+				$IDs[$i] = $this->insertFunction($_functions[$i]);
+			}
+			return $IDs;
+		}
+		
 		/* Insert a record into the function table
-		 * @param _functionName - The name of the function
+		 * @param _functionName - The name of the functions
 		 * @return:
 		 *		The ID of function matching the parameters successfully or already added
 		 *		0 if unsuccessfully added
 		 */
 		public function insertFunction($_functionName){
-			// Check an actual equipment and function id was given
+			// Check an actual function name was given
 			if ($_functionName == NULL){
 				return 0;
 			}
@@ -282,7 +301,27 @@
 			$query = "SELECT ID".$from;
 			$result = $this->dbi->query($query);
 			$resultsRow = mysql_fetch_array($result, MYSQL_BOTH);
-			return $resultsRow["ID"];
+			return $resultsRow['ID'];
+		}
+		
+		/* Insert records into the equipmentfunction table
+		 * @param _equipmentID - The ID of the equipment
+		 * @param _functionIDs - The IDs of the function
+		 * @return:
+		 *		The ID of equipment matching the parameters successfully or already added
+		 *		0 if unsuccessfully added
+		 */
+		public function insertEquipmentFunctions($_equipmentID, $_functionIDs){
+			if ($_functionIDs == NULL){
+				return 0;
+			}
+			
+			$IDs = array(count($_functionIDs));
+			
+			for ($i = 0; $i < count($_functionIDs); $i++){
+				$IDs[$i] = $this->insertEquipmentFunction($_equipmentID, $_functionIDs[$i]);
+			}
+			return $IDs;
 		}
 		
 		/* Insert a record into the equipmentfunction table
@@ -332,6 +371,7 @@
 			$cell = $_worksheet->getCell(EQUIPMENT_COL . $_rowIndex);
 			$equipment = trim($cell->getValue());
 			$equipment = htmlspecialchars($equipment,ENT_QUOTES);
+			$equipment = str_replace("\n", "<br />", $equipment);
 			if ($equipment == ""){
 				return null;
 			}
@@ -352,9 +392,8 @@
 			if ($function == ""){
 				return null;
 			}
-			else {
-				return $function;
-			}
+			$function = explode("\n", $function);
+			return $function;
 		}
 		
 		/* Parse the cell containing what it does
@@ -366,6 +405,7 @@
 			$cell = $_worksheet->getCell(WHATITDOES_COL . $_rowIndex);
 			$whatItDoes = trim($cell->getValue());
 			$whatItDoes = htmlspecialchars($whatItDoes,ENT_QUOTES);
+			$whatItDoes = str_replace("\n", "<br />", $whatItDoes);
 			return $whatItDoes;
 		}
 		
@@ -378,6 +418,7 @@
 			$cell = $_worksheet->getCell(WHATSAMPLE_COL . $_rowIndex);
 			$whatSample = trim($cell->getValue());
 			$whatSample = htmlspecialchars($whatSample,ENT_QUOTES);
+			$whatSample = str_replace("\n", "<br />", $whatSample);
 			return $whatSample;
 		}
 		
@@ -390,6 +431,7 @@
 			$cell = $_worksheet->getCell(WHATINFORMATION_COL . $_rowIndex);
 			$whatInformation = trim($cell->getValue());
 			$whatInformation = htmlspecialchars($whatInformation,ENT_QUOTES);
+			$whatInformation = str_replace("\n", "<br />", $whatInformation);
 			return $whatInformation;
 		}
 		
@@ -402,6 +444,7 @@
 			$cell = $_worksheet->getCell(BUILDING_COL . $_rowIndex);
 			$building = trim($cell->getValue());
 			$building = htmlspecialchars($building,ENT_QUOTES);
+			$building = str_replace("\n", "<br />", $building);
 			if ($building == ""){
 				return null;
 			}
@@ -419,6 +462,7 @@
 			$cell = $_worksheet->getCell(LEVEL_COL . $_rowIndex);
 			$level = trim($cell->getValue());
 			$level = htmlspecialchars($level,ENT_QUOTES);
+			$level = str_replace("\n", "<br />", $level);
 			return $level;
 		}
 		
@@ -431,6 +475,7 @@
 			$cell = $_worksheet->getCell(ROOM_COL . $_rowIndex);
 			$room = trim($cell->getValue());
 			$room = htmlspecialchars($room,ENT_QUOTES);
+			$room = str_replace("\n", "<br />", $room);
 			if ($room == ""){
 				return null;
 			}
@@ -448,6 +493,7 @@
 			$cell = $_worksheet->getCell(CAMPUS_COL . $_rowIndex);
 			$campus = trim($cell->getValue());
 			$campus = htmlspecialchars($campus,ENT_QUOTES);
+			$campus = str_replace("\n", "<br />", $campus);
 			if ($campus == ""){
 				return null;
 			}
@@ -465,6 +511,7 @@
 			$cell = $_worksheet->getCell(CONTACT_COL . $_rowIndex);
 			$contact = trim($cell->getValue());
 			$contact = htmlspecialchars($contact,ENT_QUOTES);
+			$contact = str_replace("\n", "<br />", $contact);
 			return $contact;
 		}
 		
@@ -477,6 +524,7 @@
 			$cell = $_worksheet->getCell(NUMBER_COL . $_rowIndex);
 			$number = trim($cell->getValue());
 			$number = htmlspecialchars($number,ENT_QUOTES);
+			$number = str_replace("\n", "<br />", $number);
 			return $number;
 		}
 		
@@ -489,6 +537,7 @@
 			$cell = $_worksheet->getCell(EMAIL_COL . $_rowIndex);
 			$email = trim($cell->getValue());
 			$email = htmlspecialchars($email,ENT_QUOTES);
+			$email = str_replace("\n", "<br />", $email);
 			return $email;
 		}
 		
@@ -499,9 +548,10 @@
 		 */
 		private function parseUsageFee($_worksheet, $_rowIndex){
 			$cell = $_worksheet->getCell(USAGEFEE_COL . $_rowIndex);
-			$useageFee = trim($cell->getValue());
-			$useageFee = htmlspecialchars($useageFee,ENT_QUOTES);
-			return $useageFee;
+			$usageFee = trim($cell->getValue());
+			$usageFee = htmlspecialchars($usageFee,ENT_QUOTES);
+			$usageFee = str_replace("\n", "<br />", $usageFee);
+			return $usageFee;
 		}
 		
 	}
