@@ -247,7 +247,12 @@
 			$cell = $_worksheet->getCell(CHEMICAL_COL . $_rowIndex);
 			$chemical = trim($cell->getValue());
 			$chemical = htmlspecialchars($chemical,ENT_QUOTES);
-			return $chemical;
+			if ($chemical == ""){
+				return null;
+			}
+			else {
+				return $chemical;
+			}
 		}
 		
 		/* Parse the cell containing the supplier
@@ -353,7 +358,12 @@
 			$cell = $_worksheet->getCell(BUILDING_COL . $_rowIndex);
 			$building = trim($cell->getValue());
 			$building = htmlspecialchars($building,ENT_QUOTES);
-			return $building;
+			if ($building == ""){
+				return null;
+			}
+			else {
+				return $building;
+			}
 		}
 		
 		/* Parse the cell containing the level
@@ -377,7 +387,12 @@
 			$cell = $_worksheet->getCell(ROOM_COL . $_rowIndex);
 			$room = trim($cell->getValue());
 			$room = htmlspecialchars($room,ENT_QUOTES);
-			return $room;
+			if ($room == ""){
+				return null;
+			}
+			else {
+				return $room;
+			}
 		}
 		
 		/* Parse the cell containing the campus
@@ -389,7 +404,12 @@
 			$cell = $_worksheet->getCell(CAMPUS_COL . $_rowIndex);
 			$campus = trim($cell->getValue());
 			$campus = htmlspecialchars($campus,ENT_QUOTES);
-			return $campus;
+			if ($campus == ""){
+				return null;
+			}
+			else {
+				return $campus;
+			}
 		}
 		
 		/* Parse the cell containing the carcinogen indicator
