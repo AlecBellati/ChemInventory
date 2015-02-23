@@ -19,19 +19,19 @@
 	// Handle the actions when the user searches
 	function search(){
 		// Ensure that results are retrieved
-		if ((!isset($_POST['chemicalName']) || !isset($_POST['roomName']))
-		||	($_POST['chemicalName'] == "" && $_POST['roomName'] == "")){
+		if ((!isset($_POST['equipmentName']) || !isset($_POST['roomName']))
+		||	($_POST['equipmentName'] == "" && $_POST['roomName'] == "")){
 			// Head to the results page
 			header("Location: ./?error=1");
 			return;
 		}
 		
 		// Encode the searches to use html special chars
-		$chemicalName = htmlspecialchars_decode($_POST['chemicalName'],ENT_QUOTES);
+		$equipmentName = htmlspecialchars_decode($_POST['equipmentName'],ENT_QUOTES);
 		$roomName = htmlspecialchars_decode($_POST['roomName'],ENT_QUOTES);
 		
 		// Head to the results page
-		header("Location: ./chemicals/?chemicalName=".$chemicalName."&roomName=".$roomName);
+		header("Location: ".ROOT_PATH."equipment/?equipmentName=".$equipmentName."&roomName=".$roomName);
 	}
 	
 ?>
